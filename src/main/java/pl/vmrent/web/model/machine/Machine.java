@@ -1,11 +1,14 @@
 package pl.vmrent.web.model.machine;
 
+import pl.vmrent.web.repository.memory.Identity;
+
 import java.util.Objects;
 import java.util.StringJoiner;
+import java.util.UUID;
 
-public abstract class Machine
+public abstract class Machine implements Identity<UUID>
 {
-    private Long id;
+    private UUID id;
     private int basicPrice;
     private String system;
     private int cores;
@@ -16,7 +19,7 @@ public abstract class Machine
     {
     }
 
-    public Machine(Long id, int basicPrice, String system, int cores, int ramSize, int hddSize)
+    public Machine(UUID id, int basicPrice, String system, int cores, int ramSize, int hddSize)
     {
         this.id = id;
         this.basicPrice = basicPrice;
@@ -26,12 +29,12 @@ public abstract class Machine
         this.hddSize = hddSize;
     }
 
-    public Long getId()
+    public UUID getId()
     {
         return id;
     }
 
-    public void setId(Long id)
+    public void setId(UUID id)
     {
         this.id = id;
     }

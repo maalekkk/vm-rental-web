@@ -1,6 +1,7 @@
 package pl.vmrent.web.model.machine;
 
 import java.util.StringJoiner;
+import java.util.UUID;
 
 public class MachineProfessional extends MachinePremium
 {
@@ -10,7 +11,7 @@ public class MachineProfessional extends MachinePremium
     {
     }
 
-    public MachineProfessional(Long id, int basicPrice, String system, int cores, int ramSize, int hddSize, int ssdSize, int gpuPower)
+    public MachineProfessional(UUID id, int basicPrice, String system, int cores, int ramSize, int hddSize, int ssdSize, int gpuPower)
     {
         super(id, basicPrice, system, cores, ramSize, hddSize, ssdSize);
         this.gpuPower = gpuPower;

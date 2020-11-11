@@ -1,6 +1,7 @@
 package pl.vmrent.web.model.machine;
 
 import java.util.StringJoiner;
+import java.util.UUID;
 
 public abstract class MachinePremium extends Machine
 {
@@ -10,7 +11,7 @@ public abstract class MachinePremium extends Machine
     {
     }
 
-    public MachinePremium(Long id, int basicPrice, String system, int cores, int ramSize, int hddSize, int ssdSize)
+    public MachinePremium(UUID id, int basicPrice, String system, int cores, int ramSize, int hddSize, int ssdSize)
     {
         super(id, basicPrice, system, cores, ramSize, hddSize);
         this.ssdSize = ssdSize;
