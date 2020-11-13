@@ -1,0 +1,78 @@
+body {
+    color: white;
+    background: linear-gradient(to top left, #4A148C, #C51162) no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+label {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+ input[type=submit]  {
+     padding: 15px;
+    background-color: #56baed;
+    border: none;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type=submit]:hover  {
+    background-color: #39ace7;
+}
+
+input[type=submit]:active  {
+    -moz-transform: scale(0.95);
+    -webkit-transform: scale(0.95);
+    -o-transform: scale(0.95);
+    -ms-transform: scale(0.95);
+    transform: scale(0.95);
+}
+
+input[type=text] {
+    font-size: 15px;
+    margin-bottom: 30px;
+    border-right: none;
+    border-top: none;
+    border-left: none;
+    background-color:transparent;
+    outline: none;
+    color: white;
+    caret-color: white;
+    display: inline-block;
+    width: 100%;
+}
+
+
+input[type=text]:focus {
+    background-color: transparent;
+    border-bottom: 2px solid #5fbae9;
+}

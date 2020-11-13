@@ -8,11 +8,11 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:body>
-        <ui:composition template="templates/main.xhtml">
-            <ui:define name = "content">
-            <h:link value = "Page 1" outcome = "page1" />
-            <h:link value = "Page 2" outcome = "page2" />
-            </ui:define>
+        <ui:composition>
+            <div class="footer">
+                <h:outputText id="footer_text" value="#{msgs.web_info_content}"/>
+
+            </div>
         </ui:composition>
     </h:body>
 </f:view>
