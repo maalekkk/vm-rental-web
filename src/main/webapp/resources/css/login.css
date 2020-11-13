@@ -1,8 +1,9 @@
 body {
-    color: white;
+    color: rgba(255,255,255,.8);
     background: linear-gradient(to top left, #4A148C, #C51162) no-repeat center center fixed;
     background-size: cover;
     font-family: 'Roboto', sans-serif;
+    font-size: 18px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -25,28 +26,19 @@ label {
 }
 
  input[type=submit]  {
-     padding: 15px;
-    background-color: #56baed;
-    border: none;
-    color: white;
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
+     background: transparent;
+     width: 80%;
+     padding: 1.5vh;
+     cursor: pointer;
+     border-radius: 4px 4px;
+     margin-bottom: 2vh;
+     border: 3px solid transparent;
+     border-image: linear-gradient(to top left, #4A148C, #C51162);
+     border-image-slice: 1;
 }
 
 input[type=submit]:hover  {
-    background-color: #39ace7;
+    background: rgba(255,255,255,.2);;
 }
 
 input[type=submit]:active  {
@@ -69,10 +61,11 @@ input[type=text] {
     caret-color: white;
     display: inline-block;
     width: 100%;
+    border-bottom: 2px solid rgba(255,255,255,.5);
 }
 
 
 input[type=text]:focus {
     background-color: transparent;
-    border-bottom: 2px solid #5fbae9;
+    border-bottom: 2px solid rgba(255,255,255,.8);
 }
