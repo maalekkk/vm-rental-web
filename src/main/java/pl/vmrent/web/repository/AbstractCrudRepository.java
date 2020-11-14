@@ -1,4 +1,4 @@
-package pl.vmrent.web.repository.memory;
+package pl.vmrent.web.repository;
 
 import pl.vmrent.web.exceptions.NullArgumentException;
 
@@ -8,7 +8,12 @@ import java.util.*;
 
 public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends Serializable> implements CrudRepository<T, ID>
 {
-    protected Collection<T> elements = new ArrayList<>();
+    protected Collection<T> elements;
+
+    public AbstractCrudRepository()
+    {
+        elements = Collections.synchronizedList(new ArrayList<>());
+    }
 
     @Override
     public <S extends T> S save(S entity)
@@ -18,14 +23,14 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
             throw new NullArgumentException();
         }
 
-        if (!elements.contains(entity))
+        int index = ((List<T>) elements).indexOf(entity);
+        if (index == -1)
         {
             elements.add(entity);
         }
         else
         {
-            List<T> list = (List<T>) elements;
-            list.set(list.indexOf(entity), entity);
+            ((List<T>) elements).set(index, entity);
         }
         return entity;
     }
@@ -33,11 +38,7 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     @Override
     public boolean existsById(ID id)
     {
-        if (id == null)
-        {
-            throw new NullArgumentException();
-        }
-        return findById(id).isPresent();
+        return elements.stream().anyMatch(e -> e.getId().equals(id));
     }
 
     @Override
@@ -48,6 +49,12 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
             throw new NullArgumentException();
         }
         return elements.stream().findFirst().filter(element -> element.getId().equals(id));
+    }
+
+    @Override
+    public T getOne(ID id)
+    {
+        return findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
@@ -75,11 +82,7 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     @Override
     public void deleteById(ID id)
     {
-        if (id == null)
-        {
-            throw new NullArgumentException();
-        }
-        elements.remove(findById(id).orElseThrow(EntityNotFoundException::new));
+        elements.remove(getOne(id));
     }
 
     @Override
