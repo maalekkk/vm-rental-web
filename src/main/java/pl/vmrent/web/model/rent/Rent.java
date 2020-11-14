@@ -2,7 +2,7 @@ package pl.vmrent.web.model.rent;
 
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
-import pl.vmrent.web.repository.memory.Identity;
+import pl.vmrent.web.repository.Identity;
 
 import java.math.BigInteger;
 import java.time.ZonedDateTime;

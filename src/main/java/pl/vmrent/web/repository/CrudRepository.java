@@ -1,4 +1,4 @@
-package pl.vmrent.web.repository.memory;
+package pl.vmrent.web.repository;
 
 import java.io.Serializable;
 import java.util.Optional;

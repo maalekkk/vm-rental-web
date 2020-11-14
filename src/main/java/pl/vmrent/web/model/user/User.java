@@ -1,6 +1,6 @@
 package pl.vmrent.web.model.user;
 
-import pl.vmrent.web.repository.memory.Identity;
+import pl.vmrent.web.repository.Identity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

@@ -1,6 +1,6 @@
 package pl.vmrent.web.model.machine;
 
-import pl.vmrent.web.repository.memory.Identity;
+import pl.vmrent.web.repository.Identity;
 
 import java.util.Objects;
 import java.util.StringJoiner;
