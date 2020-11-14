@@ -7,17 +7,16 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
         <h:outputStylesheet library="css" name="login.css"/>
     </h:head>
     <h:body>
         <div class="container">
             <div class="content">
                 <h:form>
-                    <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText label="#{msgs.login}"/>
-                    <h:outputLabel value="#{msgs.password}"/>
-                    <h:inputText label="#{msgs.password}"/>
+                    <h:outputLabel value="#{msgs.login}*"/>
+                    <h:inputText required="true"/>
+                    <h:outputLabel value="#{msgs.password}*"/>
+                    <h:inputSecret required="true"/>
                     <h:commandButton value="#{msgs.sing_in}"/>
                     <h:link value="#{msgs.sign_up_request}" class="sing_up_text"/>
                 </h:form>

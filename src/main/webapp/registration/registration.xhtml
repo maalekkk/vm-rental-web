@@ -4,25 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF8" />
         <h:outputStylesheet library="css" name="login.css"/>
     </h:head>
     <h:body>
         <div class="container">
             <div class="content">
                 <h:form>
-                    <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText/>
-                    <h:outputLabel value="#{msgs.password}"/>
-                    <h:inputText/>
-                    <h:outputLabel value="#{msgs.repeat_password}"/>
-                    <h:inputText/>
-                    <h:outputLabel value="#{msgs.email}"/>
-                    <h:inputText/>
-                    <h:commandButton value="#{msgs.sing_up}"/>
+                    <h:outputLabel value="#{msgs.first_name}*"/>
+                    <h:inputText required="false"/>
+                    <h:outputLabel value="#{msgs.last_name}"/>
+                    <h:inputText required="false"/>
+                    <h:outputLabel value="#{msgs.login}*"/>
+                    <h:inputText required="true"/>
+                    <h:outputLabel value="#{msgs.password}*"/>
+                    <h:inputText required="true"/>
+                    <h:outputLabel value="#{msgs.repeat_password}*"/>
+                    <h:inputText required="true"/>
+                    <h:commandButton value="#{msgs.sing_up}" />
                     <h:link value="#{msgs.sign_in_request}" class="sing_up_text"/>
                 </h:form>
             </div>

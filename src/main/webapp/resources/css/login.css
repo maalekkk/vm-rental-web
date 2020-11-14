@@ -41,7 +41,7 @@ label {
 }
 
 /*Input text css*/
-input[type=text] {
+input[type=text], input[type=password], textarea {
     font-size: 15px;
     margin-bottom: 30px;
     border-right: none;
@@ -56,7 +56,7 @@ input[type=text] {
     border-bottom: 2px solid rgba(255,255,255,.5);
 }
 
-input[type=text]:focus, input[type=text]:hover {
+input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, input[type=password]:hover {
     background-color: transparent;
     border-bottom: 2px solid rgba(255,255,255,.8);
 }
