@@ -40,12 +40,6 @@ public class User implements Identity<String>
         return getUsername();
     }
 
-    @Override
-    public void setId(String s)
-    {
-        setUsername(s);
-    }
-
     public String getUsername()
     {
         return username;

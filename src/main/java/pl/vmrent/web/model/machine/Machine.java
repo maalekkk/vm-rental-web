@@ -29,6 +29,7 @@ public abstract class Machine implements Identity<UUID>
         this.hddSize = hddSize;
     }
 
+    @Override
     public UUID getId()
     {
         return id;

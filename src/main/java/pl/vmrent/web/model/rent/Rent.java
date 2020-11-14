@@ -38,7 +38,6 @@ public class Rent implements Identity<UUID>
         return id;
     }
 
-    @Override
     public void setId(UUID id)
     {
         this.id = id;
