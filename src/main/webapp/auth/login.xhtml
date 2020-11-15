@@ -3,7 +3,6 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:head>
@@ -15,11 +14,11 @@
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText required="true"/>
+                    <h:inputText required="true" value="#{loginBean.user.username}"/>
                     <h:outputLabel value="#{msgs.password}"/>
-                    <h:inputSecret required="true"/>
-                    <h:commandButton value="#{msgs.sing_in}"/>
-                    <h:link value="#{msgs.sign_up_request}" class="sing_up_text" outcome="register" />
+                    <h:inputSecret required="true" value="#{loginBean.user.password}"/>
+                    <h:commandButton value="#{msgs.sing_in}" action="#{loginBean.submit}"/>
+                    <h:link value="#{msgs.sign_up_request}" class="sing_up_text" outcome="register"/>
                 </h:form>
             </div>
         </div>

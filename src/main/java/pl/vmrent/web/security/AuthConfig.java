@@ -1,0 +1,19 @@
+package pl.vmrent.web.security;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.faces.annotation.FacesConfig;
+import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
+import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
+
+@CustomFormAuthenticationMechanismDefinition(
+        loginToContinue = @LoginToContinue(
+                loginPage = "/auth/login",
+                errorPage = "/auth/login",
+                useForwardToLogin = false
+        )
+)
+@FacesConfig
+@ApplicationScoped
+public class AuthConfig
+{
+}

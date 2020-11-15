@@ -3,9 +3,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+>
 <f:view>
     <h:head>
         <h:outputStylesheet library="css" name="fonts.css"/>
@@ -16,15 +15,15 @@
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.full_name}"/>
-                    <h:inputText required="false"/>
+                    <h:inputText required="false" value="#{userController.registerUser.fullname}"/>
                     <h:outputLabel value="#{msgs.login}*"/>
-                    <h:inputText required="true"/>
+                    <h:inputText required="true" value="#{userController.registerUser.username}"/>
                     <h:outputLabel value="#{msgs.password}*"/>
-                    <h:inputSecret required="true"/>
+                    <h:inputSecret required="true" value="#{userController.registerUser.password}"/>
                     <h:outputLabel value="#{msgs.repeat_password}*"/>
                     <h:inputSecret required="true"/>
-                    <h:commandButton value="#{msgs.sing_up}" />
-                    <h:link value="#{msgs.sign_in_request}" class="sing_up_text" outcome="login" />
+                    <h:commandButton value="#{msgs.sing_up}" action="#{userController.registerUser}"/>
+                    <h:link value="#{msgs.sign_in_request}" class="sing_up_text" outcome="login"/>
                 </h:form>
             </div>
         </div>
