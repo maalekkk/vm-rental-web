@@ -6,7 +6,7 @@
 
     <groupId>pl.pas06</groupId>
     <artifactId>vm-rental-web</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.2-SNAPSHOT</version>
     <name>vm-rental-web</name>
     <packaging>war</packaging>
 
