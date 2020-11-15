@@ -1,5 +1,4 @@
 
-
 .pi {
     speak: none;
     font-style: normal;
@@ -13,7 +12,7 @@
 }
 
 .pi:before {
-    --webkit-backface-visibility:hidden;
+    --webkit-backface-visibility: hidden;
     backface-visibility: hidden;
 }
 
@@ -628,7 +627,7 @@
 .pi-refresh:before {
     content: "\e938";
 }
-  
+
 .pi-user:before {
     content: "\e939";
 }

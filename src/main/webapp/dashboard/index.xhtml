@@ -8,8 +8,11 @@
 >
 <f:view>
     <h:body>
-        <ui:composition>
-            <h1>${request.userPrincipal.name}</h1>
+        <ui:composition template="../templates/main.xhtml">
+            <ui:define name="content">
+                <h:link value="Page 1" outcome="page1"/>
+                <h:link value="Page 2" outcome="page2"/>
+            </ui:define>
         </ui:composition>
     </h:body>
 </f:view>
