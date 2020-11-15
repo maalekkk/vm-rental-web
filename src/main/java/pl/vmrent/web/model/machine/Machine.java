@@ -3,7 +3,6 @@ package pl.vmrent.web.model.machine;
 import pl.vmrent.web.repository.Identity;
 
 import java.util.Objects;
-import java.util.StringJoiner;
 import java.util.UUID;
 
 public abstract class Machine implements Identity<UUID>
@@ -109,18 +108,5 @@ public abstract class Machine implements Identity<UUID>
     public int hashCode()
     {
         return Objects.hash(id);
-    }
-
-    @Override
-    public String toString()
-    {
-        return new StringJoiner(" | ", "", "")
-                .add("id: " + id)
-                .add("basicPrice: " + basicPrice)
-                .add("system: '" + system + "'")
-                .add("cores: " + cores)
-                .add("ramSize: " + ramSize)
-                .add("hddSize: " + hddSize)
-                .toString();
     }
 }

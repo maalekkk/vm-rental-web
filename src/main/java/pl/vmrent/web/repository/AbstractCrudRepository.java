@@ -8,12 +8,7 @@ import java.util.*;
 
 public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends Serializable> implements CrudRepository<T, ID>
 {
-    protected Collection<T> elements;
-
-    public AbstractCrudRepository()
-    {
-        elements = Collections.synchronizedList(new ArrayList<>());
-    }
+    private final Collection<T> elements = Collections.synchronizedList(new ArrayList<>());
 
     @Override
     public <S extends T> S save(S entity)
@@ -48,7 +43,7 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
         {
             throw new NullArgumentException();
         }
-        return elements.stream().findFirst().filter(element -> element.getId().equals(id));
+        return elements.stream().filter(element -> element.getId().equals(id)).findFirst();
     }
 
     @Override

@@ -1,6 +1,8 @@
 package pl.vmrent.web.model.user;
 
-public enum Role
+public interface Role
 {
-    USER, ADMIN, OWNER
+    String USER = "User";
+    String ADMIN = "Admin";
+    String OWNER = "Owner";
 }

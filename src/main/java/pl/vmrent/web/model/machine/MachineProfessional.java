@@ -1,6 +1,5 @@
 package pl.vmrent.web.model.machine;
 
-import java.util.StringJoiner;
 import java.util.UUID;
 
 public class MachineProfessional extends MachinePremium
@@ -27,12 +26,4 @@ public class MachineProfessional extends MachinePremium
         this.gpuPower = gpuPower;
     }
 
-    @Override
-    public String toString()
-    {
-        return new StringJoiner(" | ", "", "")
-                .add(super.toString())
-                .add("gpuPower: " + gpuPower)
-                .toString();
-    }
 }

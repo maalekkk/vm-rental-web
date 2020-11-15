@@ -2,36 +2,42 @@ package pl.vmrent.web.model.user;
 
 import pl.vmrent.web.repository.Identity;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
-import java.util.StringJoiner;
+import java.util.Set;
 
 public class User implements Identity<String>
 {
-    @NotNull
+    @NotEmpty
     @Size(min = 3)
     private String username;
 
-    @NotNull
+    @NotEmpty
     @Size(min = 8)
     private String password;
 
-    @NotNull
+    @NotEmpty
     private String fullname;
 
+    @NotNull
     private boolean enabled;
+
+    @NotEmpty
+    private Set<String> roles;
 
     public User()
     {
     }
 
-    public User(String login, String password, String fullname, boolean enabled)
+    public User(String username, String password, String fullname, boolean enabled, Set<String> roles)
     {
-        this.username = login;
+        this.username = username;
         this.password = password;
         this.fullname = fullname;
         this.enabled = enabled;
+        this.roles = roles;
     }
 
     @Override
@@ -80,6 +86,16 @@ public class User implements Identity<String>
         this.enabled = enabled;
     }
 
+    public Set<String> getRoles()
+    {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles)
+    {
+        this.roles = roles;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -99,15 +115,5 @@ public class User implements Identity<String>
     public int hashCode()
     {
         return Objects.hash(username);
-    }
-
-    @Override
-    public String toString()
-    {
-        return new StringJoiner(" | ", "", "")
-                .add("login: '" + username + "'")
-                .add("fullname: '" + fullname + "'")
-                .add("enabled: " + enabled)
-                .toString();
     }
 }
