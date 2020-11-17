@@ -9,19 +9,53 @@
 <f:view>
     <h:head>
         <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputStylesheet library="css" name="fonts.css"/>
     </h:head>
     <h:body>
-        <ui:insert name="header">
-            <ui:include src="header.xhtml"/>
-        </ui:insert>
+        <div class="container">
+            <div class="leftSide">
+                <div class="logo">
+                    <ui:insert name="logo">
+                        <ui:include src="logo.xhtml"/>
+                    </ui:insert>
+                </div>
 
-        <ui:insert name="menu">
-            <ui:include src="menu.xhtml"/>
-        </ui:insert>
+                <div class="sideMenu">
+                    <ui:insert name="sideMenu">
+                        <ui:include src="sidebarMenu.xhtml"/>
+                    </ui:insert>
+                </div>
+            </div>
 
-        <ui:insert name="footer">
-            <ui:include src="footer.xhtml"/>
-        </ui:insert>
+            <div class="rightSide">
+                <div class="header">
+                    <h:outputLabel value="TEST"/>
+                    <ui:insert name="header">
+                        <ui:include src="header.xhtml"/>
+                    </ui:insert>
+                </div>
+
+                <div class="navigationInfo">
+                    <div class="breadcrumbs">
+                        <h:outputLabel value="TEST"/>
+                    </div>
+
+                    <div class="title">
+                        <h:outputLabel value="TEST"/>
+                    </div>
+                </div>
+
+                <div class="pageContent">
+                    <h:outputLabel value="TEST"/>
+                </div>
+            </div>
+
+            <div class="footer">
+                    <ui:insert name="footer">
+                        <ui:include src="footer.xhtml"/>
+                    </ui:insert>
+            </div>
+        </div>
     </h:body>
 </f:view>
 </html>

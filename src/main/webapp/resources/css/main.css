@@ -1,3 +1,83 @@
-* {
-    background-color: cadetblue;
+html, body {
+    color: rgba(255, 255, 255, .85);
+    font-size: 18px;
+    height: 100%;
+    font-family: 'Lora', serif;
+    margin: auto;
+}
+
+.container {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: inline-flex;
+}
+
+.leftSide {
+    background-color: antiquewhite;
+    display: block;
+    width: 20%;
+    height: 100%;
+    left:0;
+}
+
+.rightSide {
+    background-color: white;
+    display: block;
+    width: 80%;
+    height: 100%;
+    right:0;
+}
+
+.logo {
+    height: 8%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    max-width: 100%;
+}
+
+.sideMenu {
+
+}
+
+.sideMenu ul {
+
+}
+
+.header {
+    background-color: #1C2022;
+    height: 8%;
+}
+
+.navigationInfo {
+    background-color: #1C2022;
+    height: 15%;
+}
+
+.breadcrumbs {
+}
+
+.title {
+}
+
+.pageContent {
+    background-color: red;
+}
+
+.footer {
+    background-color: #1C2022;
+    color: rgba(255, 255, 255, .7);
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    display: grid;
+    text-align: center;
+    font-size: 13px;
+    padding: 5px;
+    line-height: 1.4;
 }
