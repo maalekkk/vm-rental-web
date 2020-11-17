@@ -15,9 +15,9 @@
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.full_name}"/>
-                    <h:inputText required="false" value="#{userController.registerUser.fullname}"/>
+                    <h:inputText required="false" value="#{userController.registerUser.fullname}" autocomplete="off"/>
                     <h:outputLabel value="#{msgs.login}*"/>
-                    <h:inputText required="true" value="#{userController.registerUser.username}"/>
+                    <h:inputText required="true" value="#{userController.registerUser.username}" autocomplete="off"/>
                     <h:outputLabel value="#{msgs.password}*"/>
                     <h:inputSecret required="true" value="#{userController.registerUser.password}"/>
                     <h:outputLabel value="#{msgs.repeat_password}*"/>

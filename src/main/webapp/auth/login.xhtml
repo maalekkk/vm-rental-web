@@ -14,7 +14,7 @@
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText required="true" value="#{loginBean.user.username}"/>
+                    <h:inputText required="true" value="#{loginBean.user.username}" autocomplete="off"/>
                     <h:outputLabel value="#{msgs.password}"/>
                     <h:inputSecret required="true" value="#{loginBean.user.password}"/>
                     <h:commandButton value="#{msgs.sing_in}" action="#{loginBean.submit}"/>
