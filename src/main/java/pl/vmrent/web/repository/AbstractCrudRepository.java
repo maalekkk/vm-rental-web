@@ -1,10 +1,12 @@
 package pl.vmrent.web.repository;
 
-import pl.vmrent.web.exceptions.NullArgumentException;
+import pl.vmrent.web.model.Identity;
 
 import javax.persistence.EntityNotFoundException;
 import java.io.Serializable;
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends Serializable> implements CrudRepository<T, ID>
 {
@@ -15,19 +17,23 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     {
         if (entity == null)
         {
-            throw new NullArgumentException();
+            throw new IllegalArgumentException();
         }
 
-        int index = ((List<T>) elements).indexOf(entity);
-        if (index == -1)
+        synchronized (elements)
         {
-            elements.add(entity);
+            List<T> list = (List<T>) elements;
+            int index = list.indexOf(entity);
+            if (index == -1)
+            {
+                elements.add(entity);
+            }
+            else
+            {
+                list.set(index, entity);
+            }
+            return entity;
         }
-        else
-        {
-            ((List<T>) elements).set(index, entity);
-        }
-        return entity;
     }
 
     @Override
@@ -41,15 +47,19 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     {
         if (id == null)
         {
-            throw new NullArgumentException();
+            throw new IllegalArgumentException();
         }
         return elements.stream().filter(element -> element.getId().equals(id)).findFirst();
     }
 
-    @Override
-    public T getOne(ID id)
+    public Optional<T> findByUniquePredicate(Predicate<T> predicate)
     {
-        return findById(id).orElseThrow(EntityNotFoundException::new);
+        return elements.stream().filter(predicate).findFirst();
+    }
+
+    public Iterable<T> findByPredicate(Predicate<T> predicate)
+    {
+        return elements.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
@@ -69,20 +79,29 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     {
         if (entity == null)
         {
-            throw new NullArgumentException();
+            throw new IllegalArgumentException();
         }
-        elements.remove(entity);
+        synchronized (elements)
+        {
+            elements.remove(Optional.of(entity).orElseThrow(EntityNotFoundException::new));
+        }
     }
 
     @Override
     public void deleteById(ID id)
     {
-        elements.remove(getOne(id));
+        synchronized (elements)
+        {
+            elements.remove(findById(id).orElseThrow(EntityNotFoundException::new));
+        }
     }
 
     @Override
     public void deleteAll()
     {
-        elements.clear();
+        synchronized (elements)
+        {
+            elements.clear();
+        }
     }
 }

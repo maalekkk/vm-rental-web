@@ -1,5 +1,7 @@
 package pl.vmrent.web.repository;
 
+import pl.vmrent.web.model.Identity;
+
 import java.io.Serializable;
 import java.util.Optional;
 
@@ -10,8 +12,6 @@ public interface CrudRepository<T extends Identity<ID>, ID extends Serializable>
     boolean existsById(ID id);
 
     Optional<T> findById(ID id);
-
-    T getOne(ID id);
 
     Iterable<T> findAll();
 
