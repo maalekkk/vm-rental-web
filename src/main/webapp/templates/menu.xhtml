@@ -8,7 +8,6 @@
 
 <f:view>
     <h:head>
-        <h:outputStylesheet library="css" name="main.css"/>
     </h:head>
     <h:body>
         <ul class="menu">
@@ -25,9 +24,8 @@
                 </h:outputLink>
             </li>
             <li class="menu-item">
-                <i class="pi pi-plus"/>
                 <h:form>
-                    <h:commandButton value="Wyloguj" action="#{logoutBean.submit}"/>
+                    <h:commandButton value="Wyloguj" action="#{logoutController.submit}"/>
                 </h:form>
             </li>
             <li class="menu-item">

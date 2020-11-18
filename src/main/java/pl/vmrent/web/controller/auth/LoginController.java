@@ -1,6 +1,4 @@
-package pl.vmrent.web.security.auth;
-
-import pl.vmrent.web.model.user.User;
+package pl.vmrent.web.controller.auth;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -14,25 +12,26 @@ import javax.security.enterprise.authentication.mechanism.http.AuthenticationPar
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 
 @Named
 @RequestScoped
-public class LoginBean
+public class LoginController
 {
+    @NotBlank
+    private String username;
+
+    @NotBlank
+    private String password;
+
     @Inject
     private SecurityContext securityContext;
 
-    @Inject
-    private ExternalContext externalContext;
-
-    @Inject
-    private FacesContext facesContext;
-
-    private User user = new User();
-
-    public void submit() throws IOException
+    public String submit() throws IOException
     {
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+
         switch (continueAuth())
         {
             case SEND_CONTINUE:
@@ -50,30 +49,42 @@ public class LoginBean
             {
                 facesContext.addMessage(null,
                         new FacesMessage(FacesMessage.SEVERITY_INFO, "Login succeed", null));
-                externalContext.redirect(externalContext.getRequestContextPath() + "/dashboard/");
-                break;
+                return "/dashboard?faces-redirect=true";
             }
             case NOT_DONE:
+                break;
         }
+        return null;
     }
 
     private AuthenticationStatus continueAuth()
     {
+        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         return securityContext.authenticate(
                 (HttpServletRequest) externalContext.getRequest(),
                 (HttpServletResponse) externalContext.getResponse(),
                 AuthenticationParameters.withParams()
-                        .credential(new UsernamePasswordCredential(user.getUsername(), user.getPassword()))
+                        .credential(new UsernamePasswordCredential(username, password))
         );
     }
 
-    public User getUser()
+    public String getUsername()
     {
-        return user;
+        return username;
     }
 
-    public void setUser(User user)
+    public void setUsername(String username)
     {
-        this.user = user;
+        this.username = username;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }

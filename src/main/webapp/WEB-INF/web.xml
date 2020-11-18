@@ -24,8 +24,9 @@
     <!-- SECURITY CONSTRAINTS -->
     <security-constraint>
         <web-resource-collection>
-            <web-resource-name>Application pages</web-resource-name>
+            <web-resource-name>Authenticated pages</web-resource-name>
             <url-pattern>/dashboard/*</url-pattern>
+            <url-pattern>/templates/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>User</role-name>
@@ -50,14 +51,13 @@
         <session-timeout>15</session-timeout>
         <cookie-config>
             <http-only>true</http-only>
-            <secure>false</secure>
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
     <!-- WELCOME FILE -->
     <welcome-file-list>
-        <welcome-file>index.xhtml</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
 
     <!-- DEVELOPMENT -->

@@ -9,7 +9,7 @@
 <f:view>
     <h:body>
         <ui:composition>
-            <h1>${request.userPrincipal.name}</h1>
+            <h1>${userController.currentUser.fullname}</h1>
         </ui:composition>
     </h:body>
 </f:view>

@@ -15,14 +15,14 @@
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.full_name}"/>
-                    <h:inputText required="false" value="#{userController.registerUser.fullname}"/>
+                    <h:inputText required="false" value="#{registerController.registerUser.fullname}"/>
                     <h:outputLabel value="#{msgs.login}*"/>
-                    <h:inputText required="true" value="#{userController.registerUser.username}"/>
+                    <h:inputText required="true" value="#{registerController.registerUser.username}"/>
                     <h:outputLabel value="#{msgs.password}*"/>
-                    <h:inputSecret required="true" value="#{userController.registerUser.password}"/>
+                    <h:inputSecret required="true" value="#{registerController.registerUser.password}"/>
                     <h:outputLabel value="#{msgs.repeat_password}*"/>
                     <h:inputSecret required="true"/>
-                    <h:commandButton value="#{msgs.sing_up}" action="#{userController.registerUser}"/>
+                    <h:commandButton value="#{msgs.sing_up}" action="#{registerController.submit}"/>
                     <h:link value="#{msgs.sign_in_request}" class="sing_up_text" outcome="login"/>
                 </h:form>
             </div>
