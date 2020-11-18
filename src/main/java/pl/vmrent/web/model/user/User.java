@@ -1,24 +1,28 @@
 package pl.vmrent.web.model.user;
 
-import pl.vmrent.web.repository.Identity;
+import pl.vmrent.web.model.Identity;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
-public class User implements Identity<String>
+public class User implements Identity<UUID>
 {
-    @NotEmpty
+    private final UUID id = UUID.randomUUID();
+
+    @NotBlank
     @Size(min = 3)
     private String username;
 
-    @NotEmpty
+    @NotBlank
     @Size(min = 8)
     private String password;
 
-    @NotEmpty
+    @NotBlank
     private String fullname;
 
     @NotNull
@@ -41,9 +45,9 @@ public class User implements Identity<String>
     }
 
     @Override
-    public String getId()
+    public UUID getId()
     {
-        return getUsername();
+        return id;
     }
 
     public String getUsername()
@@ -108,12 +112,12 @@ public class User implements Identity<String>
             return false;
         }
         User user = (User) o;
-        return username.equals(user.username);
+        return id.equals(user.id);
     }
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(username);
+        return Objects.hash(id);
     }
 }

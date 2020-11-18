@@ -1,46 +1,37 @@
 package pl.vmrent.web.model.rent;
 
+import pl.vmrent.web.model.Identity;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
-import pl.vmrent.web.repository.Identity;
 
-import java.math.BigInteger;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Rent implements Identity<UUID>
 {
-    private UUID id;
+    private final UUID id = UUID.randomUUID();
     private Machine machine;
     private User user;
     private ZonedDateTime rentDate;
     private ZonedDateTime returnDate;
-    private BigInteger price;
 
     public Rent()
     {
     }
 
-    public Rent(UUID id, Machine machine, User user, ZonedDateTime rentDate, ZonedDateTime returnDate, BigInteger price)
+    public Rent(Machine machine, User user, ZonedDateTime rentDate, ZonedDateTime returnDate)
     {
-        this.id = id;
         this.machine = machine;
         this.user = user;
         this.rentDate = rentDate;
         this.returnDate = returnDate;
-        this.price = price;
     }
 
     @Override
     public UUID getId()
     {
         return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
     }
 
     public Machine getMachine()
@@ -81,16 +72,6 @@ public class Rent implements Identity<UUID>
     public void setReturnDate(ZonedDateTime returnDate)
     {
         this.returnDate = returnDate;
-    }
-
-    public BigInteger getPrice()
-    {
-        return price;
-    }
-
-    public void setPrice(BigInteger price)
-    {
-        this.price = price;
     }
 
     @Override

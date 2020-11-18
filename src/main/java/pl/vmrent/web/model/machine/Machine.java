@@ -1,15 +1,14 @@
 package pl.vmrent.web.model.machine;
 
-import pl.vmrent.web.repository.Identity;
+import pl.vmrent.web.model.Identity;
 
 import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Machine implements Identity<UUID>
 {
-    private UUID id;
-    private int basicPrice;
-    private String system;
+    private final UUID id = UUID.randomUUID();
+    private String name;
     private int cores;
     private int ramSize;
     private int hddSize;
@@ -18,11 +17,9 @@ public abstract class Machine implements Identity<UUID>
     {
     }
 
-    public Machine(UUID id, int basicPrice, String system, int cores, int ramSize, int hddSize)
+    public Machine(String name, int cores, int ramSize, int hddSize)
     {
-        this.id = id;
-        this.basicPrice = basicPrice;
-        this.system = system;
+        this.name = name;
         this.cores = cores;
         this.ramSize = ramSize;
         this.hddSize = hddSize;
@@ -34,29 +31,14 @@ public abstract class Machine implements Identity<UUID>
         return id;
     }
 
-    public void setId(UUID id)
+    public String getName()
     {
-        this.id = id;
+        return name;
     }
 
-    public int getBasicPrice()
+    public void setName(String name)
     {
-        return basicPrice;
-    }
-
-    public void setBasicPrice(int basicPrice)
-    {
-        this.basicPrice = basicPrice;
-    }
-
-    public String getSystem()
-    {
-        return system;
-    }
-
-    public void setSystem(String system)
-    {
-        this.system = system;
+        this.name = name;
     }
 
     public int getCores()
@@ -107,6 +89,6 @@ public abstract class Machine implements Identity<UUID>
     @Override
     public int hashCode()
     {
-        return Objects.hash(id);
+        return Objects.hash(name);
     }
 }

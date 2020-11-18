@@ -1,4 +1,4 @@
-package pl.vmrent.web.repository;
+package pl.vmrent.web.model;
 
 import java.io.Serializable;
 
