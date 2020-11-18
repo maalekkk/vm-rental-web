@@ -89,6 +89,6 @@ public abstract class Machine implements Identity<UUID>
     @Override
     public int hashCode()
     {
-        return Objects.hash(name);
+        return Objects.hash(id);
     }
 }
