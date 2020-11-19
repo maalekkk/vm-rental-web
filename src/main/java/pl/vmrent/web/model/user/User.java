@@ -1,10 +1,10 @@
 package pl.vmrent.web.model.user;
 
 import pl.vmrent.web.model.Identity;
+import pl.vmrent.web.validator.unique.username.UniqueUsername;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.Set;
@@ -14,18 +14,16 @@ public class User implements Identity<UUID>
 {
     private final UUID id = UUID.randomUUID();
 
-    @NotBlank
-    @Size(min = 3)
+    @UniqueUsername
+    @Size(min = 3, max = 20)
     private String username;
 
-    @NotBlank
-    @Size(min = 8)
+    @Size(min = 8, max = 30)
     private String password;
 
     @NotBlank
     private String fullname;
 
-    @NotNull
     private boolean enabled;
 
     @NotEmpty

@@ -2,15 +2,25 @@ package pl.vmrent.web.model.machine;
 
 import pl.vmrent.web.model.Identity;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Machine implements Identity<UUID>
 {
     private final UUID id = UUID.randomUUID();
+
+    @Size(min = 3, max = 20)
     private String name;
+
+    @Min(1)
     private int cores;
+
+    @Min(1)
     private int ramSize;
+
+    @Min(1)
     private int hddSize;
 
     public Machine()

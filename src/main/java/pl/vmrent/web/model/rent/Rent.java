@@ -4,6 +4,9 @@ import pl.vmrent.web.model.Identity;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 import java.util.UUID;
@@ -11,9 +14,18 @@ import java.util.UUID;
 public class Rent implements Identity<UUID>
 {
     private final UUID id = UUID.randomUUID();
+
+    @Valid
     private Machine machine;
+
+    @Valid
     private User user;
+
+    @NotNull
+    @PastOrPresent
     private ZonedDateTime rentDate;
+
+    @PastOrPresent
     private ZonedDateTime returnDate;
 
     public Rent()

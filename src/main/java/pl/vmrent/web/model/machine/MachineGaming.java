@@ -1,8 +1,13 @@
 package pl.vmrent.web.model.machine;
 
+import javax.validation.constraints.Min;
+
 public class MachineGaming extends Machine
 {
+    @Min(1)
     private int gpuPower;
+
+    @Min(1)
     private int gpuVram;
 
     public MachineGaming()
