@@ -1,13 +1,14 @@
 package pl.vmrent.web.service;
 
+import pl.vmrent.web.exception.UserNotFoundException;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.repository.UserRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.util.Optional;
-import java.util.Set;
 
 @RequestScoped
 public class UserService
@@ -15,19 +16,34 @@ public class UserService
     @Inject
     UserRepository userRepository;
 
-    public Optional<User> addUser(String username, String fullname, String password, Set<String> roles)
+    @Inject
+    PasswordService passwordService;
+
+    public User addUser(@Valid User user)
     {
-        return Optional.of(userRepository.save(new User(username, password, fullname, true, roles)));
+        user.setPassword(passwordService.hash(user.getPassword()));
+        return userRepository.save(user);
     }
 
     public Optional<User> findUserByUsername(String username)
     {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUniquePredicate(user -> user.getUsername().equals(username));
     }
 
     public User getCurrentUser()
     {
         String currentUsername = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
-        return userRepository.findByUsername(currentUsername).orElse(null);
+        return findUserByUsername(currentUsername).orElseThrow(UserNotFoundException::new);
+    }
+
+    public void changeUserActivity(User user)
+    {
+        Optional<User> optional = userRepository.findById(user.getId());
+        if (optional.isPresent())
+        {
+            User currentUser = optional.get();
+            currentUser.setEnabled(!currentUser.isEnabled());
+            userRepository.save(currentUser);
+        }
     }
 }

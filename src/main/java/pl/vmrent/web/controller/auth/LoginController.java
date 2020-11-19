@@ -13,7 +13,6 @@ import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.constraints.NotBlank;
-import java.io.IOException;
 
 @Named
 @RequestScoped
@@ -28,11 +27,10 @@ public class LoginController
     @Inject
     private SecurityContext securityContext;
 
-    public String submit() throws IOException
+    public String submit()
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
-
-        switch (continueAuth())
+        switch (authenticate(facesContext.getExternalContext()))
         {
             case SEND_CONTINUE:
             {
@@ -57,12 +55,11 @@ public class LoginController
         return null;
     }
 
-    private AuthenticationStatus continueAuth()
+    private AuthenticationStatus authenticate(ExternalContext context)
     {
-        ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
         return securityContext.authenticate(
-                (HttpServletRequest) externalContext.getRequest(),
-                (HttpServletResponse) externalContext.getResponse(),
+                (HttpServletRequest) context.getRequest(),
+                (HttpServletResponse) context.getResponse(),
                 AuthenticationParameters.withParams()
                         .credential(new UsernamePasswordCredential(username, password))
         );

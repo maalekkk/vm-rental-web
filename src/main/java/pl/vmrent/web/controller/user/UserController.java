@@ -1,4 +1,4 @@
-package pl.vmrent.web.controller;
+package pl.vmrent.web.controller.user;
 
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
