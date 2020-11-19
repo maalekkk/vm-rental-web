@@ -1,16 +1,12 @@
 package pl.vmrent.web.model.machine;
 
-import pl.vmrent.web.model.Identity;
+import pl.vmrent.web.model.Entity;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
-import java.util.Objects;
-import java.util.UUID;
 
-public abstract class Machine implements Identity<UUID>
+public abstract class Machine extends Entity
 {
-    private final UUID id = UUID.randomUUID();
-
     @Size(min = 3, max = 20)
     private String name;
 
@@ -33,12 +29,6 @@ public abstract class Machine implements Identity<UUID>
         this.cores = cores;
         this.ramSize = ramSize;
         this.hddSize = hddSize;
-    }
-
-    @Override
-    public UUID getId()
-    {
-        return id;
     }
 
     public String getName()
@@ -79,26 +69,5 @@ public abstract class Machine implements Identity<UUID>
     public void setHddSize(int hddSize)
     {
         this.hddSize = hddSize;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass())
-        {
-            return false;
-        }
-        Machine machine = (Machine) o;
-        return id.equals(machine.id);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(id);
     }
 }

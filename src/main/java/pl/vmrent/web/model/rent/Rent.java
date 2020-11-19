@@ -1,6 +1,6 @@
 package pl.vmrent.web.model.rent;
 
-import pl.vmrent.web.model.Identity;
+import pl.vmrent.web.model.Entity;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
 
@@ -8,13 +8,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import java.time.ZonedDateTime;
-import java.util.Objects;
-import java.util.UUID;
 
-public class Rent implements Identity<UUID>
+public class Rent extends Entity
 {
-    private final UUID id = UUID.randomUUID();
-
     @Valid
     private Machine machine;
 
@@ -38,12 +34,6 @@ public class Rent implements Identity<UUID>
         this.user = user;
         this.rentDate = rentDate;
         this.returnDate = returnDate;
-    }
-
-    @Override
-    public UUID getId()
-    {
-        return id;
     }
 
     public Machine getMachine()
@@ -84,26 +74,5 @@ public class Rent implements Identity<UUID>
     public void setReturnDate(ZonedDateTime returnDate)
     {
         this.returnDate = returnDate;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass())
-        {
-            return false;
-        }
-        Rent rent = (Rent) o;
-        return id.equals(rent.id);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(id);
     }
 }

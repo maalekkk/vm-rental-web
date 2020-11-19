@@ -1,19 +1,15 @@
 package pl.vmrent.web.model.user;
 
-import pl.vmrent.web.model.Identity;
+import pl.vmrent.web.model.Entity;
 import pl.vmrent.web.validator.unique.username.UniqueUsername;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 import java.util.Set;
-import java.util.UUID;
 
-public class User implements Identity<UUID>
+public class User extends Entity
 {
-    private final UUID id = UUID.randomUUID();
-
     @UniqueUsername
     @Size(min = 3, max = 20)
     private String username;
@@ -40,12 +36,6 @@ public class User implements Identity<UUID>
         this.fullname = fullname;
         this.enabled = enabled;
         this.roles = roles;
-    }
-
-    @Override
-    public UUID getId()
-    {
-        return id;
     }
 
     public String getUsername()
@@ -96,26 +86,5 @@ public class User implements Identity<UUID>
     public void setRoles(Set<String> roles)
     {
         this.roles = roles;
-    }
-
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o)
-        {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass())
-        {
-            return false;
-        }
-        User user = (User) o;
-        return id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(id);
     }
 }
