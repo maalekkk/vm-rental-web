@@ -38,6 +38,30 @@
             <li class="menu-item">
                 <h:outputLink value="">
                     <div class="iconBlock">
+                        <i class="fa fa-calendar-plus-o icon"/>
+                    </div>
+                    <h:outputLabel value="#{msgs['rent_vm']}"/>
+                </h:outputLink>
+            </li>
+            <li class="menu-item">
+                <h:outputLink value="">
+                    <div class="iconBlock">
+                        <i class="fa fa-calendar icon"/>
+                    </div>
+                    <h:outputLabel value="#{msgs['show_your_rent']}"/>
+                </h:outputLink>
+            </li>
+            <li class="menu-item">
+                <h:outputLink value="">
+                    <div class="iconBlock">
+                        <i class="fa fa-calendar icon"/>
+                    </div>
+                    <h:outputLabel value="#{msgs['show_all_rents']}"/>
+                </h:outputLink>
+            </li>
+            <li class="menu-item">
+                <h:outputLink value="">
+                    <div class="iconBlock">
                     <i class="fa fa-calendar-plus-o icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['rent_vm']}"/>
@@ -46,16 +70,26 @@
             <li class="menu-item">
                 <h:outputLink value="">
                     <div class="iconBlock">
-                    <i class="fa fa-info icon"/>
+                    <i class="fa fa-user-plus icon"/>
                     </div>
-                    <h:outputLabel value="#{msgs['web_info']}"/>
+                    <h:outputLabel value="#{msgs['add_user']}"/>
                 </h:outputLink>
             </li>
             <li class="menu-item">
-                <h:form>
-                    <i class="fa fa-user icon"/>
-                    <h:commandButton value="Wyloguj" action="#{logoutBean.submit}"/>
-                </h:form>
+                <h:outputLink value="">
+                    <div class="iconBlock">
+                        <i class="fa fa-users icon"/>
+                    </div>
+                    <h:outputLabel value="#{msgs['show_users']}"/>
+                </h:outputLink>
+            </li>
+            <li class="menu-item">
+                <h:outputLink value="">
+                    <div class="iconBlock">
+                        <i class="fa fa-info icon"/>
+                    </div>
+                    <h:outputLabel value="#{msgs['web_info']}"/>
+                </h:outputLink>
             </li>
         </ul>
     </h:body>

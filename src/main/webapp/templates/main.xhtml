@@ -12,6 +12,7 @@
         <h:outputStylesheet library="css" name="main.css"/>
         <h:outputStylesheet library="css" name="fonts.css"/>
         <h:outputStylesheet library="css" name="sidebarMenu.css"/>
+        <h:outputStylesheet library="css" name="header.css"/>
         <h:outputScript library="js" name="icons.js"/>
 
     </h:head>
@@ -33,24 +34,30 @@
 
             <div class="rightSide">
                 <div class="header">
-                    <h:outputLabel value="TEST"/>
                     <ui:insert name="header">
                         <ui:include src="header.xhtml"/>
                     </ui:insert>
                 </div>
-
+                <div style="border-top:1px solid rgba(50, 50, 50, 0.999)"></div>
                 <div class="navigationInfo">
                     <div class="breadcrumbs">
-                        <h:outputLabel value="TEST"/>
-                    </div>
-
-                    <div class="title">
-                        <h:outputLabel value="TEST"/>
+<!--                        <ui:composition>-->
+<!--                            <ui:insert name="breadCrumbs"/>-->
+<!--                        </ui:composition>-->
+                        <p:breadCrumb>
+                            <p:menuitem value="Categories" url="#" />
+                            <p:menuitem value="Sports" url="#" />
+                            <p:menuitem value="Basketball" url="#" />
+                            <p:menuitem value="NBA" url="#" />
+                            <p:menuitem value="Teams" url="#" />
+                        </p:breadCrumb>
                     </div>
                 </div>
-
+                <div class="title">
+                    <h:outputLabel value="Strona Główna"/>
+                </div>
                 <div class="pageContent">
-                    <h:outputLabel value="TEST"/>
+                    <ui:insert name="content"/>
                 </div>
             </div>
 

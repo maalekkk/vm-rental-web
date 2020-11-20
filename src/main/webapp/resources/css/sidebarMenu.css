@@ -22,61 +22,74 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    height: 0;
 }
 
 .sidebarMenu li
 {
     position: relative;
     margin: 0;
-    font-size: 12px;
+    cursor: pointer;
     padding: 10px 10px 10px 20px;
 }
 .sidebarMenu li a
 {
     text-decoration: none;
     font-style: normal;
-    font-weight: 400;
     position: relative;
     color: #955E8B;
-    font-size: 1.3em;
-    font-family: 'Lora', serif;
+    font-size: 0.7vw;
+    font-family: 'Montserrat', serif;
+    font-weight: bold;
     white-space: nowrap;
     z-index: 2;
     display: inline-flex;
     align-items: center;
 }
+
+.sidebarMenu li a label {
+    cursor: pointer;
+}
+
 .sidebarMenu li:hover
 {
     background-color: #E8E8E8;
     transition: color 250ms ease-in-out, background-color 250ms ease-in-out;
 }
 
+.sidebarMenu li:hover label
+{
+    font-size: 0.75vw;
+}
 
 .menu-item {
 
 }
 
 .iconBlock {
-    min-width: 35px;
-    min-height: 35px;
+    min-width: 40px;
+    min-height: 40px;
     text-align: center;
     align-items: center;
     display: flex;
     justify-content: center;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, .2);
     box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
-    margin-right: 15px;
+    margin-right: 20px;
     border-radius: 4px;
 }
 
-.icon {
-    font-size: 30px;
+.sidebarMenu li:hover .iconBlock{
+    background-color: rgba(255, 255, 255, .8);
 }
 
+.icon {
+    font-size: 1.9em;
+}
 
 svg {
     display: inline-block;
-    position: absolute;
+    position: fixed;
     left: 0;
     height: 100%;
 }

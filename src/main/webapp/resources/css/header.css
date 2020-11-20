@@ -1,0 +1,29 @@
+.userContent {
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1vw;
+    padding-right: 10px;
+}
+
+.userContent i {
+    font-size: 1.2vw;
+}
+
+.logoutLink {
+    text-decoration: none;
+    color: rgba(255, 255, 255, .85);
+    font-family: 'Lora', serif;
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.logoutLink:hover {
+    color: #955E8B;
+}
+
