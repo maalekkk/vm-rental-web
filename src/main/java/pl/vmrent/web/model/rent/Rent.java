@@ -5,9 +5,6 @@ import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
-import java.time.ZonedDateTime;
 
 public class Rent extends Entity
 {
@@ -17,23 +14,18 @@ public class Rent extends Entity
     @Valid
     private User user;
 
-    @NotNull
-    @PastOrPresent
-    private ZonedDateTime rentDate;
-
-    @PastOrPresent
-    private ZonedDateTime returnDate;
+    @Valid
+    private Period period;
 
     public Rent()
     {
     }
 
-    public Rent(Machine machine, User user, ZonedDateTime rentDate, ZonedDateTime returnDate)
+    public Rent(Machine machine, User user, Period period)
     {
         this.machine = machine;
         this.user = user;
-        this.rentDate = rentDate;
-        this.returnDate = returnDate;
+        this.period = period;
     }
 
     public Machine getMachine()
@@ -56,23 +48,13 @@ public class Rent extends Entity
         this.user = user;
     }
 
-    public ZonedDateTime getRentDate()
+    public Period getPeriod()
     {
-        return rentDate;
+        return period;
     }
 
-    public void setRentDate(ZonedDateTime rentDate)
+    public void setPeriod(Period period)
     {
-        this.rentDate = rentDate;
-    }
-
-    public ZonedDateTime getReturnDate()
-    {
-        return returnDate;
-    }
-
-    public void setReturnDate(ZonedDateTime returnDate)
-    {
-        this.returnDate = returnDate;
+        this.period = period;
     }
 }
