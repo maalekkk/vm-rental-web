@@ -2,7 +2,6 @@ package pl.vmrent.web.model.machine;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 public class MachineWorkstation extends Machine
 {
@@ -13,7 +12,6 @@ public class MachineWorkstation extends Machine
     @Max(10)
     private int netCards;
 
-    @NotNull
     private boolean raidSupport;
 
     public MachineWorkstation()

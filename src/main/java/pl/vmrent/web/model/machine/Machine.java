@@ -2,6 +2,7 @@ package pl.vmrent.web.model.machine;
 
 import pl.vmrent.web.model.Entity;
 
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
@@ -13,10 +14,11 @@ public abstract class Machine extends Entity
     @Min(1)
     private int cores;
 
-    @Min(1)
+    @Min(1024)
+    @Max(65536)
     private int ramSize;
 
-    @Min(1)
+    @Min(128)
     private int hddSize;
 
     public Machine()

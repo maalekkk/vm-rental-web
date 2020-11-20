@@ -21,10 +21,10 @@ public class UserRepository extends AbstractCrudRepository<User, UUID>
     private void init()
     {
         User u1 = new User("Nawrok", password("trudnehaslo"), "Sebastian Nawrocki", true, Stream.of(Role.OWNER).collect(Collectors.toSet()));
-        save(u1);
         User u2 = new User("Blazz", password("trudnehaslo123"), "Maciej Błażewicz", true, Stream.of(Role.ADMIN).collect(Collectors.toSet()));
-        save(u2);
         User u3 = new User("Malek", password("trudnehaslo456"), "Bartłomiej Małkowski", true, Stream.of(Role.ADMIN).collect(Collectors.toSet()));
+        save(u1);
+        save(u2);
         save(u3);
     }
 

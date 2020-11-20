@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RequestScoped
@@ -34,6 +35,11 @@ public class UserService
     {
         String currentUsername = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
         return findUserByUsername(currentUsername).orElseThrow(UserNotFoundException::new);
+    }
+
+    public List<User> getAll()
+    {
+        return userRepository.findAll();
     }
 
     public void changeUserActivity(User user)

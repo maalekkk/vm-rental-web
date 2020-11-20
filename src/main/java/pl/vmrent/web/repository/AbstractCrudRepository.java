@@ -4,13 +4,16 @@ import pl.vmrent.web.model.Identity;
 
 import javax.persistence.EntityNotFoundException;
 import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends Serializable> implements CrudRepository<T, ID>
 {
-    private final Collection<T> elements = Collections.synchronizedList(new ArrayList<>());
+    private final List<T> elements = Collections.synchronizedList(new ArrayList<>());
 
     @Override
     public <S extends T> S save(S entity)
@@ -22,15 +25,14 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
 
         synchronized (elements)
         {
-            List<T> list = (List<T>) elements;
-            int index = list.indexOf(entity);
+            int index = elements.indexOf(entity);
             if (index == -1)
             {
                 elements.add(entity);
             }
             else
             {
-                list.set(index, entity);
+                elements.set(index, entity);
             }
             return entity;
         }
@@ -57,15 +59,15 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
         return elements.stream().filter(predicate).findFirst();
     }
 
-    public Iterable<T> findByPredicate(Predicate<T> predicate)
+    public List<T> findByPredicate(Predicate<T> predicate)
     {
         return elements.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
-    public Iterable<T> findAll()
+    public List<T> findAll()
     {
-        return Collections.unmodifiableCollection(elements);
+        return Collections.unmodifiableList(elements);
     }
 
     @Override
