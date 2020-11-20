@@ -42,14 +42,20 @@ public class UserService
         return userRepository.findAll();
     }
 
-    public void changeUserActivity(User user)
+    public boolean updateUser(User user)
     {
         Optional<User> optional = userRepository.findById(user.getId());
         if (optional.isPresent())
         {
-            User currentUser = optional.get();
-            currentUser.setEnabled(!currentUser.isEnabled());
-            userRepository.save(currentUser);
+            userRepository.save(user);
+            return true;
         }
+        return false;
+    }
+
+    public boolean changeUserActivity(User user)
+    {
+        user.setEnabled(!user.isEnabled());
+        return updateUser(user);
     }
 }
