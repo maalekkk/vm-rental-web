@@ -42,7 +42,7 @@ public class UserService
         return userRepository.findAll();
     }
 
-    public boolean updateUser(User user)
+    public boolean updateUser(@Valid User user)
     {
         Optional<User> optional = userRepository.findById(user.getId());
         if (optional.isPresent())
@@ -53,7 +53,7 @@ public class UserService
         return false;
     }
 
-    public boolean changeUserActivity(User user)
+    public boolean changeUserActivity(@Valid User user)
     {
         user.setEnabled(!user.isEnabled());
         return updateUser(user);

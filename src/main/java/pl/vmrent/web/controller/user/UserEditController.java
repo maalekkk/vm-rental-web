@@ -19,8 +19,7 @@ public class UserEditController implements Serializable
 
     public String save()
     {
-        userService.updateUser(user);
-        return "";
+        return userService.updateUser(user) ? "" : null;
         //TODO BACK TO LIST PAGE
     }
 
