@@ -1,3 +1,114 @@
-* {
-    background-color: cadetblue;
+html, body {
+    color: rgba(255, 255, 255, .85);
+    font-size: 1vw;
+    height: 100%;
+    font-family: 'Lora', serif;
+    margin: auto;
+}
+
+.container {
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    display: inline-flex;
+}
+
+.leftSide {
+    background-color: antiquewhite;
+    display: block;
+    width: 20%;
+    height: 100%;
+    left:0;
+    font-family: 'Lora', serif;
+}
+
+.rightSide {
+    background-color: white;
+    display: block;
+    width: 80%;
+    height: 100%;
+    right:0;
+}
+
+.logo {
+    height: 7%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    max-width: 100%;
+}
+
+.sideMenu {
+
+}
+
+.sideMenu ul {
+
+}
+
+.header {
+    background-color: #1C2022;
+    height: 7%;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ui-breadcrumb{
+    background: none!important;
+    font-size: 0.6vw!important;
+    font-family: 'Lora', serif!important;
+    font-weight: 400!important;
+}
+
+.navigationInfo {
+    background-color: #1C2022;
+    height: 3%;
+}
+
+.breadcrumbs {
+}
+
+.title {
+    background-color: #1C2022;
+    height: 12%;
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    font-size: 2.2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pageContent {
+    background-color: white;
+    color: #1C2022;
+    height: 77%;
+    justify-items: center;
+}
+
+.logout {
+    position: fixed;
+    bottom: 0;
+    height: 3%;
+    padding: 5px;
+    background-color: red;
+    width: 20%;
+}
+
+.footer {
+    background-color: #1C2022;
+    color: rgba(255, 255, 255, .7);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    text-align: center;
+    font-size: 0.5vw;
+    padding: 5px;
+    line-height: 1.4;
+    width: 80%;
 }

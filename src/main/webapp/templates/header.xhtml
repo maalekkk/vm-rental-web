@@ -9,7 +9,13 @@
 <f:view>
     <h:body>
         <ui:composition>
-            <h1>${userController.currentUser.fullname}</h1>
+            <div class="userContent">
+                <h:outputLabel styleClass="username">${msgs['welcome']}, ${request.userPrincipal.name}</h:outputLabel>
+                <i class="fa fa-user"/>
+                <h:commandLink value="${msgs['logout']}" action="#{logoutController.submit}" styleClass="logoutLink">
+                    <i class="fa fa-power-off" id="logout"/>
+                </h:commandLink>
+            </div>
         </ui:composition>
     </h:body>
 </f:view>

@@ -15,17 +15,13 @@ html, body {
     display: flex;
     justify-content: center;
     height: 100%;
-    /*width: 100%;*/
 }
 
 /*Content css*/
 .content {
     text-align: center;
     max-width: 20%;
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
+    min-width: min-content;
 }
 
 /*Labels css*/
@@ -38,7 +34,7 @@ label {
 }
 
 /*Input text css*/
-input[type=text], input[type=password], textarea {
+input[type=text], input[type=password] {
     font-size: 15px;
     margin-bottom: 30px;
     border-right: none;
@@ -60,6 +56,7 @@ input[type=text]:focus, input[type=text]:hover, input[type=password]:focus, inpu
 
 /*Submit button css*/
 input[type=submit] {
+    min-width: fit-content;
     cursor: pointer;
     padding: 1.5vh;
     margin: 0 0 1.5vh;

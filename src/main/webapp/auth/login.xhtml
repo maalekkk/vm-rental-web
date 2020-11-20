@@ -7,14 +7,14 @@
 <f:view>
     <h:head>
         <h:outputStylesheet library="css" name="fonts.css"/>
-        <h:outputStylesheet library="css" name="login.css"/>
+        <h:outputStylesheet library="css" name="auth.css"/>
     </h:head>
     <h:body>
         <div class="container">
             <div class="content">
                 <h:form>
                     <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText required="true" value="#{loginController.username}"/>
+                    <h:inputText required="true" value="#{loginController.username}" autocomplete="off"/>
                     <h:outputLabel value="#{msgs.password}"/>
                     <h:inputSecret required="true" value="#{loginController.password}"/>
                     <h:commandButton value="#{msgs.sing_in}" action="#{loginController.submit}"/>
