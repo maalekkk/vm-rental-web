@@ -19,6 +19,7 @@ html, body {
     width: 20%;
     height: 100%;
     left:0;
+    font-family: 'Lora', serif;
 }
 
 .rightSide {
@@ -71,13 +72,13 @@ html, body {
 .footer {
     background-color: #1C2022;
     color: rgba(255, 255, 255, .7);
-    width: 100%;
     position: fixed;
-    left: 0;
+    right: 0;
     bottom: 0;
     display: grid;
     text-align: center;
-    font-size: 13px;
+    font-size: 10px;
     padding: 5px;
     line-height: 1.4;
+    width: 80%;
 }
