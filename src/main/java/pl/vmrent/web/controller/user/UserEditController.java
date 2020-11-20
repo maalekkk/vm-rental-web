@@ -12,10 +12,9 @@ import java.io.Serializable;
 @ViewScoped
 public class UserEditController implements Serializable
 {
-    private User user;
-
     @Inject
     UserService userService;
+    private User user;
 
     public String save()
     {
