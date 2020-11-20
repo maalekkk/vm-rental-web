@@ -15,7 +15,7 @@
     font-size: 1vw;
 }
 
-.logoutLink {
+.usersActions {
     text-decoration: none;
     color: rgba(255, 255, 255, .85);
     font-family: 'Lora', serif;
@@ -24,7 +24,7 @@
     font-size: 0.8vw;
 }
 
-.logoutLink:hover {
+.usersActions:hover {
     color: #955E8B;
 }
 

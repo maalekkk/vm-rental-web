@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:view>
+    <h:body>
+        <ui:composition template="../templates/main.xhtml">
+            <ui:define name="titleText">
+                <h:outputLabel>${msgs['show_vm']}</h:outputLabel>
+            </ui:define>
+            <ui:define name="content">
+                <h:dataTable styleClass="" value="${machineListController.machines}" var="machine">
+                    <h:column>
+                        <f:facet name="header">${msgs['vm_name']}</f:facet>
+                        ${machine.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['no_of_cores']}</f:facet>
+                        ${machine.cores}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['ram_size']}</f:facet>
+                        ${machine.ramSize}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['hdd_size']}</f:facet>
+                        ${machine.hddSize}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['ssd_size']}</f:facet>
+                        <h:outputLabel rendered="${machineListController.isMachineWorkstation(machine)}">
+                            ${machine.ssdSize}
+                        </h:outputLabel>
+                        <h:outputLabel rendered="${machineListController.isMachineGaming(machine)}">
+                            -
+                        </h:outputLabel>
+                    </h:column>
+                </h:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</f:view>
+</html>

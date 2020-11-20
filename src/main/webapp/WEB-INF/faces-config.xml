@@ -4,6 +4,7 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
 
+    <!-- LOCALE AND RESOURCES -->
     <application>
         <locale-config>
             <default-locale>pl</default-locale>
@@ -14,5 +15,15 @@
             <var>msgs</var>
         </resource-bundle>
     </application>
+
+    <!-- NAVIGATION RULES -->
+    <navigation-rule>
+        <from-view-id>/*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
 
 </faces-config>

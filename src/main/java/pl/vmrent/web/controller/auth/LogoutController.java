@@ -17,6 +17,6 @@ public class LogoutController
     {
         request.logout();
         request.getSession().invalidate();
-        return "/index?faces-redirect=true";
+        return "logout";
     }
 }

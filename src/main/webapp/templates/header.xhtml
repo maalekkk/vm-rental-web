@@ -8,11 +8,14 @@
 
     <ui:composition>
         <div class="userContent">
-            <h:outputLabel styleClass="username">${msgs['welcome']}, ${request.userPrincipal.name}</h:outputLabel>
-            <i class="fa fa-user"/>
-            <h:commandLink value="${msgs['logout']}" action="#{logoutController.submit}" styleClass="logoutLink">
-                <i class="fa fa-power-off" id="logout"/>
+            <h:commandLink value="${msgs['welcome']}, ${userController.currentUser.username}" styleClass="usersActions">
+                <i class="fa fa-user"/>
             </h:commandLink>
+            <h:form>
+                <h:commandLink value="${msgs['logout']}" action="#{logoutController.submit}" styleClass="usersActions">
+                    <i class="fa fa-power-off" id="logout"/>
+                </h:commandLink>
+            </h:form>
         </div>
     </ui:composition>
 
