@@ -88,6 +88,13 @@ html, body {
     color: #1C2022;
     height: 75%;
     justify-items: center;
+    padding: 50px;
+    display: block;
+}
+
+.pageContent label {
+    float: left;
+    padding: 13px;
 }
 
 

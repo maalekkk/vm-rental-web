@@ -8,9 +8,9 @@
 
     <ui:composition>
         <div class="userContent">
-            <h:commandLink value="${msgs['welcome']}, ${userController.currentUser.username}" styleClass="usersActions">
+            <h:link value="${msgs['welcome']}, ${userController.currentUser.username}" outcome="myAccount" styleClass="usersActions">
                 <i class="fa fa-user"/>
-            </h:commandLink>
+            </h:link>
             <h:form>
                 <h:commandLink value="${msgs['logout']}" action="#{logoutController.submit}" styleClass="usersActions">
                     <i class="fa fa-power-off" id="logout"/>

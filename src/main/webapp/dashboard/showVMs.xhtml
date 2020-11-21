@@ -9,9 +9,9 @@
 
 <f:view>
     <h:body>
-        <ui:composition template="../templates/main.xhtml">
+        <ui:composition template="../templates/mainTemplate.xhtml">
             <ui:define name="titleText">
-                <h:outputLabel>${msgs['show_vm']}</h:outputLabel>
+                <h:outputLabel>${msgs['show_vms']}</h:outputLabel>
             </ui:define>
             <ui:define name="content">
                 <h:dataTable styleClass="" value="${machineListController.machines}" var="machine">

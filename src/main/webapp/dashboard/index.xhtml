@@ -8,9 +8,24 @@
 >
 <f:view>
     <h:body>
-        <ui:composition template="../templates/main.xhtml">
+        <ui:composition template="../templates/mainTemplate.xhtml">
+            <ui:define name="titleText">
+                <h:outputLabel>${msgs['main']}</h:outputLabel>
+            </ui:define>
             <ui:define name="content">
-                <h5>Wypełnione wnętrze strony</h5>
+                <div class="main-page">
+                    <h:outputLabel>${msgs['welcome']}, ${userController.currentUser.fullname}.</h:outputLabel>
+                    <h:outputLabel>${msgs['welocome_text']}</h:outputLabel>
+<!--                    TO DO - wyświetlić trzy najpopularniejsze maszyny -->
+<!--                    <h:outputLabel>${msgs['popular_machines']}</h:outputLabel>-->
+<!--                    <div class="popular-machine-box">-->
+<!--                        <i class="fa fa-desktop"/>-->
+<!--                        <h:outputLabel>${machineListController.machines.get(0).name}</h:outputLabel>-->
+<!--                        <h:outputLabel>${machineListController.machines.get(0).cores}</h:outputLabel>-->
+<!--                        <h:outputLabel>${machineListController.machines.get(0).ramSize}</h:outputLabel>-->
+<!--                        <h:outputLabel>${machineListController.machines.get(0).hddSize}</h:outputLabel>-->
+<!--                    </div>-->
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

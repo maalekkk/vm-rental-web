@@ -9,84 +9,76 @@
     <ui:composition>
         <ul class="menu">
             <li class="menu-item">
-                <h:outputLink>
+                <h:link outcome="index">
                     <div class="iconBlock">
                         <i class="fa fa-home icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['main']}"/>
-                </h:outputLink>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="owner/createVM">
                     <div class="iconBlock">
                     <i class="fa fa-plus icon"/>
                     </div>
-                    <h:outputLabel value="#{msgs['add_vm']}"/>
-                </h:outputLink>
+                    <h:outputLabel value="#{msgs['create_vm']}"/>
+                </h:link>
             </li>
             <li class="menu-item">
                 <h:link outcome="showVMs">
                     <div class="iconBlock">
                     <i class="fa fa-desktop icon"/>
                     </div>
-                    <h:outputLabel value="#{msgs['show_vm']}"/>
+                    <h:outputLabel value="#{msgs['show_vms']}"/>
                 </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="rentVM">
                     <div class="iconBlock">
                         <i class="fa fa-calendar-plus-o icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['rent_vm']}"/>
-                </h:outputLink>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="showRents">
                     <div class="iconBlock">
                         <i class="fa fa-calendar icon"/>
                     </div>
-                    <h:outputLabel value="#{msgs['show_your_rent']}"/>
-                </h:outputLink>
+                    <h:outputLabel value="#{msgs['show_rents']}"/>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
-                    <div class="iconBlock">
-                        <i class="fa fa-calendar icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['show_all_rents']}"/>
-                </h:outputLink>
-            </li>
-            <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="rentVM">
                     <div class="iconBlock">
                     <i class="fa fa-calendar-plus-o icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['rent_vm']}"/>
-                </h:outputLink>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="admin/createUser">
                     <div class="iconBlock">
                     <i class="fa fa-user-plus icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['add_user']}"/>
-                </h:outputLink>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="admin/showUsers">
                     <div class="iconBlock">
                         <i class="fa fa-users icon"/>
                     </div>
                     <h:outputLabel value="#{msgs['show_users']}"/>
-                </h:outputLink>
+                </h:link>
             </li>
             <li class="menu-item">
-                <h:outputLink value="">
+                <h:link outcome="appInfo">
                     <div class="iconBlock">
                         <i class="fa fa-info icon"/>
                     </div>
-                    <h:outputLabel value="#{msgs['web_info']}"/>
-                </h:outputLink>
+                    <h:outputLabel value="#{msgs['app_info_title']}"/>
+                </h:link>
             </li>
         </ul>
     </ui:composition>

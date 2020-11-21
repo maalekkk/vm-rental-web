@@ -6,6 +6,15 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <h:outputLabel value="Hello, world"/>
+    <h:body>
+        <ui:composition template="../templates/mainTemplate.xhtml">
+            <ui:define name="titleText">
+                <h:outputLabel>${msgs['rent_vm']}</h:outputLabel>
+            </ui:define>
+            <ui:define name="content">
+                <h:outputLabel>${msgs['rent_vm']}</h:outputLabel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
 </f:view>
 </html>
