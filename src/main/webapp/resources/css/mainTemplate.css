@@ -23,6 +23,7 @@ html, body {
     z-index: 1;
     background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2050%20320%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%2300cba9%22%20fill-opacity%3D%220.15%22%20d%3D%22M54.14%2C-45.05%20C0.27%2C60.36%208.74%2C101.41%2050.21%2C320%20L-7.62%2C320%20L-0.27%2C-26.14%20Z%22%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fsvg%3E");
     background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .rightSide {
@@ -42,13 +43,6 @@ html, body {
     max-width: 100%;
 }
 
-.sidebarMenu {
-    /*background-image: url("#{resource['img:wave.svg']}");*/
-    /*background-repeat: no-repeat;*/
-
-}
-
-
 .header {
     background-color: #1C2022;
     padding: 10px;
@@ -57,11 +51,11 @@ html, body {
     min-height: 7vh;
 }
 
-.ui-breadcrumb{
-    background: none!important;
-    font-size: 0.6vw!important;
-    font-family: 'Lora', serif!important;
-    font-weight: 400!important;
+.ui-breadcrumb {
+    background: none !important;
+    font-size: 0.6vw !important;
+    font-family: 'Lora', serif !important;
+    font-weight: 400 !important;
 }
 
 .navigationInfo {
