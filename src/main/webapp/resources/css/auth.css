@@ -89,7 +89,7 @@ a {
 
 /*Forgot password animation*/
 .sing_up_text {
-    color: rgba(255, 255, 255, .75);
+    color: rgba(255, 255, 255, .75) !important;
     cursor: pointer;
     font-size: 11px;
     width: fit-content;

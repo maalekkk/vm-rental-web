@@ -5,15 +5,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui"
->
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
-        <h:outputStylesheet library="css" name="mainTemplate.css"/>
+        <h:outputStylesheet library="css" name="main_template.css"/>
         <h:outputStylesheet library="css" name="fonts.css"/>
-        <h:outputStylesheet library="css" name="sidebarMenu.css"/>
+        <h:outputStylesheet library="css" name="sidebar_menu.css"/>
         <h:outputStylesheet library="css" name="header.css"/>
-        <h:outputStylesheet library="css" name="mainPage.css"/>
+        <h:outputStylesheet library="css" name="main_page.css"/>
         <h:outputScript library="js" name="icons.js"/>
     </h:head>
     <h:body>
@@ -27,7 +26,7 @@
                 <div style="border-top:1px solid rgba(69, 74, 84, 0.1)"></div>
                 <div class="sidebarMenu">
                     <ui:insert name="sideMenu">
-                        <ui:include src="sidebarMenu.xhtml"/>
+                        <ui:include src="sidebar_menu.xhtml"/>
                     </ui:insert>
                 </div>
             </div>

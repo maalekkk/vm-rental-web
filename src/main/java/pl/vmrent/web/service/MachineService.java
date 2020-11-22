@@ -36,9 +36,4 @@ public class MachineService
     {
         return machineRepository.findAll();
     }
-
-    public <T extends Machine> boolean checkMachineType(@Valid Machine machine, Class<T> machineClass)
-    {
-        return machineClass.isInstance(machine);
-    }
 }

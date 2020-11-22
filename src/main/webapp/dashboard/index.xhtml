@@ -4,30 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
->
+      xmlns:f="http://java.sun.com/jsf/core">
 <f:view>
-    <h:body>
-        <ui:composition template="/WEB-INF/templates/mainTemplate.xhtml">
-            <ui:define name="titleText">
-                <h:outputLabel>${msgs['main']}</h:outputLabel>
-            </ui:define>
-            <ui:define name="content">
-                <div class="main-page">
-                    <h:outputLabel>${msgs['welcome']}, ${userController.currentUser.fullname}.</h:outputLabel>
-                    <h:outputLabel>${msgs['welocome_text']}</h:outputLabel>
-<!--                    TO DO - wyświetlić trzy najpopularniejsze maszyny -->
-<!--                    <h:outputLabel>${msgs['popular_machines']}</h:outputLabel>-->
-<!--                    <div class="popular-machine-box">-->
-<!--                        <i class="fa fa-desktop"/>-->
-<!--                        <h:outputLabel>${machineListController.machines.get(0).name}</h:outputLabel>-->
-<!--                        <h:outputLabel>${machineListController.machines.get(0).cores}</h:outputLabel>-->
-<!--                        <h:outputLabel>${machineListController.machines.get(0).ramSize}</h:outputLabel>-->
-<!--                        <h:outputLabel>${machineListController.machines.get(0).hddSize}</h:outputLabel>-->
-<!--                    </div>-->
-                </div>
-            </ui:define>
-        </ui:composition>
-    </h:body>
+    <ui:composition template="/WEB-INF/templates/main_template.xhtml">
+        <ui:define name="titleText">
+            <h:outputLabel>${msgs['main']}</h:outputLabel>
+        </ui:define>
+        <ui:define name="content">
+            <div class="main-page">
+                <h:outputLabel>${msgs['welcome']}, ${userController.currentUser.fullname}.</h:outputLabel>
+                <h:outputLabel>${msgs['welocome_text']}</h:outputLabel>
+                <!--                    TO DO - wyświetlić trzy najpopularniejsze maszyny -->
+                <!--                    <h:outputLabel>${msgs['popular_machines']}</h:outputLabel>-->
+                <!--                    <div class="popular-machine-box">-->
+                <!--                        <i class="fa fa-desktop"/>-->
+                <!--                        <h:outputLabel>${machineListController.machines.get(0).name}</h:outputLabel>-->
+                <!--                        <h:outputLabel>${machineListController.machines.get(0).cores}</h:outputLabel>-->
+                <!--                        <h:outputLabel>${machineListController.machines.get(0).ramSize}</h:outputLabel>-->
+                <!--                        <h:outputLabel>${machineListController.machines.get(0).hddSize}</h:outputLabel>-->
+                <!--                    </div>-->
+            </div>
+        </ui:define>
+    </ui:composition>
 </f:view>
 </html>

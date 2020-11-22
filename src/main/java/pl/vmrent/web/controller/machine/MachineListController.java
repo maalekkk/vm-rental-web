@@ -1,8 +1,6 @@
 package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.Machine;
-import pl.vmrent.web.model.machine.MachineGaming;
-import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
 
 import javax.annotation.PostConstruct;
@@ -29,15 +27,5 @@ public class MachineListController
     public List<Machine> getMachines()
     {
         return machines;
-    }
-
-    public boolean isMachineGaming(Machine machine)
-    {
-        return machineService.checkMachineType(machine, MachineGaming.class);
-    }
-
-    public boolean isMachineWorkstation(Machine machine)
-    {
-        return machineService.checkMachineType(machine, MachineWorkstation.class);
     }
 }

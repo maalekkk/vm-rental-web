@@ -5,6 +5,7 @@ import pl.vmrent.web.model.Entity;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
+import java.beans.Transient;
 
 public abstract class Machine extends Entity
 {
@@ -71,5 +72,11 @@ public abstract class Machine extends Entity
     public void setHddSize(int hddSize)
     {
         this.hddSize = hddSize;
+    }
+
+    @Transient
+    public String getType()
+    {
+        return this.getClass().getSimpleName();
     }
 }
