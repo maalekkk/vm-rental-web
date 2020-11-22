@@ -11,7 +11,24 @@
             <h:outputLabel>${msgs['show_rents']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:outputLabel>${msgs['show_rents']}</h:outputLabel>
+            <h:dataTable styleClass="" value="${rentListController.rents}" var="rent">
+                <h:column>
+                    <f:facet name="header">${msgs['vm_name']}</f:facet>
+                    ${rent.machine}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">${msgs['login']}</f:facet>
+                    ${rent.user}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">${msgs['start_time']}</f:facet>
+                    ${rent.period.startDate}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">${msgs['end_time']}</f:facet>
+                    ${rent.period.endDate}
+                </h:column>
+            </h:dataTable>
         </ui:define>
     </ui:composition>
 </f:view>

@@ -11,7 +11,34 @@
             <h:outputLabel>${msgs['create_user']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:outputLabel>${msgs['create_user']}</h:outputLabel>
+            <div class="create-form">
+                <h:form>
+                    <h:outputLabel value="#{msgs.full_name}"/>
+                    <h:inputText id="fullname" value="#{registerController.user.fullname}" autocomplete="off"/>
+                    <h:message for="fullname" id="fullname_msg"/>
+                    <h:outputLabel value="#{msgs.login}"/>
+                    <h:inputText id="login" value="#{registerController.user.username}" autocomplete="off"/>
+                    <h:message for="login"/>
+                    <h:outputLabel value="#{msgs.password}"/>
+                    <h:inputSecret id="password" value="#{registerController.user.password}"/>
+                    <h:message for="password"/>
+                    <h:outputLabel value="#{msgs.repeat_password}"/>
+                    <h:inputSecret/>
+                    <h:selectManyCheckbox id="roles" value="#{registerController.user.roles}">
+                        <h:outputLabel value="#{msgs.roles}"/>
+                        <f:selectItem itemValue="" itemLabel="${msgs.client}"/>
+                        <f:selectItem itemValue="" itemLabel="${msgs.owner}"/>
+                        <f:selectItem itemValue="" itemLabel="${msgs.admin}"/>
+                        <h:message for="roles"/>
+                    </h:selectManyCheckbox>
+                    <div class="enable-account">
+                        <h:selectBooleanCheckbox styleClass="boolean-checkbox">
+                            <h:outputLabel value="#{msgs.enable_account}"/>
+                        </h:selectBooleanCheckbox>
+                    </div>
+                    <h:commandButton value="#{msgs.sing_up}" action="#{registerController.submit}"/>
+                </h:form>
+            </div>
         </ui:define>
     </ui:composition>
 </f:view>

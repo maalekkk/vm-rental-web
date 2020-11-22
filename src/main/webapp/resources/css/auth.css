@@ -35,7 +35,6 @@ label {
 
 /*Input text css*/
 input[type=text], input[type=password] {
-    font-size: 15px;
     margin-bottom: 30px;
     border-right: none;
     border-top: none;
