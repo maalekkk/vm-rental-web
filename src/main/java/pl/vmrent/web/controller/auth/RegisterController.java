@@ -40,5 +40,4 @@ public class RegisterController implements Serializable
     {
         this.user = user;
     }
-
 }
