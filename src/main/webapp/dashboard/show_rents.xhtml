@@ -11,7 +11,7 @@
             <h:outputLabel>${msgs['show_rents']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:dataTable styleClass="" value="${rentListController.rents}" var="rent">
+            <h:dataTable styleClass="table-purple" value="${rentListController.rents}" var="rent">
                 <h:column>
                     <f:facet name="header">${msgs['vm_name']}</f:facet>
                     ${rent.machine}

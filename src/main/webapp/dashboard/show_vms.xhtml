@@ -11,7 +11,7 @@
             <h:outputLabel>${msgs['show_vms']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:dataTable styleClass="" value="${machineListController.machines}" var="machine">
+            <h:dataTable styleClass="table-purple" value="${machineListController.machines}" var="machine">
                 <h:column>
                     <f:facet name="header">${msgs['vm_type']}</f:facet>
                     <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
