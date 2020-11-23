@@ -1,42 +1,45 @@
 package pl.vmrent.web.model.machine;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class MachineGaming extends Machine
 {
     @Min(1)
-    private int gpuPower;
+    @NotNull
+    private Integer gpuPower;
 
     @Min(1)
-    private int gpuVram;
+    @NotNull
+    private Integer gpuVram;
 
     public MachineGaming()
     {
     }
 
-    public MachineGaming(String name, int cores, int ramSize, int hddSize, int gpuPower, int gpuVram)
+    public MachineGaming(String name, Integer cores, Integer ramSize, Integer hddSize, Integer gpuPower, Integer gpuVram)
     {
         super(name, cores, ramSize, hddSize);
         this.gpuPower = gpuPower;
         this.gpuVram = gpuVram;
     }
 
-    public int getGpuPower()
+    public Integer getGpuPower()
     {
         return gpuPower;
     }
 
-    public void setGpuPower(int gpuPower)
+    public void setGpuPower(Integer gpuPower)
     {
         this.gpuPower = gpuPower;
     }
 
-    public int getGpuVram()
+    public Integer getGpuVram()
     {
         return gpuVram;
     }
 
-    public void setGpuVram(int gpuVram)
+    public void setGpuVram(Integer gpuVram)
     {
         this.gpuVram = gpuVram;
     }

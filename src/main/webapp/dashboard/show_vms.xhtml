@@ -58,7 +58,12 @@
                 <h:column>
                     <f:facet name="header">${msgs['raid_support']}</f:facet>
                     <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        ${machine.raidSupport}
+                        <h:panelGroup rendered="${machine.raidSupport}">
+                            Tak
+                        </h:panelGroup>
+                        <h:panelGroup rendered="${not machine.raidSupport}">
+                            Nie
+                        </h:panelGroup>
                     </h:panelGroup>
                     <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
                         -

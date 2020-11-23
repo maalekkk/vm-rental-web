@@ -16,28 +16,30 @@
                     <div class="inputs-container">
                         <div class="leftSideForm">
                             <h:outputLabel value="#{msgs.vm_name}"/>
-                            <h:inputText id="vm_name" value="" autocomplete="off"/>
+                            <h:inputText id="vm_name" value="#{machineGamingCreateController.machine.name}"
+                                         autocomplete="off"/>
                             <h:message for="vm_name" id="vm_name_msg"/>
                             <h:outputLabel value="#{msgs.no_of_cores}"/>
-                            <h:inputText id="no_of_cores" value="" autocomplete="off"/>
+                            <h:inputText id="no_of_cores" value="#{machineGamingCreateController.machine.cores}"
+                                         autocomplete="off"/>
                             <h:message for="no_of_cores"/>
                             <h:outputLabel value="#{msgs.ram_size}"/>
-                            <h:inputText id="ram_size" value=""/>
+                            <h:inputText id="ram_size" value="#{machineGamingCreateController.machine.ramSize}"/>
                             <h:message for="ram_size"/>
                         </div>
                         <div class="rightSideForm">
                             <h:outputLabel value="#{msgs.hdd_size}"/>
-                            <h:inputText id="hdd_size" value=""/>
+                            <h:inputText id="hdd_size" value="#{machineGamingCreateController.machine.hddSize}"/>
                             <h:message for="hdd_size"/>
                             <h:outputLabel value="#{msgs.gpu_power}"/>
-                            <h:inputText id="gpu_power" value=""/>
+                            <h:inputText id="gpu_power" value="#{machineGamingCreateController.machine.gpuPower}"/>
                             <h:message for="gpu_power"/>
                             <h:outputLabel value="#{msgs.gpu_vram}"/>
-                            <h:inputText id="gpu_vram" value=""/>
+                            <h:inputText id="gpu_vram" value="#{machineGamingCreateController.machine.gpuVram}"/>
                             <h:message for="gpu_vram"/>
                         </div>
                     </div>
-                    <h:commandButton value="#{msgs.create_vm}"/>
+                    <h:commandButton value="#{msgs.create_vm}" action="#{machineGamingCreateController.create}"/>
                 </h:form>
             </div>
         </ui:define>

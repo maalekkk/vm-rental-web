@@ -6,10 +6,11 @@ import pl.vmrent.web.model.machine.MachineWorkstation;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
+import javax.validation.Valid;
 import java.util.UUID;
 
 @ApplicationScoped
-public class MachineRepository extends AbstractCrudRepository<Machine, UUID>
+public class MachineRepository extends AbstractCrudRepository<@Valid Machine, UUID>
 {
     @PostConstruct
     private void init()

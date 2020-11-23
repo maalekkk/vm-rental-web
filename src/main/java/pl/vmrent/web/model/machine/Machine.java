@@ -4,6 +4,7 @@ import pl.vmrent.web.model.Entity;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.beans.Transient;
 
@@ -13,20 +14,23 @@ public abstract class Machine extends Entity
     private String name;
 
     @Min(1)
-    private int cores;
+    @NotNull
+    private Integer cores;
 
     @Min(1024)
     @Max(65536)
-    private int ramSize;
+    @NotNull
+    private Integer ramSize;
 
     @Min(128)
-    private int hddSize;
+    @NotNull
+    private Integer hddSize;
 
     public Machine()
     {
     }
 
-    public Machine(String name, int cores, int ramSize, int hddSize)
+    public Machine(String name, Integer cores, Integer ramSize, Integer hddSize)
     {
         this.name = name;
         this.cores = cores;
@@ -44,32 +48,32 @@ public abstract class Machine extends Entity
         this.name = name;
     }
 
-    public int getCores()
+    public Integer getCores()
     {
         return cores;
     }
 
-    public void setCores(int cores)
+    public void setCores(Integer cores)
     {
         this.cores = cores;
     }
 
-    public int getRamSize()
+    public Integer getRamSize()
     {
         return ramSize;
     }
 
-    public void setRamSize(int ramSize)
+    public void setRamSize(Integer ramSize)
     {
         this.ramSize = ramSize;
     }
 
-    public int getHddSize()
+    public Integer getHddSize()
     {
         return hddSize;
     }
 
-    public void setHddSize(int hddSize)
+    public void setHddSize(Integer hddSize)
     {
         this.hddSize = hddSize;
     }

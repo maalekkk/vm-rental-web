@@ -2,15 +2,18 @@ package pl.vmrent.web.model.machine;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class MachineWorkstation extends Machine
 {
     @Min(1)
-    private int ssdSize;
+    @NotNull
+    private Integer ssdSize;
 
     @Min(0)
     @Max(10)
-    private int netCards;
+    @NotNull
+    private Integer netCards;
 
     private boolean raidSupport;
 
@@ -18,7 +21,7 @@ public class MachineWorkstation extends Machine
     {
     }
 
-    public MachineWorkstation(String name, int cores, int ramSize, int hddSize, int ssdSize, int netCards, boolean raidSupport)
+    public MachineWorkstation(String name, Integer cores, Integer ramSize, Integer hddSize, Integer ssdSize, Integer netCards, Boolean raidSupport)
     {
         super(name, cores, ramSize, hddSize);
         this.ssdSize = ssdSize;
@@ -26,27 +29,27 @@ public class MachineWorkstation extends Machine
         this.raidSupport = raidSupport;
     }
 
-    public int getSsdSize()
+    public Integer getSsdSize()
     {
         return ssdSize;
     }
 
-    public void setSsdSize(int ssdSize)
+    public void setSsdSize(Integer ssdSize)
     {
         this.ssdSize = ssdSize;
     }
 
-    public int getNetCards()
+    public Integer getNetCards()
     {
         return netCards;
     }
 
-    public void setNetCards(int netCards)
+    public void setNetCards(Integer netCards)
     {
         this.netCards = netCards;
     }
 
-    public boolean isRaidSupport()
+    public boolean getRaidSupport()
     {
         return raidSupport;
     }

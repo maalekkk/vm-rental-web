@@ -22,11 +22,24 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">${msgs['enable_account']}</f:facet>
-                    ${user.enabled}
+                    <h:panelGroup rendered="${user.enabled}">
+                        Tak
+                    </h:panelGroup>
+                    <h:panelGroup rendered="${not user.enabled}">
+                        Nie
+                    </h:panelGroup>
                 </h:column>
                 <h:column>
                     <f:facet name="header">${msgs['roles']}</f:facet>
-                    ${user.roles}
+                    <h:panelGroup rendered="#{user.roles.contains('User')}">
+                        Użytkownik
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{user.roles.contains('Admin')}">
+                        Administrator
+                    </h:panelGroup>
+                    <h:panelGroup rendered="#{user.roles.contains('Owner')}">
+                        Właściciel
+                    </h:panelGroup>
                 </h:column>
             </h:dataTable>
         </ui:define>

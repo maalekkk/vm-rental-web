@@ -7,12 +7,13 @@ import pl.vmrent.web.service.PasswordService;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.Valid;
 import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @ApplicationScoped
-public class UserRepository extends AbstractCrudRepository<User, UUID>
+public class UserRepository extends AbstractCrudRepository<@Valid User, UUID>
 {
     @Inject
     private PasswordService passwordService;

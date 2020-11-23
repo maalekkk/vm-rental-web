@@ -29,7 +29,7 @@ public class User extends Entity
     {
     }
 
-    public User(String username, String password, String fullname, boolean enabled, Set<String> roles)
+    public User(String username, String password, String fullname, Boolean enabled, Set<String> roles)
     {
         this.username = username;
         this.password = password;
