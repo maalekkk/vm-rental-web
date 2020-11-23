@@ -56,3 +56,7 @@
 .two-columns form {
     max-width: 60%!important;
 }
+
+input[type=checkbox] {
+    transform: scale(1.3);
+}
