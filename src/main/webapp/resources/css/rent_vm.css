@@ -1,4 +1,5 @@
-table {
+.rent-table {
+    display: table;
     border-collapse:collapse;
     width:100%;
     font-size: 0.85vw;
@@ -12,16 +13,26 @@ thead {
     color:white;
 }
 
-th,td {
+.rent-table a {
+    display: table-row;
     text-align:center;
     padding:1vh 0;
 }
 
-tbody tr:nth-child(even) {
+.rent-table a span {
+    display: table-cell;
+    color: #1C2022;
+}
+
+.rent-table a:nth-child(even) {
     background:#ECF0F1;
 }
 
-tbody tr:hover {
+.rent-table a:hover {
     background:#BDC3C7;
     color:#FFFFFF;
+}
+
+.click-row tbody tr {
+    cursor: pointer;
 }

@@ -4,27 +4,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
             <h:outputLabel>${msgs['my_account']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
+            WERSJA TESTOWA!!!
             <div class="myAccount-container">
                 <div class="myAccount">
                     <div class="myAccount-data">
                         <div class="myAccount-column">
                             <h:outputLabel>${msgs.login}:</h:outputLabel>
                             <h:outputLabel>${msgs.full_name}:</h:outputLabel>
+                            <h:outputLabel>${msgs.password}:</h:outputLabel>
                         </div>
-                        <div class="myAccount-column">
-                            <p>${userController.currentUser.username}</p>
-                            <p>${userController.currentUser.fullname}</p>
+                        <div class="myAccount-column create-form">
+                            <h:form>
+                                <h:inputText disabled="true" value="${userController.currentUser.username}"/>
+                                <h:inputText value="${userController.currentUser.fullname}"/>
+                                <h:inputText/>
+                            </h:form>
                         </div>
                     </div>
                     <div class="myAccount-edit">
-                        <h:link outcome="edit_account" value="${msgs.edit_account_data}" styleClass="type-button"/>
+                        <h:commandButton value="${msgs.edit_account_submit}" styleClass="type-button"/>
                     </div>
                 </div>
             </div>
@@ -32,3 +37,4 @@
     </ui:composition>
 </f:view>
 </html>
+

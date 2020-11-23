@@ -89,6 +89,7 @@ html, body {
 .pageContent label {
     float: left;
     padding: 13px;
+    align-self: center;
 }
 
 
