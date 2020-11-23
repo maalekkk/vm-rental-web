@@ -37,6 +37,7 @@
                             <h:outputLabel value="#{msgs.net_cards}"/>
                             <h:inputText id="net_cards" value="#{workstationCreator.machine.netCards}"/>
                             <h:message for="net_cards"/>
+                            <!-- TODO Rozjeżdża się jak wyskoczy message (css) -->
                             <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{workstationCreator.machine.raidSupport}">
                                 <h:outputLabel value="#{msgs.raid_support}"/>
                             </h:selectBooleanCheckbox>
