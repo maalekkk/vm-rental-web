@@ -14,6 +14,10 @@
             <base-name>messages</base-name>
             <var>msgs</var>
         </resource-bundle>
+        <resource-bundle>
+            <base-name>ValidationMessages</base-name>
+            <var>val_msgs</var>
+        </resource-bundle>
     </application>
 
     <!-- NAVIGATION RULES -->
