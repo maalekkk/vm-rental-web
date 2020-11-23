@@ -77,19 +77,6 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     }
 
     @Override
-    public void delete(T entity)
-    {
-        if (entity == null)
-        {
-            throw new IllegalArgumentException();
-        }
-        synchronized (elements)
-        {
-            elements.remove(Optional.of(entity).orElseThrow(EntityNotFoundException::new));
-        }
-    }
-
-    @Override
     public void deleteById(ID id)
     {
         synchronized (elements)

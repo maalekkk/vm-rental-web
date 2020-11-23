@@ -9,10 +9,10 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class MachineWorkstationCreateController extends MachineCreateController<MachineWorkstation>
+public class WorkstationCreator extends MachineCreateController<MachineWorkstation>
 {
     @Inject
-    public MachineWorkstationCreateController(MachineWorkstation machine, MachineService machineService)
+    public WorkstationCreator(MachineWorkstation machine, MachineService machineService)
     {
         super(machine, machineService);
     }

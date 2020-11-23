@@ -13,6 +13,8 @@ import java.util.List;
 @RequestScoped
 public class MachineListController
 {
+    private Machine machine;
+
     private List<Machine> machines;
 
     @Inject
@@ -22,10 +24,27 @@ public class MachineListController
     private void init()
     {
         machines = machineService.getAll();
+        System.out.println("Xd");
+    }
+
+    public String deleteMachine()
+    {
+        return machineService.deleteMachine(machine.getId()) ? "" : "";
+        //TODO ERROR PAGE
     }
 
     public List<Machine> getMachines()
     {
         return machines;
+    }
+
+    public Machine getMachine()
+    {
+        return machine;
+    }
+
+    public void setMachine(Machine machine)
+    {
+        this.machine = machine;
     }
 }

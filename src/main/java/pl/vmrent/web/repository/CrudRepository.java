@@ -18,8 +18,6 @@ public interface CrudRepository<T extends Identity<ID>, ID extends Serializable>
 
     long count();
 
-    void delete(T entity);
-
     void deleteById(ID id);
 
     void deleteAll();

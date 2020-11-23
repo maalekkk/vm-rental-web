@@ -1,34 +1,23 @@
 package pl.vmrent.web.controller.machine.create;
 
+import pl.vmrent.web.controller.machine.MachineController;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.service.MachineService;
 
-import java.io.Serializable;
+import java.util.Optional;
 
-public abstract class MachineCreateController<T extends Machine> implements Serializable
+public abstract class MachineCreateController<T extends Machine> extends MachineController<T>
 {
-    private final MachineService machineService;
-    private T machine;
-
     public MachineCreateController(T machine, MachineService machineService)
     {
-        this.machine = machine;
-        this.machineService = machineService;
+        super(machine, machineService);
     }
 
-    public String create()
+    @Override
+    public String submit()
     {
-        machineService.addMachine(machine);
-        return "/dashboard/show_vms?faces-redirect=true";
-    }
-
-    public T getMachine()
-    {
-        return machine;
-    }
-
-    public void setMachine(T machine)
-    {
-        this.machine = machine;
+        Optional<Machine> optional = machineService.addMachine(machine);
+        return optional.isPresent() ? "/dashboard/show_vms?faces-redirect=true" : "";
+        //TODO ERROR PAGE
     }
 }

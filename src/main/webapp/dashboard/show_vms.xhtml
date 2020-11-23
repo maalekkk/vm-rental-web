@@ -11,83 +11,85 @@
             <h:outputLabel>${msgs['show_vms']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:dataTable styleClass="table-purple" value="${machineListController.machines}" var="machine">
-                <h:column>
-                    <f:facet name="header">${msgs['vm_type']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
-                        ${msgs['vm_gaming_type']}
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        ${msgs['vm_workstation_type']}
-                    </h:panelGroup>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['vm_name']}</f:facet>
-                    ${machine.name}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['no_of_cores']}</f:facet>
-                    ${machine.cores}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['ram_size']}</f:facet>
-                    ${machine.ramSize}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['hdd_size']}</f:facet>
-                    ${machine.hddSize}
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['ssd_size']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        ${machine.ssdSize}
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
-                        -
-                    </h:panelGroup>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['net_cards']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        ${machine.netCards}
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
-                        -
-                    </h:panelGroup>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['raid_support']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        <h:panelGroup rendered="${machine.raidSupport}">
-                            Tak
+            <h:form id="table">
+                <h:dataTable styleClass="table-purple" value="${machineListController.machines}" var="machine">
+                    <h:column>
+                        <f:facet name="header">${msgs['vm_type']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
+                            ${msgs['vm_gaming_type']}
                         </h:panelGroup>
-                        <h:panelGroup rendered="${not machine.raidSupport}">
-                            Nie
+                        <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
+                            ${msgs['vm_workstation_type']}
                         </h:panelGroup>
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
-                        -
-                    </h:panelGroup>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['gpu_power']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
-                        ${machine.gpuPower}
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type ne 'MachineGaming'}">
-                        -
-                    </h:panelGroup>
-                </h:column>
-                <h:column>
-                    <f:facet name="header">${msgs['gpu_vram']}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
-                        ${machine.gpuVram}
-                    </h:panelGroup>
-                    <h:panelGroup rendered="#{machine.type ne 'MachineGaming'}">
-                        -
-                    </h:panelGroup>
-                </h:column>
-            </h:dataTable>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['vm_name']}</f:facet>
+                        ${machine.name}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['no_of_cores']}</f:facet>
+                        ${machine.cores}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['ram_size']}</f:facet>
+                        ${machine.ramSize}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['hdd_size']}</f:facet>
+                        ${machine.hddSize}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['ssd_size']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
+                            ${machine.ssdSize}
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
+                            -
+                        </h:panelGroup>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['net_cards']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
+                            ${machine.netCards}
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
+                            -
+                        </h:panelGroup>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['raid_support']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
+                            <h:panelGroup rendered="${machine.raidSupport}">
+                                Tak
+                            </h:panelGroup>
+                            <h:panelGroup rendered="${not machine.raidSupport}">
+                                Nie
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{machine.type ne 'MachineWorkstation'}">
+                            -
+                        </h:panelGroup>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['gpu_power']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
+                            ${machine.gpuPower}
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{machine.type ne 'MachineGaming'}">
+                            -
+                        </h:panelGroup>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">${msgs['gpu_vram']}</f:facet>
+                        <h:panelGroup rendered="#{machine.type eq 'MachineGaming'}">
+                            ${machine.gpuVram}
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{machine.type ne 'MachineGaming'}">
+                            -
+                        </h:panelGroup>
+                    </h:column>
+                </h:dataTable>
+            </h:form>
         </ui:define>
     </ui:composition>
 </f:view>

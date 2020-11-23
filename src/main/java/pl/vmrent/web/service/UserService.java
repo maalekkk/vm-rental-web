@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequestScoped
 public class UserService
@@ -48,6 +49,17 @@ public class UserService
         if (optional.isPresent())
         {
             userRepository.save(user);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deleteUser(UUID userId)
+    {
+        Optional<User> optional = userRepository.findById(userId);
+        if (optional.isPresent())
+        {
+            userRepository.deleteById(userId);
             return true;
         }
         return false;

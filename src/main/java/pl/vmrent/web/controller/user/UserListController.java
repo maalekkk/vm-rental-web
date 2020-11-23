@@ -8,6 +8,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import java.util.UUID;
 
 @Named
 @RequestScoped
@@ -22,6 +23,12 @@ public class UserListController
     private void init()
     {
         users = userService.getAll();
+    }
+
+    public String deleteUser(UUID userId)
+    {
+        return userService.deleteUser(userId) ? "" : "";
+        //TODO ERROR PAGE
     }
 
     public List<User> getUsers()
