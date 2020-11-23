@@ -11,24 +11,25 @@
             <h:outputLabel>${msgs['my_account']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            WERSJA TESTOWA!!!
-            <div class="myAccount-container">
-                <div class="myAccount">
-                    <div class="myAccount-data">
-                        <div class="myAccount-column">
+            <div class="editAccount-container">
+                <div class="editAccount">
+                    <div class="editAccount-data">
+                        <div class="editAccount-column">
                             <h:outputLabel>${msgs.login}:</h:outputLabel>
                             <h:outputLabel>${msgs.full_name}:</h:outputLabel>
-                            <h:outputLabel>${msgs.password}:</h:outputLabel>
+                            <h:outputLabel>${msgs.currentPassword}:</h:outputLabel>
+                            <h:outputLabel>${msgs.newPassword}:</h:outputLabel>
                         </div>
-                        <div class="myAccount-column create-form">
+                        <div class="editAccount-column-create-form">
                             <h:form>
                                 <h:inputText disabled="true" value="${userController.currentUser.username}"/>
                                 <h:inputText value="${userController.currentUser.fullname}"/>
-                                <h:inputText/>
+                                <h:inputSecret/>
+                                <h:inputSecret/>
                             </h:form>
                         </div>
                     </div>
-                    <div class="myAccount-edit">
+                    <div class="editAccount-edit">
                         <h:commandButton value="${msgs.edit_account_submit}" styleClass="type-button"/>
                     </div>
                 </div>
