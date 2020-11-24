@@ -87,13 +87,13 @@
                         -
                     </h:panelGroup>
                 </h:column>
-                <h:column rendered="#{userController.currentUser.roles.contains('User')}">
+                <h:column rendered="#{request.isUserInRole('Client')}">
                     <h:commandButton value="${msgs.rent}" styleClass="table-purple-button"/>
                 </h:column>
-                <h:column rendered="#{userController.currentUser.roles.contains('Owner')}">
+                <h:column rendered="#{request.isUserInRole('Owner')}">
                     <h:commandButton value="${msgs.edit}" styleClass="table-purple-button"/>
                 </h:column>
-                <h:column rendered="#{userController.currentUser.roles.contains('Owner')}">
+                <h:column rendered="#{request.isUserInRole('Owner')}">
                     <h:commandButton value="${msgs.remove}" styleClass="table-purple-button" action="#{machineListController.deleteMachine()}"/>
                 </h:column>
             </h:dataTable>
