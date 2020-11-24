@@ -1,27 +1,42 @@
-table {
+.table-purple {
     border-collapse:collapse;
     width:100%;
     font-size: 0.85vw;
 }
 
-.table-purple thead {
+.table-purple-header {
     background-color:rgba(149, 94, 139, .8);
-}
-
-thead {
     color:white;
 }
 
-th,td {
+.table-purple th,.table-purple td {
     text-align:center;
-    padding:1vh 0;
+    padding:1vh 0.1vw;
 }
 
-tbody tr:nth-child(even) {
+.table-purple-row:nth-child(even) {
     background:#ECF0F1;
 }
 
-tbody tr:hover {
+.table-purple-row:hover {
     background:#BDC3C7;
     color:#FFFFFF;
+}
+
+.table-purple-button{
+    padding: 0.5vh;
+    min-width: 100%;
+    min-height: 100%;
+    border:0.1em solid rgba(149, 94, 139, .8);
+    background-color: transparent;
+    border-radius:0.15em;
+    text-decoration:none;
+    text-align:center;
+    transition: all 0.35s;
+}
+
+.table-purple-button:hover{
+    color: white;
+    background-color:rgba(149, 94, 139, .8);
+    cursor: pointer;
 }

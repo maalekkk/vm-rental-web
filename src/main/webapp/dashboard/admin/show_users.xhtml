@@ -11,7 +11,7 @@
             <h:outputLabel>${msgs['show_users']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:dataTable styleClass="table-purple" value="${userListController.users}" var="user">
+            <h:dataTable styleClass="table-purple" value="${userListController.users}" var="user" rowClasses="table-purple-row" headerClass="table-purple-header" >
                 <h:column>
                     <f:facet name="header">${msgs['login']}</f:facet>
                     ${user.username}

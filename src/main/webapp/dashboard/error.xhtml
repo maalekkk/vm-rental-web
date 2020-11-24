@@ -11,7 +11,10 @@
             <h:outputLabel>${msgs['error_title']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:outputLabel>${msgs['error_message']}</h:outputLabel>
+            <div class="editAccount-container">
+                <h:outputLabel>${msgs['error_message']}</h:outputLabel>
+                <i class="fa fa-frown-o"/>
+            </div>
         </ui:define>
     </ui:composition>
 </f:view>

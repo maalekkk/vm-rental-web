@@ -8,7 +8,7 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs.create_vm} (${msgs.vm_workstation_type})</h:outputLabel>
+            <h:outputLabel>${msgs.edit_vm} (${msgs.vm_workstation_type})</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="create-form two-columns">
@@ -42,7 +42,7 @@
                             </h:selectBooleanCheckbox>
                         </div>
                     </div>
-                    <h:commandButton value="#{msgs.create_vm}" action="#{workstationCreator.submit}"/>
+                    <h:commandButton value="#{msgs.edit_vm}" action="#{workstationEditor.submit}"/>
                 </h:form>
             </div>
         </ui:define>
