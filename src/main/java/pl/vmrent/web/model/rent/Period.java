@@ -11,7 +11,6 @@ import java.time.ZonedDateTime;
 public class Period implements Serializable
 {
     @NotNull
-    @PastOrPresent
     private ZonedDateTime startDate;
 
     @NotNull

@@ -10,6 +10,16 @@
     <!-- CONTEXT -->
     <default-context-path>/VMRental</default-context-path>
 
+    <!-- LOGIN FORM REALM -->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name>
+        <form-login-config>
+            <form-login-page>/auth/login.xhtml</form-login-page>
+            <form-error-page>/auth/login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+
     <!-- SECURITY ROLES -->
     <security-role>
         <role-name>User</role-name>
@@ -24,21 +34,20 @@
     <!-- SECURITY CONSTRAINTS -->
     <security-constraint>
         <web-resource-collection>
+            <web-resource-name>Secured pages</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
             <web-resource-name>Authenticated pages</web-resource-name>
             <url-pattern>/dashboard/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>User</role-name>
-            <role-name>Admin</role-name>
-            <role-name>Owner</role-name>
-        </auth-constraint>
-    </security-constraint>
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>Resources</web-resource-name>
-            <url-pattern>/resources/*</url-pattern>
-        </web-resource-collection>
-        <auth-constraint>
             <role-name>Admin</role-name>
             <role-name>Owner</role-name>
         </auth-constraint>

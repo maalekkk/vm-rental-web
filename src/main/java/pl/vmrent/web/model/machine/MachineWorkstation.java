@@ -21,7 +21,7 @@ public class MachineWorkstation extends Machine
     {
     }
 
-    public MachineWorkstation(String name, Integer cores, Integer ramSize, Integer hddSize, Integer ssdSize, Integer netCards, Boolean raidSupport)
+    public MachineWorkstation(String name, Integer cores, Integer ramSize, Integer hddSize, Integer ssdSize, Integer netCards, boolean raidSupport)
     {
         super(name, cores, ramSize, hddSize);
         this.ssdSize = ssdSize;

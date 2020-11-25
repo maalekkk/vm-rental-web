@@ -17,14 +17,21 @@
                         <div class="myAccount-column">
                             <h:outputLabel>${msgs.login}:</h:outputLabel>
                             <h:outputLabel>${msgs.full_name}:</h:outputLabel>
+                            <h:outputLabel>${msgs.role}:</h:outputLabel>
                         </div>
                         <div class="myAccount-column">
                             <p>${userController.currentUser.username}</p>
                             <p>${userController.currentUser.fullname}</p>
+                            <h:panelGroup rendered="${userController.userRole}">
+                                <p>${msgs.client}</p>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="${userController.adminRole}">
+                                <p>${msgs.admin}</p>
+                            </h:panelGroup>
+                            <h:panelGroup rendered="${userController.ownerRole}">
+                                <p>${msgs.owner}</p>
+                            </h:panelGroup>
                         </div>
-                    </div>
-                    <div class="myAccount-edit">
-                        <h:link outcome="edit_account" value="${msgs.edit_account_data}" styleClass="type-button"/>
                     </div>
                 </div>
             </div>

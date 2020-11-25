@@ -1,12 +1,13 @@
 package pl.vmrent.web.service;
 
 import pl.vmrent.web.exception.UserNotFoundException;
+import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.repository.UserRepository;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
@@ -19,11 +20,10 @@ public class UserService
     UserRepository userRepository;
 
     @Inject
-    PasswordService passwordService;
+    HttpServletRequest request;
 
     public User addUser(@Valid User user)
     {
-        user.setPassword(passwordService.hash(user.getPassword()));
         return userRepository.save(user);
     }
 
@@ -34,8 +34,24 @@ public class UserService
 
     public User getCurrentUser()
     {
-        String currentUsername = FacesContext.getCurrentInstance().getExternalContext().getUserPrincipal().getName();
-        return findUserByUsername(currentUsername).orElseThrow(UserNotFoundException::new);
+        return findUserByUsername(request.getRemoteUser()).orElseThrow(UserNotFoundException::new);
+    }
+
+    public Role getCurrentRole()
+    {
+        if (request.isUserInRole(Role.User.name()))
+        {
+            return Role.User;
+        }
+        if (request.isUserInRole(Role.Admin.name()))
+        {
+            return Role.Admin;
+        }
+        if (request.isUserInRole(Role.Owner.name()))
+        {
+            return Role.Owner;
+        }
+        return null;
     }
 
     public List<User> getAll()
@@ -45,8 +61,7 @@ public class UserService
 
     public boolean updateUser(@Valid User user)
     {
-        Optional<User> optional = userRepository.findById(user.getId());
-        if (optional.isPresent())
+        if (userRepository.existsById(user.getId()))
         {
             userRepository.save(user);
             return true;
@@ -56,8 +71,7 @@ public class UserService
 
     public boolean deleteUser(UUID userId)
     {
-        Optional<User> optional = userRepository.findById(userId);
-        if (optional.isPresent())
+        if (userRepository.existsById(userId))
         {
             userRepository.deleteById(userId);
             return true;

@@ -1,5 +1,6 @@
 package pl.vmrent.web.controller.user;
 
+import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 

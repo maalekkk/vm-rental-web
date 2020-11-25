@@ -12,14 +12,13 @@
     <h:body>
         <div class="container">
             <div class="content">
-                <h:form>
+                <form action="j_security_check" method="post">
                     <h:outputLabel value="#{msgs.login}"/>
-                    <h:inputText required="true" value="#{loginController.username}" autocomplete="off"/>
+                    <h:inputText required="true" id="j_username" autocomplete="off"/>
                     <h:outputLabel value="#{msgs.password}"/>
-                    <h:inputSecret required="true" value="#{loginController.password}"/>
-                    <h:commandButton value="#{msgs.sing_in}" action="#{loginController.submit}"/>
-                    <h:link value="#{msgs.sign_up_request}" styleClass="sing_up_text" outcome="register"/>
-                </h:form>
+                    <h:inputSecret required="true" id="j_password"/>
+                    <input type="submit" value="#{msgs.sing_in}"/>
+                </form>
             </div>
         </div>
     </h:body>
