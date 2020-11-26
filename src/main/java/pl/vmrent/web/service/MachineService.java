@@ -3,15 +3,15 @@ package pl.vmrent.web.service;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.repository.MachineRepository;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-@RequestScoped
-public class MachineService
+@ViewScoped
+public class MachineService implements Serializable
 {
     @Inject
     MachineRepository machineRepository;
@@ -33,8 +33,7 @@ public class MachineService
 
     public boolean updateMachine(@Valid Machine machine)
     {
-        Optional<Machine> optional = machineRepository.findById(machine.getId());
-        if (optional.isPresent())
+        if (machineRepository.existsById(machine.getId()))
         {
             machineRepository.save(machine);
             return true;
@@ -42,14 +41,8 @@ public class MachineService
         return false;
     }
 
-    public boolean deleteMachine(UUID machineId)
+    public boolean deleteMachine(Machine machine)
     {
-        Optional<Machine> optional = machineRepository.findById(machineId);
-        if (optional.isPresent())
-        {
-            machineRepository.deleteById(machineId);
-            return true;
-        }
-        return false;
+        return machineRepository.delete(machine);
     }
 }

@@ -2,7 +2,7 @@ package pl.vmrent.web.repository;
 
 import pl.vmrent.web.model.Identity;
 
-import javax.persistence.EntityNotFoundException;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,13 +16,8 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     private final List<T> elements = Collections.synchronizedList(new ArrayList<>());
 
     @Override
-    public <S extends T> S save(S entity)
+    public <S extends T> S save(@NotNull S entity)
     {
-        if (entity == null)
-        {
-            throw new IllegalArgumentException();
-        }
-
         synchronized (elements)
         {
             int index = elements.indexOf(entity);
@@ -47,21 +42,17 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     @Override
     public Optional<T> findById(ID id)
     {
-        if (id == null)
-        {
-            throw new IllegalArgumentException();
-        }
-        return elements.stream().filter(element -> element.getId().equals(id)).findFirst();
+        return findAll().stream().filter(e -> e.getId().equals(id)).findFirst();
     }
 
     public Optional<T> findByUniquePredicate(Predicate<T> predicate)
     {
-        return elements.stream().filter(predicate).findFirst();
+        return findAll().stream().filter(predicate).findFirst();
     }
 
     public List<T> findByPredicate(Predicate<T> predicate)
     {
-        return elements.stream().filter(predicate).collect(Collectors.toList());
+        return Collections.unmodifiableList(elements.stream().filter(predicate).collect(Collectors.toList()));
     }
 
     @Override
@@ -77,11 +68,11 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     }
 
     @Override
-    public void deleteById(ID id)
+    public boolean delete(@NotNull T entity)
     {
         synchronized (elements)
         {
-            elements.remove(findById(id).orElseThrow(EntityNotFoundException::new));
+            return elements.remove(entity);
         }
     }
 

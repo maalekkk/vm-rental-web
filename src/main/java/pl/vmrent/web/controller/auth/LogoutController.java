@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 @Named
 @RequestScoped
@@ -16,12 +15,8 @@ public class LogoutController
 
     public String submit() throws ServletException
     {
-        HttpSession session = request.getSession();
-        if (session != null)
-        {
-            request.logout();
-            session.invalidate();
-        }
-        return "logout";
+        request.logout();
+        request.getSession().invalidate();
+        return "root";
     }
 }

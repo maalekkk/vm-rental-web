@@ -4,17 +4,16 @@ import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.service.MachineService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
 @Named
-@RequestScoped
-public class MachineListController
+@ViewScoped
+public class MachineListController implements Serializable
 {
-    private Machine machine;
-
     private List<Machine> machines;
 
     @Inject
@@ -24,27 +23,16 @@ public class MachineListController
     private void init()
     {
         machines = machineService.getAll();
-        System.out.println("Xd");
     }
 
-    public String deleteMachine()
+    public void deleteMachine(Machine machine)
     {
-        return machineService.deleteMachine(machine.getId()) ? "" : "";
-        //TODO ERROR PAGE
+        machineService.deleteMachine(machine);
+        //machines.remove(machine);
     }
 
     public List<Machine> getMachines()
     {
         return machines;
-    }
-
-    public Machine getMachine()
-    {
-        return machine;
-    }
-
-    public void setMachine(Machine machine)
-    {
-        this.machine = machine;
     }
 }

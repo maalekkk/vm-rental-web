@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RequestScoped
 public class UserService
@@ -69,17 +68,12 @@ public class UserService
         return false;
     }
 
-    public boolean deleteUser(UUID userId)
+    public boolean deleteUser(User user)
     {
-        if (userRepository.existsById(userId))
-        {
-            userRepository.deleteById(userId);
-            return true;
-        }
-        return false;
+        return userRepository.delete(user);
     }
 
-    public boolean changeUserActivity(@Valid User user)
+    public boolean changeUserActivity(User user)
     {
         user.setEnabled(!user.isEnabled());
         return updateUser(user);

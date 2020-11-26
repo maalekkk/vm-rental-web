@@ -66,28 +66,18 @@
 
     <!-- SESSION -->
     <session-config>
-        <session-timeout>15</session-timeout>
+        <session-timeout>30</session-timeout>
         <cookie-config>
-            <http-only>true</http-only>
+            <http-only>false</http-only>
+            <secure>true</secure>
         </cookie-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
 
     <!-- WELCOME FILE -->
     <welcome-file-list>
-        <welcome-file>index</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
-
-    <!-- DEVELOPMENT -->
-    <!-- REMOVE THIS ON PRODUCTION! -->
-    <context-param>
-        <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Development</param-value>
-    </context-param>
-    <context-param>
-        <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
-        <param-value>0</param-value>
-    </context-param>
 
     <!-- PRIMEFACES THEME -->
     <context-param>

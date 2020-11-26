@@ -1,19 +1,18 @@
 package pl.vmrent.web.controller.user;
 
-import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 @Named
-@RequestScoped
-public class UserListController
+@ViewScoped
+public class UserListController implements Serializable
 {
     private List<User> users;
 
@@ -26,10 +25,10 @@ public class UserListController
         users = userService.getAll();
     }
 
-    public String deleteUser(UUID userId)
+    public void deleteUser(User user)
     {
-        return userService.deleteUser(userId) ? "" : "";
-        //TODO ERROR PAGE
+        userService.deleteUser(user);
+        users.remove(user);
     }
 
     public List<User> getUsers()

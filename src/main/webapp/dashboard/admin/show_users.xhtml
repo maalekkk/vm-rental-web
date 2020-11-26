@@ -29,8 +29,8 @@
                     </h:column>
                     <h:column>
                         <f:facet name="header">AKCJE</f:facet>
-                        <h:commandButton rendered="${not user.enabled}" value="Aktywuj" immediate="true" styleClass="table-purple-button"/>
-                        <h:commandButton rendered="${user.enabled}" value="Deaktywuj" immediate="true" styleClass="table-purple-button"/>
+                        <h:commandButton rendered="${not user.enabled}" value="Aktywuj" styleClass="table-purple-button"/>
+                        <h:commandButton rendered="${user.enabled}" value="Deaktywuj" styleClass="table-purple-button"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

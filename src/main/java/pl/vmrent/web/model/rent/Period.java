@@ -3,7 +3,6 @@ package pl.vmrent.web.model.rent;
 import pl.vmrent.web.validator.period.PeriodConstraint;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
 

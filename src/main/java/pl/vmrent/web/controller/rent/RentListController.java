@@ -5,14 +5,15 @@ import pl.vmrent.web.model.rent.Rent;
 import pl.vmrent.web.service.RentService;
 
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
 @Named
-@RequestScoped
-public class RentListController
+@ViewScoped
+public class RentListController implements Serializable
 {
     private List<Rent> rents;
 

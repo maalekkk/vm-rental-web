@@ -9,6 +9,7 @@ import java.io.Serializable;
 public abstract class MachineController<T extends Machine> implements Serializable
 {
     protected final MachineService machineService;
+
     @Valid
     protected T machine;
 
