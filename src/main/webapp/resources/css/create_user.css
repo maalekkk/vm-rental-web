@@ -20,7 +20,7 @@
     width: 100%;
 }
 
-.create-form form input[type=text],.create-form form input[type=password] {
+.create-form form input[type=text], .create-form form input[type=password] {
     font-size: 15px;
     margin-bottom: 15px;
     border-right: none;
@@ -48,8 +48,8 @@
     width: 57%;
     color: rgba(0, 0, 0, .9);
     border-radius: 4px;
-    border: 2px solid rgba(0,203,169,.15);
-    background-color: rgba(120,120,120,.07);
+    border: 2px solid rgba(0, 203, 169, .15);
+    background-color: rgba(120, 120, 120, .07);
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     font-weight: bold;

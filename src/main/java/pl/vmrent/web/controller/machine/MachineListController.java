@@ -1,8 +1,6 @@
 package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.Machine;
-import pl.vmrent.web.model.machine.MachineGaming;
-import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
 
 import javax.annotation.PostConstruct;

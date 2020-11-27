@@ -4,11 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
-    <ui:insert name="metadata"/>
-
     <h:head>
         <h:outputStylesheet library="css" name="main_template.css"/>
         <h:outputStylesheet library="css" name="fonts.css"/>
@@ -45,17 +42,7 @@
                 </div>
                 <div style="border-top:1px solid rgba(50, 50, 50, 0.999)"></div>
                 <div class="navigationInfo">
-                        <ui:insert name="breadcrumbs"/>
-                        <!--<ui:composition>-->
-                        <!--<ui:insert name="breadCrumbs"/>-->
-                        <!--</ui:composition>-->
-                        <!--<p:breadCrumb>
-                            <p:menuitem value="Categories" url="http://google.pl"/>
-                            <p:menuitem value="Sports" url="http://onet.pl"/>
-                            <p:menuitem value="Basketball" url="http://onet.pl"/>
-                            <p:menuitem value="NBA" url="http://onet.pl"/>
-                            <p:menuitem value="Teams" url="http://onet.pl"/>
-                        </p:breadCrumb>-->
+                    <ui:insert name="breadcrumbs"/>
                 </div>
                 <div class="title">
                     <ui:insert name="titleText"/>

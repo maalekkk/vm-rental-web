@@ -1,62 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
-<f:view>
-    <ui:composition>
-        <ul class="menu">
-            <li class="menu-item">
-                <h:link outcome="/dashboard/index">
-                    <div class="iconBlock">
-                        <i class="fa fa-home icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['main']}"/>
-                </h:link>
-            </li>
-            <li class="menu-item">
-                <h:link outcome="/dashboard/owner/create_vm">
-                    <div class="iconBlock">
-                        <i class="fa fa-plus icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['create_vm']}"/>
-                </h:link>
-            </li>
-            <li class="menu-item">
-                <h:link outcome="/dashboard/show_vms">
-                    <div class="iconBlock">
-                        <i class="fa fa-calendar-plus-o icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['show_vms']}"/>
-                </h:link>
-            </li>
-            <li class="menu-item">
-                <h:link outcome="/dashboard/show_rents">
-                    <div class="iconBlock">
-                        <i class="fa fa-calendar icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['show_rents']}"/>
-                </h:link>
-            </li>
-            <li class="menu-item">
-                <h:link outcome="/dashboard/admin/show_users">
-                    <div class="iconBlock">
-                        <i class="fa fa-users icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['show_users']}"/>
-                </h:link>
-            </li>
-            <li class="menu-item">
-                <h:link outcome="/dashboard/app_info">
-                    <div class="iconBlock">
-                        <i class="fa fa-info icon"/>
-                    </div>
-                    <h:outputLabel value="#{msgs['app_info_title']}"/>
-                </h:link>
-            </li>
-        </ul>
-    </ui:composition>
-</f:view>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ul class="menu">
+        <li class="menu-item">
+            <h:link outcome="/dashboard/index">
+                <div class="iconBlock">
+                    <i class="fa fa-home icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.main}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/owner/create_vm">
+                <div class="iconBlock">
+                    <i class="fa fa-plus icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.create_vm}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/show_vms">
+                <div class="iconBlock">
+                    <i class="fa fa-calendar-plus-o icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.show_vms}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/show_rents">
+                <div class="iconBlock">
+                    <i class="fa fa-calendar icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.show_rents}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/admin/create_user">
+                <div class="iconBlock">
+                    <i class="fa fa-user-plus icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.create_user}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/admin/show_users">
+                <div class="iconBlock">
+                    <i class="fa fa-users icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.show_users}"/>
+            </h:link>
+        </li>
+        <li class="menu-item">
+            <h:link outcome="/dashboard/app_info">
+                <div class="iconBlock">
+                    <i class="fa fa-info icon"/>
+                </div>
+                <h:outputLabel value="#{msgs.app_info_title}"/>
+            </h:link>
+        </li>
+    </ul>
+</ui:composition>

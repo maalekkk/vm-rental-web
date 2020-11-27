@@ -53,4 +53,14 @@ public class MachineController implements Serializable
     {
         this.machine = machine;
     }
+
+    public MachineGaming getMachineGaming()
+    {
+        return machine instanceof MachineGaming ? (MachineGaming) machine : null;
+    }
+
+    public MachineWorkstation getMachineWorkstation()
+    {
+        return machine instanceof MachineWorkstation ? (MachineWorkstation) machine : null;
+    }
 }
