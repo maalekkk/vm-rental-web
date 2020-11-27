@@ -1,6 +1,7 @@
 package pl.vmrent.web.repository;
 
 import pl.vmrent.web.model.user.User;
+import pl.vmrent.web.repository.generator.UuidGenerator;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -8,8 +9,13 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 @ApplicationScoped
-public class UserRepository extends AbstractCrudRepository<@Valid User, UUID>
+public class UserRepository extends InMemoryRepository<@Valid User, UUID>
 {
+    public UserRepository()
+    {
+        super(new UuidGenerator());
+    }
+
     @PostConstruct
     private void init()
     {

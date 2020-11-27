@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 public class UniqueMachineNameValidator implements ConstraintValidator<UniqueMachineName, String>
 {
     @Inject
-    MachineService machineService;
+    private MachineService machineService;
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext)

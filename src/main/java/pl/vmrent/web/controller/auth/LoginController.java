@@ -1,33 +1,43 @@
 package pl.vmrent.web.controller.auth;
 
+import pl.vmrent.web.model.user.User;
+import pl.vmrent.web.service.UserService;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Optional;
 
 @Named
 @RequestScoped
 public class LoginController
 {
     String username;
-
     String password;
+
+    @Inject
+    private UserService userService;
 
     @Inject
     private HttpServletRequest request;
 
     public String submit()
     {
-        try
+        if (userService.findUserByUsername(username).isPresent())
         {
-            request.login(username, password);
+            try
+            {
+                request.login(username, password);
+                return "dashboard";
+            }
+            catch (ServletException ignored)
+            {
+                //TODO LOGGER
+            }
         }
-        catch (ServletException e)
-        {
-            return "root";
-        }
-        return "dashboard";
+        return "root";
     }
 
     public String getUsername()

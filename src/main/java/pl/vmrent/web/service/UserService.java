@@ -1,6 +1,5 @@
 package pl.vmrent.web.service;
 
-import pl.vmrent.web.exception.UserNotFoundException;
 import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.repository.UserRepository;
@@ -16,12 +15,12 @@ import java.util.Optional;
 public class UserService
 {
     @Inject
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Inject
-    HttpServletRequest request;
+    private HttpServletRequest request;
 
-    public User addUser(@Valid User user)
+    public User saveUser(@Valid User user)
     {
         return userRepository.save(user);
     }
@@ -33,7 +32,7 @@ public class UserService
 
     public User getCurrentUser()
     {
-        return findUserByUsername(request.getRemoteUser()).orElseThrow(UserNotFoundException::new);
+        return findUserByUsername(request.getRemoteUser()).orElse(null);
     }
 
     public Role getCurrentRole()
@@ -58,24 +57,14 @@ public class UserService
         return userRepository.findAll();
     }
 
-    public boolean updateUser(@Valid User user)
+    public void deleteUser(User user)
     {
-        if (userRepository.existsById(user.getId()))
-        {
-            userRepository.save(user);
-            return true;
-        }
-        return false;
+        userRepository.delete(user);
     }
 
-    public boolean deleteUser(User user)
-    {
-        return userRepository.delete(user);
-    }
-
-    public boolean changeUserActivity(User user)
+    public void changeUserActivity(User user)
     {
         user.setEnabled(!user.isEnabled());
-        return updateUser(user);
+        userRepository.save(user);
     }
 }

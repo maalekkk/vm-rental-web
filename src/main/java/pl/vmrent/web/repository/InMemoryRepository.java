@@ -1,6 +1,7 @@
 package pl.vmrent.web.repository;
 
 import pl.vmrent.web.model.Identity;
+import pl.vmrent.web.repository.generator.PrimaryKeyGenerator;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -11,26 +12,31 @@ import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends Serializable> implements CrudRepository<T, ID>
+public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Serializable> implements Repository<T, ID>
 {
+    private final PrimaryKeyGenerator<ID> generator;
     private final List<T> elements = Collections.synchronizedList(new ArrayList<>());
+
+    public InMemoryRepository(PrimaryKeyGenerator<ID> generator)
+    {
+        this.generator = generator;
+    }
 
     @Override
     public <S extends T> S save(@NotNull S entity)
     {
-        synchronized (elements)
+        if (entity.getId() == null)
+        {
+            entity.setId(generator.getId());
+            elements.add(entity);
+        }
+        else
         {
             int index = elements.indexOf(entity);
-            if (index == -1)
-            {
-                elements.add(entity);
-            }
-            else
-            {
-                elements.set(index, entity);
-            }
-            return entity;
+            elements.set(index, entity);
         }
+        return entity;
+
     }
 
     @Override
@@ -42,23 +48,23 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     @Override
     public Optional<T> findById(ID id)
     {
-        return findAll().stream().filter(e -> e.getId().equals(id)).findFirst();
+        return elements.stream().filter(e -> e.getId().equals(id)).findFirst();
     }
 
     public Optional<T> findByUniquePredicate(Predicate<T> predicate)
     {
-        return findAll().stream().filter(predicate).findFirst();
+        return elements.stream().filter(predicate).findFirst();
     }
 
     public List<T> findByPredicate(Predicate<T> predicate)
     {
-        return Collections.unmodifiableList(elements.stream().filter(predicate).collect(Collectors.toList()));
+        return elements.stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override
     public List<T> findAll()
     {
-        return Collections.unmodifiableList(elements);
+        return new ArrayList<>(elements);
     }
 
     @Override
@@ -68,20 +74,14 @@ public abstract class AbstractCrudRepository<T extends Identity<ID>, ID extends 
     }
 
     @Override
-    public boolean delete(@NotNull T entity)
+    public void delete(@NotNull T entity)
     {
-        synchronized (elements)
-        {
-            return elements.remove(entity);
-        }
+        elements.remove(entity);
     }
 
     @Override
     public void deleteAll()
     {
-        synchronized (elements)
-        {
-            elements.clear();
-        }
+        elements.clear();
     }
 }

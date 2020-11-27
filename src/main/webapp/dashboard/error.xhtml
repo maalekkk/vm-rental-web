@@ -8,11 +8,11 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['error_title']}</h:outputLabel>
+            <h:outputLabel>#{msgs['error_title']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="editAccount-container">
-                <h:outputLabel>${msgs['error_message']}</h:outputLabel>
+                <h:outputLabel>#{msgs['error_message']}</h:outputLabel>
                 <i class="fa fa-frown-o"/>
             </div>
         </ui:define>

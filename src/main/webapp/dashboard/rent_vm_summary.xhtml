@@ -8,24 +8,24 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['rent_vm']}</h:outputLabel>
+            <h:outputLabel>#{msgs['rent_vm']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="editAccount-container">
                 <div class="editAccount">
                     <div class="editAccount-data">
                         <div class="editAccount-column">
-                            <h:outputLabel>${msgs.vm_name}:</h:outputLabel>
-                            <h:outputLabel>${msgs.vm_type}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.vm_name}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.vm_type}:</h:outputLabel>
                             <!--PARAMETRY JAKO STRING-->
-                            <h:outputLabel>${msgs.start_time}:</h:outputLabel>
-                            <h:outputLabel>${msgs.end_time}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.start_time}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.end_time}:</h:outputLabel>
                         </div>
                         <div class="editAccount-column-create-form">
                         </div>
                     </div>
                     <div class="editAccount-edit">
-                        <h:commandButton value="${msgs.rent}" styleClass="type-button"/>
+                        <h:commandButton value="#{msgs.rent}" styleClass="type-button"/>
                     </div>
                 </div>
             </div>

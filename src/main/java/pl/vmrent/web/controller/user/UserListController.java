@@ -14,10 +14,10 @@ import java.util.List;
 @ViewScoped
 public class UserListController implements Serializable
 {
-    private List<User> users;
-
     @Inject
     private UserService userService;
+
+    private List<User> users;
 
     @PostConstruct
     private void init()
@@ -25,10 +25,16 @@ public class UserListController implements Serializable
         users = userService.getAll();
     }
 
-    public void deleteUser(User user)
+    public String changeUserActivity(User user)
+    {
+        userService.changeUserActivity(user);
+        return "show_users.xhtml?faces-redirect=true";
+    }
+
+    public String deleteUser(User user)
     {
         userService.deleteUser(user);
-        users.remove(user);
+        return "show_users.xhtml?faces-redirect=true";
     }
 
     public List<User> getUsers()

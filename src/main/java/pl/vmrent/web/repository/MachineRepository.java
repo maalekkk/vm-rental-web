@@ -3,6 +3,7 @@ package pl.vmrent.web.repository;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.machine.MachineGaming;
 import pl.vmrent.web.model.machine.MachineWorkstation;
+import pl.vmrent.web.repository.generator.UuidGenerator;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -10,8 +11,13 @@ import javax.validation.Valid;
 import java.util.UUID;
 
 @ApplicationScoped
-public class MachineRepository extends AbstractCrudRepository<@Valid Machine, UUID>
+public class MachineRepository extends InMemoryRepository<@Valid Machine, UUID>
 {
+    public MachineRepository()
+    {
+        super(new UuidGenerator());
+    }
+
     @PostConstruct
     private void init()
     {

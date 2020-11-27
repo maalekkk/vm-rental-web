@@ -3,6 +3,7 @@ package pl.vmrent.web.controller.rent;
 
 import pl.vmrent.web.model.rent.Rent;
 import pl.vmrent.web.service.RentService;
+import pl.vmrent.web.util.DateTimeProvider;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -15,10 +16,13 @@ import java.util.List;
 @ViewScoped
 public class RentListController implements Serializable
 {
-    private List<Rent> rents;
-
     @Inject
     private RentService rentService;
+
+    @Inject
+    private DateTimeProvider timeProvider;
+
+    private List<Rent> rents;
 
     @PostConstruct
     private void init()

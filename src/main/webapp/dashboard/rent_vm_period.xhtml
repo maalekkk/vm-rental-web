@@ -9,15 +9,15 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['rent_vm']}</h:outputLabel>
+            <h:outputLabel>#{msgs['rent_vm']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="myAccount-container">
                 <div class="myAccount">
                     <div class="myAccount-data">
                         <div class="myAccount-column">
-                            <h:outputLabel>${msgs.start_time}:</h:outputLabel>
-                            <h:outputLabel>${msgs.end_time}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.start_time}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.end_time}:</h:outputLabel>
                         </div>
                         <div class="myAccount-column">
                             <h:inputText a:type="date" styleClass="date-picker"/>
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="myAccount-edit">
-                        <h:commandButton styleClass="type-button" value="${msgs.next}"/>
+                        <h:commandButton styleClass="type-button" value="#{msgs.next}"/>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-package pl.vmrent.web.controller.machine.create;
+package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
@@ -9,10 +9,10 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class WorkstationCreator extends MachineCreateController<MachineWorkstation>
+public class MachineWorkstationController extends MachineController<MachineWorkstation>
 {
     @Inject
-    public WorkstationCreator(MachineWorkstation machine, MachineService machineService)
+    public MachineWorkstationController(MachineWorkstation machine, MachineService machineService)
     {
         super(machine, machineService);
     }

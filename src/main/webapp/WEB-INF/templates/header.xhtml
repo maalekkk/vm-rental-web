@@ -8,12 +8,12 @@
 <f:view>
     <ui:composition>
         <div class="userContent">
-            <h:link value="${msgs['welcome']}, ${userController.currentUser.username}" outcome="/dashboard/my_account"
+            <h:link value="#{msgs['welcome']}, #{userController.currentUser.username}" outcome="/dashboard/my_account"
                     styleClass="usersActions">
                 <i class="fa fa-user"/>
             </h:link>
             <h:form>
-                <h:commandLink value="${msgs['logout']}" action="#{logoutController.submit}" styleClass="usersActions">
+                <h:commandLink value="#{msgs['logout']}" action="#{logoutController.submit}" styleClass="usersActions">
                     <i class="fa fa-power-off" id="logout"/>
                 </h:commandLink>
             </h:form>

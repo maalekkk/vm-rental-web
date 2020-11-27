@@ -16,13 +16,11 @@ import java.util.Optional;
 public class RentService
 {
     @Inject
-    RentRepository rentRepository;
-
+    private RentRepository rentRepository;
     @Inject
-    MachineService machineService;
-
+    private MachineService machineService;
     @Inject
-    UserService userService;
+    private UserService userService;
 
     public Rent addRent(@Valid Rent rent)
     {

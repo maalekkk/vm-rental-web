@@ -8,25 +8,25 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['show_rents']}</h:outputLabel>
+            <h:outputLabel>#{msgs['show_rents']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
-            <h:dataTable styleClass="table-purple" value="${rentListController.rents}" var="rent" rowClasses="table-purple-row" headerClass="table-purple-header">
+            <h:dataTable styleClass="table-purple" value="#{rentListController.rents}" var="rent" rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
-                    <f:facet name="header">${msgs['vm_name']}</f:facet>
-                    ${rent.machine}
+                    <f:facet name="header">#{msgs['vm_name']}</f:facet>
+                    #{rent.machine}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">${msgs['login']}</f:facet>
-                    ${rent.user}
+                    <f:facet name="header">#{msgs['login']}</f:facet>
+                    #{rent.user}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">${msgs['start_time']}</f:facet>
-                    ${rent.period.startDate}
+                    <f:facet name="header">#{msgs['start_time']}</f:facet>
+                    #{rent.period.startDate}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">${msgs['end_time']}</f:facet>
-                    ${rent.period.endDate}
+                    <f:facet name="header">#{msgs['end_time']}</f:facet>
+                    #{rent.period.endDate}
                 </h:column>
             </h:dataTable>
         </ui:define>

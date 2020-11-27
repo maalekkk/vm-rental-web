@@ -5,12 +5,18 @@ import java.util.UUID;
 
 public abstract class Entity implements Identity<UUID>
 {
-    private final UUID id = UUID.randomUUID();
+    private UUID id;
 
     @Override
     public UUID getId()
     {
         return id;
+    }
+
+    @Override
+    public void setId(UUID id)
+    {
+        this.id = id;
     }
 
     @Override

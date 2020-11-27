@@ -9,7 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String>
 {
     @Inject
-    UserService userService;
+    private UserService userService;
 
     @Override
     public boolean isValid(String s, ConstraintValidatorContext constraintValidatorContext)

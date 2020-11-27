@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-public interface CrudRepository<T extends Identity<ID>, ID extends Serializable> extends Serializable
+public interface Repository<T extends Identity<ID>, ID extends Serializable> extends Serializable
 {
     <S extends T> S save(@NotNull S entity);
 
@@ -19,7 +19,7 @@ public interface CrudRepository<T extends Identity<ID>, ID extends Serializable>
 
     long count();
 
-    boolean delete(@NotNull T entity);
+    void delete(@NotNull T entity);
 
     void deleteAll();
 }

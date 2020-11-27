@@ -8,29 +8,29 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['show_users']}</h:outputLabel>
+            <h:outputLabel>#{msgs['show_users']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <h:form>
-                <h:dataTable styleClass="table-purple" value="${userListController.users}" var="user"
+                <h:dataTable styleClass="table-purple" value="#{userListController.users}" var="user"
                              rowClasses="table-purple-row" headerClass="table-purple-header">
                     <h:column>
-                        <f:facet name="header">${msgs['login']}</f:facet>
-                        ${user.username}
+                        <f:facet name="header">#{msgs['login']}</f:facet>
+                        #{user.username}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">${msgs['full_name']}</f:facet>
-                        ${user.fullname}
+                        <f:facet name="header">#{msgs['full_name']}</f:facet>
+                        #{user.fullname}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">${msgs['enable_account']}</f:facet>
-                        <h:outputText rendered="${user.enabled}" value="${msgs['yes']}"/>
-                        <h:outputText rendered="${not user.enabled}" value="${msgs['no']}"/>
+                        <f:facet name="header">#{msgs['enable_account']}</f:facet>
+                        <h:outputText rendered="#{user.enabled}" value="#{msgs['yes']}"/>
+                        <h:outputText rendered="#{not user.enabled}" value="#{msgs['no']}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">AKCJE</f:facet>
-                        <h:commandButton rendered="${not user.enabled}" value="Aktywuj" styleClass="table-purple-button"/>
-                        <h:commandButton rendered="${user.enabled}" value="Deaktywuj" styleClass="table-purple-button"/>
+                        <h:commandButton action="#{userListController.changeUserActivity(user)}" value="ON/OFF" styleClass="table-purple-button"/>
+                        <h:commandButton action="#{userListController.deleteUser(user)}" value="#{msgs.remove}" styleClass="table-purple-button"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

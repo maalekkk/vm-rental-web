@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public abstract class MachineController<T extends Machine> implements Serializable
 {
-    protected final MachineService machineService;
+    private final MachineService machineService;
 
     @Valid
     protected T machine;
@@ -19,7 +19,11 @@ public abstract class MachineController<T extends Machine> implements Serializab
         this.machineService = machineService;
     }
 
-    public abstract String submit();
+    public String submit()
+    {
+        machineService.saveMachine(machine);
+        return "/dashboard/show_vms?faces-redirect=true";
+    }
 
     public T getMachine()
     {

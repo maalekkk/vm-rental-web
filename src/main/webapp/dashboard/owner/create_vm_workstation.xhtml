@@ -8,41 +8,41 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs.create_vm} (${msgs.vm_workstation_type})</h:outputLabel>
+            <h:outputLabel>#{msgs.create_vm} (#{msgs.vm_workstation_type})</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="create-form two-columns">
                 <h:form>
                     <div class="topInput">
                         <h:outputLabel value="#{msgs.vm_name}"/>
-                        <h:inputText id="vm_name" value="#{workstationCreator.machine.name}" autocomplete="off"/>
+                        <h:inputText id="vm_name" value="#{machineWorkstationController.machine.name}" autocomplete="off"/>
                         <h:message for="vm_name" id="vm_name_msg"/>
                     </div>
                     <div class="inputs-container">
                         <div class="leftSideForm">
                             <h:outputLabel value="#{msgs.no_of_cores}"/>
-                            <h:inputText id="no_of_cores" value="#{workstationCreator.machine.cores}" autocomplete="off"/>
+                            <h:inputText id="no_of_cores" value="#{machineWorkstationController.machine.cores}" autocomplete="off"/>
                             <h:message for="no_of_cores"/>
                             <h:outputLabel value="#{msgs.ram_size}"/>
-                            <h:inputText id="ram_size" value="#{workstationCreator.machine.ramSize}"/>
+                            <h:inputText id="ram_size" value="#{machineWorkstationController.machine.ramSize}"/>
                             <h:message for="ram_size"/>
                             <h:outputLabel value="#{msgs.hdd_size}"/>
-                            <h:inputText id="hdd_size" value="#{workstationCreator.machine.hddSize}"/>
+                            <h:inputText id="hdd_size" value="#{machineWorkstationController.machine.hddSize}"/>
                             <h:message for="hdd_size"/>
                         </div>
                         <div class="rightSideForm">
                             <h:outputLabel value="#{msgs.ssd_size}"/>
-                            <h:inputText id="ssd_size" value="#{workstationCreator.machine.ssdSize}"/>
+                            <h:inputText id="ssd_size" value="#{machineWorkstationController.machine.ssdSize}"/>
                             <h:message for="ssd_size"/>
                             <h:outputLabel value="#{msgs.net_cards}"/>
-                            <h:inputText id="net_cards" value="#{workstationCreator.machine.netCards}"/>
+                            <h:inputText id="net_cards" value="#{machineWorkstationController.machine.netCards}"/>
                             <h:message for="net_cards"/>
-                            <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{workstationCreator.machine.raidSupport}">
+                            <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{machineWorkstationController.machine.raidSupport}">
                                 <h:outputLabel value="#{msgs.raid_support}"/>
                             </h:selectBooleanCheckbox>
                         </div>
                     </div>
-                    <h:commandButton value="#{msgs.create_vm}" action="#{workstationCreator.submit}"/>
+                    <h:commandButton value="#{msgs.create_vm}" action="#{machineWorkstationController.submit}"/>
                 </h:form>
             </div>
         </ui:define>

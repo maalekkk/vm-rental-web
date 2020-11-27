@@ -4,6 +4,13 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <!-- DEVELOPMENT -->
+    <!-- REMOVE THIS ON PRODUCTION! -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+
     <!-- NAME -->
     <display-name>PAS 06 | VMRental Web App</display-name>
 

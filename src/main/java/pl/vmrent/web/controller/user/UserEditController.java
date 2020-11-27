@@ -1,6 +1,5 @@
 package pl.vmrent.web.controller.user;
 
-import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 
 import javax.faces.view.ViewScoped;
@@ -13,22 +12,12 @@ import java.io.Serializable;
 public class UserEditController implements Serializable
 {
     @Inject
-    UserService userService;
-    private User user;
+    private UserService userService;
 
     public String save()
     {
-        return userService.updateUser(user) ? "" : null;
+        //return userService.updateUser(user) ? "" : null;
         //TODO BACK TO LIST PAGE
-    }
-
-    public User getUser()
-    {
-        return user;
-    }
-
-    public void setUser(User user)
-    {
-        this.user = user;
+        return null;
     }
 }

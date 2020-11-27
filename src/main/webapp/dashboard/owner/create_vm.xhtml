@@ -8,15 +8,15 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs.create_vm}</h:outputLabel>
+            <h:outputLabel>#{msgs.create_vm}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="choose-machine-type-container">
                 <div class="choose-machine-type">
-                <h:outputLabel value="${msgs.vm_type_request}"/>
+                <h:outputLabel value="#{msgs.vm_type_request}"/>
                     <div class="type-buttons">
-                        <h:link outcome="create_vm_gaming" value="${msgs.vm_gaming_type}" styleClass="type-button"/>
-                        <h:link outcome="create_vm_workstation" value="${msgs.vm_workstation_type}" styleClass="type-button"/>
+                        <h:link outcome="create_vm_gaming" value="#{msgs.vm_gaming_type}" styleClass="type-button"/>
+                        <h:link outcome="create_vm_workstation" value="#{msgs.vm_workstation_type}" styleClass="type-button"/>
                     </div>
                 </div>
             </div>

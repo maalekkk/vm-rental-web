@@ -1,4 +1,4 @@
-package pl.vmrent.web.controller.machine.edit;
+package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.MachineGaming;
 import pl.vmrent.web.service.MachineService;
@@ -9,10 +9,10 @@ import javax.inject.Named;
 
 @Named
 @ViewScoped
-public class GamingEditor extends MachineEditController<MachineGaming>
+public class MachineGamingController extends MachineController<MachineGaming>
 {
     @Inject
-    public GamingEditor(MachineGaming machine, MachineService machineService)
+    public MachineGamingController(MachineGaming machine, MachineService machineService)
     {
         super(machine, machineService);
     }

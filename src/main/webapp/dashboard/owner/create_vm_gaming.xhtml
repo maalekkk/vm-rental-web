@@ -8,7 +8,7 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs.create_vm} (${msgs.vm_gaming_type})</h:outputLabel>
+            <h:outputLabel>#{msgs.create_vm} (#{msgs.vm_gaming_type})</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="create-form two-columns">
@@ -16,30 +16,30 @@
                     <div class="inputs-container">
                         <div class="leftSideForm">
                             <h:outputLabel value="#{msgs.vm_name}"/>
-                            <h:inputText id="vm_name" value="#{gamingCreator.machine.name}"
+                            <h:inputText id="vm_name" value="#{machineGamingController.machine.name}"
                                          autocomplete="off"/>
                             <h:message for="vm_name" id="vm_name_msg"/>
                             <h:outputLabel value="#{msgs.no_of_cores}"/>
-                            <h:inputText id="no_of_cores" value="#{gamingCreator.machine.cores}"
+                            <h:inputText id="no_of_cores" value="#{machineGamingController.machine.cores}"
                                          autocomplete="off"/>
                             <h:message for="no_of_cores"/>
                             <h:outputLabel value="#{msgs.ram_size}"/>
-                            <h:inputText id="ram_size" value="#{gamingCreator.machine.ramSize}"/>
+                            <h:inputText id="ram_size" value="#{machineGamingController.machine.ramSize}"/>
                             <h:message for="ram_size"/>
                         </div>
                         <div class="rightSideForm">
                             <h:outputLabel value="#{msgs.hdd_size}"/>
-                            <h:inputText id="hdd_size" value="#{gamingCreator.machine.hddSize}"/>
+                            <h:inputText id="hdd_size" value="#{machineGamingController.machine.hddSize}"/>
                             <h:message for="hdd_size"/>
                             <h:outputLabel value="#{msgs.gpu_power}"/>
-                            <h:inputText id="gpu_power" value="#{gamingCreator.machine.gpuPower}"/>
+                            <h:inputText id="gpu_power" value="#{machineGamingController.machine.gpuPower}"/>
                             <h:message for="gpu_power"/>
                             <h:outputLabel value="#{msgs.gpu_vram}"/>
-                            <h:inputText id="gpu_vram" value="#{gamingCreator.machine.gpuVram}"/>
+                            <h:inputText id="gpu_vram" value="#{machineGamingController.machine.gpuVram}"/>
                             <h:message for="gpu_vram"/>
                         </div>
                     </div>
-                    <h:commandButton value="#{msgs.create_vm}" action="#{gamingCreator.submit}"/>
+                    <h:commandButton value="#{msgs.create_vm}" action="#{machineGamingController.submit}"/>
                 </h:form>
             </div>
         </ui:define>

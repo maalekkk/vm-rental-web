@@ -14,21 +14,25 @@ import java.util.List;
 @ViewScoped
 public class MachineListController implements Serializable
 {
+    private final MachineService machineService;
     private List<Machine> machines;
 
     @Inject
-    private MachineService machineService;
+    public MachineListController(MachineService machineService)
+    {
+        this.machineService = machineService;
+    }
 
     @PostConstruct
-    private void init()
+    public void init()
     {
         machines = machineService.getAll();
     }
 
-    public void deleteMachine(Machine machine)
+    public String deleteMachine(Machine machine)
     {
         machineService.deleteMachine(machine);
-        //machines.remove(machine);
+        return "show_vms.xhtml?faces-redirect=true";
     }
 
     public List<Machine> getMachines()

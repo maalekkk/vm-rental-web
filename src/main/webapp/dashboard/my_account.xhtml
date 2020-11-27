@@ -8,28 +8,28 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>${msgs['my_account']}</h:outputLabel>
+            <h:outputLabel>#{msgs['my_account']}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="myAccount-container">
                 <div class="myAccount">
                     <div class="myAccount-data">
                         <div class="myAccount-column">
-                            <h:outputLabel>${msgs.login}:</h:outputLabel>
-                            <h:outputLabel>${msgs.full_name}:</h:outputLabel>
-                            <h:outputLabel>${msgs.role}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.login}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.full_name}:</h:outputLabel>
+                            <h:outputLabel>#{msgs.role}:</h:outputLabel>
                         </div>
                         <div class="myAccount-column">
-                            <p>${userController.currentUser.username}</p>
-                            <p>${userController.currentUser.fullname}</p>
-                            <h:panelGroup rendered="${userController.userRole}">
-                                <p>${msgs.client}</p>
+                            <p>#{userController.currentUser.username}</p>
+                            <p>#{userController.currentUser.fullname}</p>
+                            <h:panelGroup rendered="#{userController.userRole}">
+                                <p>#{msgs.client}</p>
                             </h:panelGroup>
-                            <h:panelGroup rendered="${userController.adminRole}">
-                                <p>${msgs.admin}</p>
+                            <h:panelGroup rendered="#{userController.adminRole}">
+                                <p>#{msgs.admin}</p>
                             </h:panelGroup>
-                            <h:panelGroup rendered="${userController.ownerRole}">
-                                <p>${msgs.owner}</p>
+                            <h:panelGroup rendered="#{userController.ownerRole}">
+                                <p>#{msgs.owner}</p>
                             </h:panelGroup>
                         </div>
                     </div>
