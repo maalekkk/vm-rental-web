@@ -28,8 +28,8 @@
                         <h:outputText rendered="#{not user.enabled}" value="#{msgs['no']}"/>
                     </h:column>
                     <h:column>
-                        <f:facet name="header">AKCJE</f:facet>
-                        <h:commandButton action="#{userListController.changeUserActivity(user)}" value="ON/OFF" styleClass="table-purple-button"/>
+                        <f:facet name="header">#{msgs.actions}</f:facet>
+                        <h:commandButton action="#{userListController.changeUserActivity(user)}" value="#{msgs.on_off}" styleClass="table-purple-button"/>
                         <h:commandButton action="#{userListController.deleteUser(user)}" value="#{msgs.remove}" styleClass="table-purple-button"/>
                     </h:column>
                 </h:dataTable>
