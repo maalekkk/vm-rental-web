@@ -1,6 +1,8 @@
 package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.Machine;
+import pl.vmrent.web.model.machine.MachineGaming;
+import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
 
 import javax.annotation.PostConstruct;
@@ -14,14 +16,10 @@ import java.util.List;
 @ViewScoped
 public class MachineListController implements Serializable
 {
-    private final MachineService machineService;
-    private List<Machine> machines;
-
     @Inject
-    public MachineListController(MachineService machineService)
-    {
-        this.machineService = machineService;
-    }
+    private MachineService machineService;
+
+    private List<Machine> machines;
 
     @PostConstruct
     public void init()

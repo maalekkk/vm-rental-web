@@ -1,6 +1,5 @@
 package pl.vmrent.web.controller.auth;
 
-import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 
 import javax.enterprise.context.RequestScoped;
@@ -8,7 +7,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 @Named
 @RequestScoped

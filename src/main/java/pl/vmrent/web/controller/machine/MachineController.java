@@ -1,23 +1,24 @@
 package pl.vmrent.web.controller.machine;
 
 import pl.vmrent.web.model.machine.Machine;
+import pl.vmrent.web.model.machine.MachineGaming;
+import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
 
-import javax.validation.Valid;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 
-public abstract class MachineController<T extends Machine> implements Serializable
+@Named
+@ViewScoped
+public class MachineController implements Serializable
 {
-    private final MachineService machineService;
+    @Inject
+    private MachineService machineService;
 
-    @Valid
-    protected T machine;
-
-    public MachineController(T machine, MachineService machineService)
-    {
-        this.machine = machine;
-        this.machineService = machineService;
-    }
+    private Machine machine = new MachineGaming();
 
     public String submit()
     {
@@ -25,12 +26,30 @@ public abstract class MachineController<T extends Machine> implements Serializab
         return "/dashboard/show_vms?faces-redirect=true";
     }
 
-    public T getMachine()
+    public void onTypeChange(ValueChangeEvent event)
+    {
+        String type = (String) event.getNewValue();
+        switch (type)
+        {
+            case "MachineGaming":
+            {
+                machine = new MachineGaming();
+                break;
+            }
+            case "MachineWorkstation":
+            {
+                machine = new MachineWorkstation();
+                break;
+            }
+        }
+    }
+
+    public Machine getMachine()
     {
         return machine;
     }
 
-    public void setMachine(T machine)
+    public void setMachine(Machine machine)
     {
         this.machine = machine;
     }

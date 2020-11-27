@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequestScoped
 public class MachineService
@@ -18,6 +19,11 @@ public class MachineService
     public Machine saveMachine(@Valid Machine machine)
     {
         return machineRepository.save(machine);
+    }
+
+    public Optional<Machine> findMachineById(UUID id)
+    {
+        return machineRepository.findById(id);
     }
 
     public Optional<Machine> findMachineByName(String name)

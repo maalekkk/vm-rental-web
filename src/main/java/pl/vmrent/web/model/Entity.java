@@ -19,6 +19,11 @@ public abstract class Entity implements Identity<UUID>
         this.id = id;
     }
 
+    public void setIdFromString(String s)
+    {
+        this.id = UUID.fromString(s);
+    }
+
     @Override
     public boolean equals(Object o)
     {

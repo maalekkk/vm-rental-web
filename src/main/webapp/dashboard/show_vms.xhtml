@@ -68,8 +68,8 @@
                         <f:facet name="header">#{msgs.actions}</f:facet>
                         <h:commandButton value="#{msgs.rent}" styleClass="table-purple-button"/>
                         <h:commandButton value="#{msgs.edit}" styleClass="table-purple-button"/>
-                        <h:commandButton value="#{msgs.remove}"
-                                         action="#{machineListController.deleteMachine(machine)}"
+                        <h:commandButton action="#{machineListController.deleteMachine(machine)}"
+                                         value="#{msgs.remove}"
                                          styleClass="table-purple-button"/>
                     </h:column>
                 </h:dataTable>
