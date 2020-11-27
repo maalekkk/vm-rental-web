@@ -1,80 +1,81 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <ui:composition template="/WEB-INF/templates/main_template.xhtml">
-        <ui:define name="titleText">
-            <h:outputLabel>#{msgs.show_vms}</h:outputLabel>
-        </ui:define>
-        <ui:define name="content">
-            <h:form>
-                <h:dataTable styleClass="table-purple click-row" value="#{machineListController.machines}" var="machine"
-                             rowClasses="table-purple-row" headerClass="table-purple-header">
-                    <h:column>
-                        <f:facet name="header">#{msgs.vm_type}</f:facet>
-                        <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{msgs.vm_gaming_type}"/>
-                        <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}"
-                                      value="#{msgs['vm_workstation_type']}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.vm_name}</f:facet>
-                        #{machine.name}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.no_of_cores}</f:facet>
-                        #{machine.cores}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.ram_size}</f:facet>
-                        #{machine.ramSize}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.hdd_size}</f:facet>
-                        #{machine.hddSize}
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.ssd_size}</f:facet>
-                        <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.ssdSize}"/>
-                        <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.net_cards}</f:facet>
-                        <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.netCards}"/>
-                        <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.raid_support}</f:facet>
-                        <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                            <h:outputText rendered="#{machine.raidSupport}" value="#{msgs.yes}"/>
-                            <h:outputText rendered="#{not machine.raidSupport}" value="#{msgs.no}"/>
-                        </h:panelGroup>
-                        <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.gpu_power}</f:facet>
-                        <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuPower}"/>
-                        <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.gpu_vram}</f:facet>
-                        <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuVram}"/>
-                        <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">#{msgs.actions}</f:facet>
-                        <h:commandButton value="#{msgs.rent}" styleClass="table-purple-button"/>
-                        <h:commandButton value="#{msgs.edit}" styleClass="table-purple-button"/>
-                        <h:commandButton action="#{machineListController.deleteMachine(machine)}"
-                                         value="#{msgs.remove}"
-                                         styleClass="table-purple-button"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-        </ui:define>
-    </ui:composition>
-</f:view>
-</html>
+<ui:composition template="/WEB-INF/templates/main_template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="breadcrumbs">
+        <p:breadCrumb>
+            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show_vms.xhtml"/>
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="titleText">
+        <h:outputLabel>#{msgs.show_vms}</h:outputLabel>
+    </ui:define>
+    <ui:define name="content">
+        <h:form>
+            <h:dataTable styleClass="table-purple click-row" value="#{machineListController.machines}" var="machine"
+                         rowClasses="table-purple-row" headerClass="table-purple-header">
+                <h:column>
+                    <f:facet name="header">#{msgs.vm_type}</f:facet>
+                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{msgs.vm_gaming_type}"/>
+                    <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}"
+                                  value="#{msgs['vm_workstation_type']}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.vm_name}</f:facet>
+                    #{machine.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.no_of_cores}</f:facet>
+                    #{machine.cores}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.ram_size}</f:facet>
+                    #{machine.ramSize}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.hdd_size}</f:facet>
+                    #{machine.hddSize}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.ssd_size}</f:facet>
+                    <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.ssdSize}"/>
+                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.net_cards}</f:facet>
+                    <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.netCards}"/>
+                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.raid_support}</f:facet>
+                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
+                        <h:outputText rendered="#{machine.raidSupport}" value="#{msgs.yes}"/>
+                        <h:outputText rendered="#{not machine.raidSupport}" value="#{msgs.no}"/>
+                    </h:panelGroup>
+                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.gpu_power}</f:facet>
+                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuPower}"/>
+                    <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.gpu_vram}</f:facet>
+                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuVram}"/>
+                    <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.actions}</f:facet>
+                    <h:commandButton value="#{msgs.rent}" styleClass="table-purple-button"/>
+                    <h:commandButton value="#{msgs.edit}" styleClass="table-purple-button"/>
+                    <h:commandButton action="#{machineListController.deleteMachine(machine)}"
+                                     value="#{msgs.remove}"
+                                     styleClass="table-purple-button"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

@@ -2,10 +2,12 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <ui:define name="titleText">
-        <h:outputLabel>#{msgs.create_vm}</h:outputLabel>
-    </ui:define>
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="breadcrumbs">
+    <p:breadCrumb>
+        <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+        <p:menuitem value="#{msgs.create_vm}" url="/VMRental/dashboard/owner/create_vm.xhtml"/>
+    </p:breadCrumb>
     <ui:define name="content">
         <div class="create-form two-columns">
             <h:form>
@@ -68,4 +70,3 @@
         </div>
     </ui:define>
 </ui:composition>
-
