@@ -21,21 +21,26 @@
                             <h:message for="vm_name" id="vm_name_msg"/>
                             <h:outputLabel value="#{msgs.no_of_cores}"/>
                             <h:inputText id="no_of_cores" value="#{machineGamingController.machine.cores}"
-                                         autocomplete="off"/>
+                                         autocomplete="off"
+                                         converterMessage="#{val_msgs.conv_int}"/>
                             <h:message for="no_of_cores"/>
                             <h:outputLabel value="#{msgs.ram_size}"/>
-                            <h:inputText id="ram_size" value="#{machineGamingController.machine.ramSize}"/>
+                            <h:inputText id="ram_size" value="#{machineGamingController.machine.ramSize}"
+                                         converterMessage="#{val_msgs.conv_int}"/>
                             <h:message for="ram_size"/>
                         </div>
                         <div class="rightSideForm">
                             <h:outputLabel value="#{msgs.hdd_size}"/>
-                            <h:inputText id="hdd_size" value="#{machineGamingController.machine.hddSize}"/>
+                            <h:inputText id="hdd_size" value="#{machineGamingController.machine.hddSize}"
+                                         converterMessage="#{val_msgs.conv_int}"/>
                             <h:message for="hdd_size"/>
                             <h:outputLabel value="#{msgs.gpu_power}"/>
-                            <h:inputText id="gpu_power" value="#{machineGamingController.machine.gpuPower}"/>
+                            <h:inputText id="gpu_power" value="#{machineGamingController.machine.gpuPower}"
+                                         converterMessage="#{val_msgs.conv_int}"/>
                             <h:message for="gpu_power"/>
                             <h:outputLabel value="#{msgs.gpu_vram}"/>
-                            <h:inputText id="gpu_vram" value="#{machineGamingController.machine.gpuVram}"/>
+                            <h:inputText id="gpu_vram" value="#{machineGamingController.machine.gpuVram}"
+                                         converterMessage="#{val_msgs.conv_int}"/>
                             <h:message for="gpu_vram"/>
                         </div>
                     </div>
