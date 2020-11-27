@@ -4,9 +4,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
+        <ui:define name="breadcrumbs">
+            <p:breadCrumb>
+                <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+                <p:menuitem value="#{msgs.create_vm}" url="/VMRental/dashboard/owner/create_vm.xhtml"/>
+                <p:menuitem value="#{msgs.vm_gaming_type}" url="/VMRental/dashboard/owner/create_vm_workstation.xhtml"/>
+            </p:breadCrumb>
+        </ui:define>
         <ui:define name="titleText">
             <h:outputLabel>#{msgs.create_vm} (#{msgs.vm_workstation_type})</h:outputLabel>
         </ui:define>
