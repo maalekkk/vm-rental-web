@@ -8,12 +8,12 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>#{msgs['main']}</h:outputLabel>
+            <h:outputLabel>#{msgs.main}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <div class="main-page">
-                <p>#{msgs['welcome']}, #{userController.currentUser.fullname}.</p>
-                <p>#{msgs['welcome_text']}</p>
+                <p>#{msgs.welcome}, #{userController.currentUser.fullname}.</p>
+                <p>#{msgs.welcome_text}</p>
                 <!--                    TO DO - wyświetlić trzy najpopularniejsze maszyny -->
                 <!--                    <h:outputLabel>#{msgs['popular_machines']}</h:outputLabel>-->
                 <!--                    <div class="popular-machine-box">-->

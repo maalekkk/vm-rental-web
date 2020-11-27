@@ -8,24 +8,24 @@
 <f:view>
     <ui:composition template="/WEB-INF/templates/main_template.xhtml">
         <ui:define name="titleText">
-            <h:outputLabel>#{msgs['show_users']}</h:outputLabel>
+            <h:outputLabel>#{msgs.show_users}</h:outputLabel>
         </ui:define>
         <ui:define name="content">
             <h:form>
                 <h:dataTable styleClass="table-purple" value="#{userListController.users}" var="user"
                              rowClasses="table-purple-row" headerClass="table-purple-header">
                     <h:column>
-                        <f:facet name="header">#{msgs['login']}</f:facet>
+                        <f:facet name="header">#{msgs.login}</f:facet>
                         #{user.username}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">#{msgs['full_name']}</f:facet>
+                        <f:facet name="header">#{msgs.full_name}</f:facet>
                         #{user.fullname}
                     </h:column>
                     <h:column>
-                        <f:facet name="header">#{msgs['enable_account']}</f:facet>
-                        <h:outputText rendered="#{user.enabled}" value="#{msgs['yes']}"/>
-                        <h:outputText rendered="#{not user.enabled}" value="#{msgs['no']}"/>
+                        <f:facet name="header">#{msgs.enable_account}</f:facet>
+                        <h:outputText rendered="#{user.enabled}" value="#{msgs.yes}"/>
+                        <h:outputText rendered="#{not user.enabled}" value="#{msgs.no}"/>
                     </h:column>
                     <h:column>
                         <f:facet name="header">#{msgs.actions}</f:facet>
