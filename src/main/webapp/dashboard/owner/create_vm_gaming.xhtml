@@ -1,61 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<f:view>
-    <ui:composition template="/WEB-INF/templates/main_template.xhtml">
-        <ui:define name="breadcrumbs">
-            <p:breadCrumb>
-                <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
-                <p:menuitem value="#{msgs.create_vm}" url="/VMRental/dashboard/owner/create_vm.xhtml"/>
-                <p:menuitem value="#{msgs.vm_gaming_type}" url="/VMRental/dashboard/owner/create_vm_gaming.xhtml"/>
-            </p:breadCrumb>
-        </ui:define>
-        <ui:define name="titleText">
-            <h:outputLabel>#{msgs.create_vm} (#{msgs.vm_gaming_type})</h:outputLabel>
-        </ui:define>
-        <ui:define name="content">
-            <div class="create-form two-columns">
-                <h:form>
-                    <div class="inputs-container">
-                        <div class="leftSideForm">
-                            <h:outputLabel value="#{msgs.vm_name}"/>
-                            <h:inputText id="vm_name" value="#{machineGamingController.machine.name}"
-                                         autocomplete="off"/>
-                            <h:message for="vm_name" id="vm_name_msg"/>
-                            <h:outputLabel value="#{msgs.no_of_cores}"/>
-                            <h:inputText id="no_of_cores" value="#{machineGamingController.machine.cores}"
-                                         autocomplete="off"
-                                         converterMessage="#{val_msgs.conv_int}"/>
-                            <h:message for="no_of_cores"/>
-                            <h:outputLabel value="#{msgs.ram_size}"/>
-                            <h:inputText id="ram_size" value="#{machineGamingController.machine.ramSize}"
-                                         converterMessage="#{val_msgs.conv_int}"/>
-                            <h:message for="ram_size"/>
-                        </div>
-                        <div class="rightSideForm">
-                            <h:outputLabel value="#{msgs.hdd_size}"/>
-                            <h:inputText id="hdd_size" value="#{machineGamingController.machine.hddSize}"
-                                         converterMessage="#{val_msgs.conv_int}"/>
-                            <h:message for="hdd_size"/>
-                            <h:outputLabel value="#{msgs.gpu_power}"/>
-                            <h:inputText id="gpu_power" value="#{machineGamingController.machine.gpuPower}"
-                                         converterMessage="#{val_msgs.conv_int}"/>
-                            <h:message for="gpu_power"/>
-                            <h:outputLabel value="#{msgs.gpu_vram}"/>
-                            <h:inputText id="gpu_vram" value="#{machineGamingController.machine.gpuVram}"
-                                         converterMessage="#{val_msgs.conv_int}"/>
-                            <h:message for="gpu_vram"/>
-                        </div>
+<ui:composition template="/WEB-INF/templates/main_template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="breadcrumbs">
+        <p:breadCrumb>
+            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.create_vm}" url="/VMRental/dashboard/owner/create_vm.xhtml"/>
+            <p:menuitem value="#{msgs.vm_gaming_type}" url="/VMRental/dashboard/owner/create_vm_gaming.xhtml"/>
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="titleText">
+        <h:outputLabel>#{msgs.create_vm} (#{msgs.vm_gaming_type})</h:outputLabel>
+    </ui:define>
+    <ui:define name="content">
+        <div class="create-form two-columns">
+            <h:form>
+                <div class="inputs-container">
+                    <div class="leftSideForm">
+                        <h:outputLabel value="#{msgs.vm_name}"/>
+                        <h:inputText id="vm_name" value="#{machineGamingController.machine.name}"
+                                     autocomplete="off"/>
+                        <h:message for="vm_name" id="vm_name_msg"/>
+                        <h:outputLabel value="#{msgs.no_of_cores}"/>
+                        <h:inputText id="no_of_cores" value="#{machineGamingController.machine.cores}"
+                                     autocomplete="off"
+                                     converterMessage="#{val_msgs.conv_int}"/>
+                        <h:message for="no_of_cores"/>
+                        <h:outputLabel value="#{msgs.ram_size}"/>
+                        <h:inputText id="ram_size" value="#{machineGamingController.machine.ramSize}"
+                                     converterMessage="#{val_msgs.conv_int}"/>
+                        <h:message for="ram_size"/>
                     </div>
-                    <h:commandButton value="#{msgs.create_vm}" action="#{machineGamingController.submit}"/>
-                </h:form>
-            </div>
-        </ui:define>
-    </ui:composition>
-</f:view>
-</html>
+                    <div class="rightSideForm">
+                        <h:outputLabel value="#{msgs.hdd_size}"/>
+                        <h:inputText id="hdd_size" value="#{machineGamingController.machine.hddSize}"
+                                     converterMessage="#{val_msgs.conv_int}"/>
+                        <h:message for="hdd_size"/>
+                        <h:outputLabel value="#{msgs.gpu_power}"/>
+                        <h:inputText id="gpu_power" value="#{machineGamingController.machine.gpuPower}"
+                                     converterMessage="#{val_msgs.conv_int}"/>
+                        <h:message for="gpu_power"/>
+                        <h:outputLabel value="#{msgs.gpu_vram}"/>
+                        <h:inputText id="gpu_vram" value="#{machineGamingController.machine.gpuVram}"
+                                     converterMessage="#{val_msgs.conv_int}"/>
+                        <h:message for="gpu_vram"/>
+                    </div>
+                </div>
+                <h:commandButton value="#{msgs.create_vm}" action="#{machineGamingController.submit}"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
