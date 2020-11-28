@@ -19,7 +19,8 @@
                          rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
                     <f:facet name="header">#{msgs.vm_type}</f:facet>
-                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{msgs.vm_gaming_type}"/>
+                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}"
+                                  value="#{msgs.vm_gaming_type}"/>
                     <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}"
                                   value="#{msgs['vm_workstation_type']}"/>
                 </h:column>
@@ -41,37 +42,41 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.ssd_size}</f:facet>
-                    <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.ssdSize}"/>
-                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                    <h:outputText value="#{machine.type eq 'MachineWorkstation' ? machine.ssdSize : '-'}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.net_cards}</f:facet>
-                    <h:outputText rendered="#{machine.type eq 'MachineWorkstation'}" value="#{machine.netCards}"/>
-                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                    <h:outputText value="#{machine.type eq 'MachineWorkstation' ? machine.netCards : '-'}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.raid_support}</f:facet>
-                    <h:panelGroup rendered="#{machine.type eq 'MachineWorkstation'}">
-                        <h:outputText rendered="#{machine.raidSupport}" value="#{msgs.yes}"/>
-                        <h:outputText rendered="#{not machine.raidSupport}" value="#{msgs.no}"/>
-                    </h:panelGroup>
-                    <h:outputText rendered="#{machine.type ne 'MachineWorkstation'}" value="-"/>
+                    <h:outputText
+                            value="#{machine.type ne 'MachineWorkstation' ? '-' : machine.raidSupport ? msgs.yes : msgs.no}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.gpu_power}</f:facet>
-                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuPower}"/>
-                    <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
+                    <h:outputText value="#{machine.type eq 'MachineGaming' ? machine.gpuPower : '-'}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.gpu_vram}</f:facet>
-                    <h:outputText rendered="#{machine.type eq 'MachineGaming'}" value="#{machine.gpuVram}"/>
-                    <h:outputText rendered="#{machine.type ne 'MachineGaming'}" value="-"/>
+                    <h:outputText value="#{machine.type eq 'MachineGaming' ? machine.gpuVram : '-'}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
-                    <h:commandButton value="#{msgs.rent}" styleClass="table-purple-button"/>
-                    <h:commandButton value="#{msgs.edit}" styleClass="table-purple-button"/>
-                    <h:commandButton action="#{machineListController.deleteMachine(machine)}"
+                    <h:button rendered="#{not machineListController.isRented(machine)}"
+                              outcome="rent_vm"
+                              value="#{msgs.rent}"
+                              styleClass="table-purple-button">
+                        <f:param name="machineId" value="#{machine.id}"/>
+                    </h:button>
+                    <h:button rendered="#{not machineListController.isRented(machine)}"
+                              outcome="owner/manage_vm"
+                              value="#{msgs.edit}"
+                              styleClass="table-purple-button">
+                        <f:param name="machineId" value="#{machine.id}"/>
+                    </h:button>
+                    <h:commandButton rendered="#{not machineListController.isRented(machine)}"
+                                     action="#{machineListController.deleteMachine(machine)}"
                                      value="#{msgs.remove}"
                                      styleClass="table-purple-button"/>
                 </h:column>

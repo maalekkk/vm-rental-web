@@ -1,7 +1,6 @@
 package pl.vmrent.web.model.machine;
 
 import pl.vmrent.web.model.Entity;
-import pl.vmrent.web.validator.unique.machinename.UniqueMachineName;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,7 +10,6 @@ import java.beans.Transient;
 
 public abstract class Machine extends Entity
 {
-    @UniqueMachineName
     @Size(min = 3, max = 20)
     private String name;
 

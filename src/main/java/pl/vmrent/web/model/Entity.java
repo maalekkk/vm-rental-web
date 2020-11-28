@@ -30,8 +30,9 @@ public abstract class Entity implements Identity<UUID>
         {
             return false;
         }
+
         Entity entity = (Entity) o;
-        return id.equals(entity.id);
+        return Objects.equals(id, entity.id);
     }
 
     @Override

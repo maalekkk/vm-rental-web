@@ -14,24 +14,41 @@
         <h:outputLabel>#{msgs.show_rents}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
-        <h:dataTable styleClass="table-purple" value="#{rentListController.rents}" var="rent"
-                     rowClasses="table-purple-row" headerClass="table-purple-header">
-            <h:column>
-                <f:facet name="header">#{msgs.vm_name}</f:facet>
-                #{rent.machine}
-            </h:column>
-            <h:column>
-                <f:facet name="header">#{msgs.login}</f:facet>
-                #{rent.user}
-            </h:column>
-            <h:column>
-                <f:facet name="header">#{msgs.start_time}</f:facet>
-                #{rent.period.startDate}
-            </h:column>
-            <h:column>
-                <f:facet name="header">#{msgs.end_time}</f:facet>
-                #{rent.period.endDate}
-            </h:column>
-        </h:dataTable>
+        <h:form>
+            <h:dataTable styleClass="table-purple" value="#{rentListController.rents}" var="rent"
+                         rowClasses="table-purple-row" headerClass="table-purple-header">
+                <h:column>
+                    <f:facet name="header">#{msgs.vm_name}</f:facet>
+                    #{rent.machine.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.login}</f:facet>
+                    #{rent.user.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.start_time}</f:facet>
+                    <h:outputText value="#{rent.period.startDate}">
+                        <f:convertDateTime type="localDateTime" pattern="dd.MM.yyyy HH:mm"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.end_time}</f:facet>
+                    <h:outputText value="#{rent.period.endDate}">
+                        <f:convertDateTime type="localDateTime" pattern="dd.MM.yyyy HH:mm"/>
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.finished}</f:facet>
+                    <h:outputText value="#{rentListController.isFinished(rent) ? msgs.yes : msgs.no}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">#{msgs.actions}</f:facet>
+                    <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
+                                     action="#{rentListController.deleteRent(rent)}"
+                                     value="#{msgs.remove}"
+                                     styleClass="table-purple-button"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
     </ui:define>
 </ui:composition>

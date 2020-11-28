@@ -1,38 +1,60 @@
 package pl.vmrent.web.controller.user;
 
-import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
+import pl.vmrent.web.validator.unique.username.UniqueUsername;
 
-import javax.enterprise.context.SessionScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Named
-@SessionScoped
+@ViewScoped
 public class UserController implements Serializable
 {
     @Inject
     private UserService userService;
 
-    public User getCurrentUser()
+    @UniqueUsername
+    @Size(min = 3, max = 20)
+    private String username;
+
+    private User user = new User();
+
+    public String submit()
     {
-        return userService.getCurrentUser();
+        if (username != null)
+        {
+            user.setUsername(username);
+        }
+        userService.saveUser(user);
+        return "show_users.xhtml?faces-redirect=true";
     }
 
-    public boolean isUserRole()
+    public boolean isUpdate()
     {
-        return userService.getCurrentRole() == Role.User;
+        return user != null && user.getId() != null;
     }
 
-    public boolean isAdminRole()
+    public User getUser()
     {
-        return userService.getCurrentRole() == Role.Admin;
+        return user;
     }
 
-    public boolean isOwnerRole()
+    public void setUser(User user)
     {
-        return userService.getCurrentRole() == Role.Owner;
+        this.user = user;
+    }
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+    public void setUsername(String username)
+    {
+        this.username = username;
     }
 }

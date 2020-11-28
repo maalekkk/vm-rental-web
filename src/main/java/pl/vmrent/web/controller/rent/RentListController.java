@@ -2,8 +2,9 @@ package pl.vmrent.web.controller.rent;
 
 
 import pl.vmrent.web.model.rent.Rent;
+import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.service.RentService;
-import pl.vmrent.web.util.DateTimeProvider;
+import pl.vmrent.web.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -17,17 +18,35 @@ import java.util.List;
 public class RentListController implements Serializable
 {
     @Inject
-    private RentService rentService;
+    private UserService userService;
 
     @Inject
-    private DateTimeProvider timeProvider;
+    private RentService rentService;
 
     private List<Rent> rents;
 
     @PostConstruct
     private void init()
     {
-        rents = rentService.getAll();
+        if (userService.getCurrentRole() == Role.Owner)
+        {
+            rents = rentService.getAll();
+        }
+        else
+        {
+            rents = rentService.findRentsByUser(userService.getCurrentUser());
+        }
+    }
+
+    public String deleteRent(Rent rent)
+    {
+        rentService.deleteRent(rent);
+        return "show_rents.xhtml?faces-redirect=true";
+    }
+
+    public boolean isFinished(Rent rent)
+    {
+        return rentService.isRentFinished(rent);
     }
 
     public List<Rent> getRents()

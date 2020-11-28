@@ -22,15 +22,15 @@
                         <h:outputLabel>#{msgs.role}:</h:outputLabel>
                     </div>
                     <div class="myAccount-column">
-                        <p>#{userController.currentUser.username}</p>
-                        <p>#{userController.currentUser.fullname}</p>
-                        <h:panelGroup rendered="#{userController.userRole}">
+                        <p>#{currentUserController.currentUser.username}</p>
+                        <p>#{currentUserController.currentUser.fullname}</p>
+                        <h:panelGroup rendered="#{currentUserController.userRole}">
                             <p>#{msgs.client}</p>
                         </h:panelGroup>
-                        <h:panelGroup rendered="#{userController.adminRole}">
+                        <h:panelGroup rendered="#{currentUserController.adminRole}">
                             <p>#{msgs.admin}</p>
                         </h:panelGroup>
-                        <h:panelGroup rendered="#{userController.ownerRole}">
+                        <h:panelGroup rendered="#{currentUserController.ownerRole}">
                             <p>#{msgs.owner}</p>
                         </h:panelGroup>
                     </div>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RequestScoped
 public class UserService
@@ -23,6 +24,11 @@ public class UserService
     public User saveUser(@Valid User user)
     {
         return userRepository.save(user);
+    }
+
+    public Optional<User> findUserById(UUID userId)
+    {
+        return userRepository.findById(userId);
     }
 
     public Optional<User> findUserByUsername(String username)

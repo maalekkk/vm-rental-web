@@ -21,9 +21,9 @@ public class MachineService
         return machineRepository.save(machine);
     }
 
-    public Optional<Machine> findMachineById(UUID id)
+    public Optional<Machine> findMachineById(UUID machineId)
     {
-        return machineRepository.findById(id);
+        return machineRepository.findById(machineId);
     }
 
     public Optional<Machine> findMachineByName(String name)

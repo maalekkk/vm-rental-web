@@ -4,33 +4,33 @@ import pl.vmrent.web.validator.period.PeriodConstraint;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @PeriodConstraint
 public class Period implements Serializable
 {
     @NotNull
-    private ZonedDateTime startDate;
+    private LocalDateTime startDate;
 
     @NotNull
-    private ZonedDateTime endDate;
+    private LocalDateTime endDate;
 
-    public ZonedDateTime getStartDate()
+    public LocalDateTime getStartDate()
     {
         return startDate;
     }
 
-    public void setStartDate(ZonedDateTime startDate)
+    public void setStartDate(LocalDateTime startDate)
     {
         this.startDate = startDate;
     }
 
-    public ZonedDateTime getEndDate()
+    public LocalDateTime getEndDate()
     {
         return endDate;
     }
 
-    public void setEndDate(ZonedDateTime endDate)
+    public void setEndDate(LocalDateTime endDate)
     {
         this.endDate = endDate;
     }

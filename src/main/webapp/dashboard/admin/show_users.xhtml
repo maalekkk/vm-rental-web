@@ -27,14 +27,15 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.enable_account}</f:facet>
-                    <h:outputText rendered="#{user.enabled}" value="#{msgs.yes}"/>
-                    <h:outputText rendered="#{not user.enabled}" value="#{msgs.no}"/>
+                    <h:outputText value="#{user.enabled ? msgs.yes : msgs.no}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
-                    <h:commandButton action="#{userListController.changeUserActivity(user)}" value="#{msgs.on_off}"
+                    <h:commandButton action="#{userListController.changeUserActivity(user)}"
+                                     value="#{user.enabled ? msgs.disable : msgs.enable}"
                                      styleClass="table-purple-button"/>
-                    <h:commandButton action="#{userListController.deleteUser(user)}" value="#{msgs.remove}"
+                    <h:commandButton action="#{userListController.deleteUser(user)}"
+                                     value="#{msgs.remove}"
                                      styleClass="table-purple-button"/>
                 </h:column>
             </h:dataTable>

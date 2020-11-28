@@ -1,0 +1,50 @@
+<ui:composition template="/WEB-INF/templates/main_template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="metadata">
+        <f:metadata>
+            <f:viewParam name="machineId" value="#{rentController.rent.machine}" required="true"/>
+        </f:metadata>
+    </ui:define>
+    <ui:define name="breadcrumbs">
+        <p:breadCrumb>
+            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.rent_vm}" url="/VMRental/dashboard/rent_vm.xhtml"/>
+        </p:breadCrumb>
+    </ui:define>
+    <ui:define name="titleText">
+        <h:outputLabel>#{msgs.rent_vm}</h:outputLabel>
+    </ui:define>
+    <ui:define name="content">
+        <div class="myAccount-container">
+            <h:form styleClass="myAccount">
+                <div class="editAccount-column-create-form">
+                </div>
+                <div class="myAccount-data">
+                    <div class="myAccount-column">
+                        <h:outputLabel>#{msgs.start_time}:</h:outputLabel>
+                        <h:outputLabel>#{msgs.end_time}:</h:outputLabel>
+                    </div>
+                    <div class="myAccount-column">
+                        <h:inputText id="startDate" a:type="datetime-local" styleClass="date-picker"
+                                     value="#{rentController.rent.period.startDate}">
+                            <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd'T'HH:mm"/>
+                        </h:inputText>
+                        <h:message for="startDate"/>
+                        <h:inputText id="endDate" a:type="datetime-local" styleClass="date-picker"
+                                     value="#{rentController.rent.period.endDate}">
+                            <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd'T'HH:mm"/>
+                        </h:inputText>
+                        <h:message for="endDate"/>
+                    </div>
+                </div>
+                <h:commandButton id="submit" action="#{rentController.submit}" value="#{msgs.rent}"
+                                 styleClass="type-button"/>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>

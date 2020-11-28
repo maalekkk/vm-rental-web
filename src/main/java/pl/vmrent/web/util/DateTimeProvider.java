@@ -1,13 +1,13 @@
 package pl.vmrent.web.util;
 
 import javax.enterprise.context.RequestScoped;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 @RequestScoped
 public class DateTimeProvider
 {
-    public ZonedDateTime now()
+    public LocalDateTime now()
     {
-        return ZonedDateTime.now();
+        return LocalDateTime.now();
     }
 }

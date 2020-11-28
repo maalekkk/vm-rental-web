@@ -19,6 +19,7 @@ public class Rent extends Entity
 
     public Rent()
     {
+        this.period = new Period();
     }
 
     public Rent(Machine machine, User user, Period period)
