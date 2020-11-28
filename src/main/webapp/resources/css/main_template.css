@@ -60,15 +60,13 @@ html, body {
 
 .navigationInfo {
     background-color: #1C2022;
-    height: 3%;
-}
-
-.breadcrumbs {
+    min-height: 4%;
+    max-height: 4%;
 }
 
 .title {
     background-color: #1C2022;
-    height: 12%;
+    height: 11%;
     font-family: 'Lora', serif;
     font-weight: bold;
     font-size: 1.8vw;
@@ -87,10 +85,25 @@ html, body {
     overflow: scroll;
 }
 
-.pageContent label {
+.pageContent label, .pageContent p {
     float: left;
-    padding: 13px;
+    width: 100%;
+}
+
+.pageContent label, .pageContent p {
     align-self: center;
+    height: fit-content;
+}
+
+.pageContent p {
+    font-family: 'Lora', sans-serif;
+}
+
+.pageContent label {
+    padding: 1.5vh;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .footer {

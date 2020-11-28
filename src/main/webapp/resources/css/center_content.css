@@ -1,26 +1,21 @@
-.create-form {
+.pageContent-container {
     align-items: center;
     display: flex;
     justify-content: center;
     height: 100%;
 }
 
-.create-form form {
+.pageContent-content {
     text-align: center;
     max-width: 30%;
     min-width: min-content;
 }
 
-.create-form form label {
+.pageContent-content label, .pageContent-content p {
     display: block;
-    text-align: center;
-    padding-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    width: 100%;
 }
 
-.create-form form input[type=text], .create-form form input[type=password] {
+.pageContent-content input[type=text], .pageContent-content input[type=password] {
     font-size: 15px;
     margin-bottom: 15px;
     border-right: none;
@@ -34,12 +29,12 @@
     border-bottom: 2px solid rgba(0, 0, 0, .4);
 }
 
-.create-form input[type=text]:focus, .create-form input[type=text]:hover, .create-form input[type=password]:focus, .create-form input[type=password]:hover {
+.pageContent-content input[type=text]:focus, .pageContent-content input[type=text]:hover, .pageContent-content input[type=password]:focus, .pageContent-content input[type=password]:hover {
     background-color: transparent;
     border-bottom: 2px solid #955E8B;
 }
 
-.create-form input[type=submit] {
+.pageContent-content input[type=submit] {
     font-size: 0.8vw;
     min-width: fit-content;
     cursor: pointer;
@@ -55,29 +50,17 @@
     font-weight: bold;
 }
 
-.create-form input[type=submit]:hover {
+.pageContent-content input[type=submit]:hover {
     border-color: rgba(149, 94, 139, .8);
     transition: all .35s;
-}
-
-.create-form table tbody tr {
-    width: 100%;
-    table-layout: fixed;
-    display: table;
-}
-
-.create-form table tbody tr td {
-    min-width: 33.3%;
-    display: table-cell;
-    font-size: 0.6vw;
-}
-
-.create-form table tbody tr td label {
-    padding: 0 0 10px;
 }
 
 .enable-account {
     display: inline-flex;
     align-items: center;
     padding-bottom: 15px;
+}
+
+.huge-icon {
+    font-size: 35vh;
 }
