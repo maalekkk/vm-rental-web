@@ -16,6 +16,7 @@
         <h:outputStylesheet library="css" name="box.css"/>
         <h:outputStylesheet library="css" name="message.css"/>
         <h:outputStylesheet library="css" name="page-content-inputs.css"/>
+        <h:outputScript library="js" name="min-date.js"/>
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
@@ -32,13 +33,13 @@
                 <h:form styleClass="date-form">
                     <h:outputLabel value="#{msgs.start_time}:"/>
                     <h:inputText id="startDate" a:type="datetime-local" styleClass="date-picker"
-                                 value="#{rentController.rent.period.startDate}">
+                                 value="#{rentController.rent.period.startDate}" onmousedown="minDate(this)">
                         <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd'T'HH:mm"/>
                     </h:inputText>
-                    <h:message for="startDate" styleClass="message" showDetail="true"/>
+                    <h:message for="startDate" styleClass="message"/>
                     <h:outputLabel value="#{msgs.end_time}:"/>
                     <h:inputText id="endDate" a:type="datetime-local" styleClass="date-picker"
-                                 value="#{rentController.rent.period.endDate}">
+                                 value="#{rentController.rent.period.endDate}" onmousedown="minDate(this)">
                         <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd'T'HH:mm"/>
                     </h:inputText>
                     <h:message for="endDate" styleClass="message"/>
