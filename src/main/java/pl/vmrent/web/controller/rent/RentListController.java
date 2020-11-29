@@ -41,7 +41,7 @@ public class RentListController implements Serializable
     public String deleteRent(Rent rent)
     {
         rentService.deleteRent(rent);
-        return "show_rents.xhtml?faces-redirect=true";
+        return "show-rents.xhtml?faces-redirect=true";
     }
 
     public boolean isFinished(Rent rent)

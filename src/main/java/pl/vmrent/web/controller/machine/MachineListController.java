@@ -34,7 +34,7 @@ public class MachineListController implements Serializable
         if (!rentService.isMachineRented(machine))
         {
             machineService.deleteMachine(machine);
-            return "show_vms.xhtml?faces-redirect=true";
+            return "show-vms.xhtml?faces-redirect=true";
         }
         return null;
     }

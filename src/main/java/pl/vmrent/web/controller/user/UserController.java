@@ -30,7 +30,7 @@ public class UserController implements Serializable
             user.setUsername(username);
         }
         userService.saveUser(user);
-        return "show_users.xhtml?faces-redirect=true";
+        return "show-users.xhtml?faces-redirect=true";
     }
 
     public boolean isUpdate()

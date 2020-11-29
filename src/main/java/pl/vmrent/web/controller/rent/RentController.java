@@ -35,7 +35,7 @@ public class RentController implements Serializable
     public String submit()
     {
         rentService.saveRent(rent);
-        return "show_rents.xhtml?faces-redirect=true";
+        return "show-rents.xhtml?faces-redirect=true";
     }
 
     public Rent getRent()

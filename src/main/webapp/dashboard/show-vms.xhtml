@@ -1,4 +1,4 @@
-<ui:composition template="/WEB-INF/templates/main_template.xhtml"
+<ui:composition template="/WEB-INF/templates/main-template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -10,7 +10,7 @@
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show_vms.xhtml"/>
+            <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show-vms.xhtml"/>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">
@@ -67,13 +67,13 @@
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
                     <h:button rendered="#{not machineListController.isRented(machine)}"
-                              outcome="rent_vm"
+                              outcome="rent-vm"
                               value="#{msgs.rent}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>
                     <h:button rendered="#{not machineListController.isRented(machine)}"
-                              outcome="owner/manage_vm"
+                              outcome="owner/manage-vm"
                               value="#{msgs.edit}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>

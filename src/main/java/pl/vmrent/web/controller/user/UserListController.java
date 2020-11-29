@@ -28,13 +28,13 @@ public class UserListController implements Serializable
     public String changeUserActivity(User user)
     {
         userService.changeUserActivity(user);
-        return "show_users.xhtml?faces-redirect=true";
+        return "show-users.xhtml?faces-redirect=true";
     }
 
     public String deleteUser(User user)
     {
         userService.deleteUser(user);
-        return "show_users.xhtml?faces-redirect=true";
+        return "show-users.xhtml?faces-redirect=true";
     }
 
     public List<User> getUsers()
