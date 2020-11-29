@@ -1,3 +1,4 @@
+/*All styles for main template*/
 html, body {
     color: rgba(255, 255, 255, .85);
     font-size: 1vw;
@@ -13,6 +14,7 @@ html, body {
     display: inline-flex;
 }
 
+/*Logo + side bar menu*/
 .leftSide {
     height: 100%;
     font-family: 'Lora', serif;
@@ -26,6 +28,7 @@ html, body {
     background-attachment: fixed;
 }
 
+/*Header, breadcrumbs, content page*/
 .rightSide {
     background-color: white;
     width: 80%;
@@ -39,7 +42,7 @@ html, body {
     align-items: center;
 }
 
-.logoImage {
+.logo > img {
     max-width: 100%;
 }
 
@@ -56,18 +59,21 @@ html, body {
     font-size: 0.6vw !important;
     font-family: 'Lora', serif !important;
     font-weight: 400 !important;
+    width: 100%;
+    align-self: center;
+    border: none!important;
 }
 
 .navigationInfo {
     background-color: #1C2022;
     min-height: 4%;
     max-height: 4%;
+    display: flex;
 }
 
 .title {
     background-color: #1C2022;
     height: 11%;
-    font-family: 'Lora', serif;
     font-weight: bold;
     font-size: 1.8vw;
     display: flex;
@@ -88,11 +94,9 @@ html, body {
 .pageContent label, .pageContent p {
     float: left;
     width: 100%;
-}
-
-.pageContent label, .pageContent p {
     align-self: center;
     height: fit-content;
+    display: block;
 }
 
 .pageContent p {

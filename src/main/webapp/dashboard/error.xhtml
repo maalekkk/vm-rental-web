@@ -4,16 +4,14 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="head">
-        <h:outputStylesheet library="css" name="center_content.css"/>
+        <h:outputStylesheet library="css" name="page_content.css"/>
+        <h:outputStylesheet library="css" name="error.css"/>
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
             <p:menuitem value="#{msgs.error_title}" url="/VMRental/dashboard/error.xhtml"/>
         </p:breadCrumb>
-    </ui:define>
-    <ui:define name="titleText">
-        <h:outputLabel>#{msgs.error_title}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
         <div class="pageContent-container">

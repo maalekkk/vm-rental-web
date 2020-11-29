@@ -1,3 +1,4 @@
+/*Set the profile information and logout link next to each other*/
 .userContent {
     padding-right: 15px;
     display: flex;
@@ -5,26 +6,19 @@
     align-items: center;
 }
 
-.username {
-    font-weight: bold;
-    font-size: 0.8vw;
-    padding-right: 10px;
-}
-
+/*Set size of icon*/
 .userContent i {
     font-size: 1vw;
 }
 
-.usersActions {
-    text-decoration: none;
+/*Change style from default to own of link in html*/
+.userContent a {
     color: rgba(255, 255, 255, .85);
-    font-family: 'Lora', serif;
     padding-left: 10px;
     font-weight: bold;
     font-size: 0.8vw;
 }
 
-.usersActions:hover {
+.userContent a:hover {
     color: #955E8B;
 }
-

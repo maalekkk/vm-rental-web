@@ -4,7 +4,10 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="head">
-        <h:outputStylesheet library="css" name="center_content.css"/>
+        <h:outputStylesheet library="css" name="page_content.css"/>
+        <h:outputStylesheet library="css" name="create_user.css"/>
+        <h:outputStylesheet library="css" name="page_content_inputs.css"/>
+        <h:outputStylesheet library="css" name="message.css"/>
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
@@ -20,10 +23,10 @@
             <h:form styleClass="pageContent-content">
                 <h:outputLabel value="#{msgs.full_name}"/>
                 <h:inputText id="fullname" value="#{userEditController.user.fullname}" autocomplete="off"/>
-                <h:message for="fullname" id="fullname_msg"/>
+                <h:message for="fullname" id="fullname_msg" styleClass="message"/>
                 <h:outputLabel value="#{msgs.login}"/>
                 <h:inputText id="login" value="#{userEditController.user.username}" autocomplete="off"/>
-                <h:message for="login"/>
+                <h:message for="login" styleClass="message"/>
                 <h:panelGroup layout="block" styleClass="enable-account">
                     <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{userEditController.user.enabled}">
                         <h:outputLabel value="#{msgs.enable_account}"/>

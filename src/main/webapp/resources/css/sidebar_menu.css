@@ -1,3 +1,4 @@
+/*Style for side bar menu*/
 .sidebarMenu {
     list-style: none;
     padding: 0;
@@ -69,20 +70,4 @@
 
 .icon {
     font-size: 1.9em;
-}
-
-svg {
-    display: inline-block;
-    position: fixed;
-    left: 0;
-    height: 100%;
-}
-
-.wavy {
-    display: inline-block;
-    width: 100%;
-    padding-bottom: 100%;
-    vertical-align: middle;
-    overflow: hidden;
-    height: 100%;
 }

@@ -1,3 +1,4 @@
+/*Style for table (header, row and submit button)*/
 .table-purple {
     border-collapse: collapse;
     width: 100%;
@@ -26,13 +27,12 @@
 .table-purple-button {
     padding: 0.5vh;
     min-width: 100%;
-    min-height: 100%;
     border: 0.1em solid rgba(149, 94, 139, .8);
     background-color: transparent;
     border-radius: 0.15em;
-    text-decoration: none;
-    text-align: center;
     transition: all 0.35s;
+    font-family: 'Lora', serif;
+    margin: 0.15vh;
 }
 
 .table-purple-button:hover {
