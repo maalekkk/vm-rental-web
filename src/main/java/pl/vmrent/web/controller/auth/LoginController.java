@@ -28,7 +28,7 @@ public class LoginController
             try
             {
                 request.login(username, password);
-                return "dashboard";
+              return "dashboard";
             }
             catch (ServletException ignored)
             {

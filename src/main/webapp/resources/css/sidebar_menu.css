@@ -1,3 +1,4 @@
+/*Style for side bar menu*/
 .sidebarMenu {
     list-style: none;
     padding: 0;
@@ -24,7 +25,6 @@
     font-size: 0.65vw;
     font-family: 'Montserrat', serif;
     font-weight: bold;
-    white-space: nowrap;
     z-index: 2;
     display: inline-flex;
     align-items: center;
@@ -45,7 +45,6 @@
 }
 
 .menu-item a {
-    display: block;
     width: 100%;
     height: 100%;
     padding: 15px;
@@ -71,20 +70,4 @@
 
 .icon {
     font-size: 1.9em;
-}
-
-svg {
-    display: inline-block;
-    position: fixed;
-    left: 0;
-    height: 100%;
-}
-
-.wavy {
-    display: inline-block;
-    width: 100%;
-    padding-bottom: 100%;
-    vertical-align: middle;
-    overflow: hidden;
-    height: 100%;
 }

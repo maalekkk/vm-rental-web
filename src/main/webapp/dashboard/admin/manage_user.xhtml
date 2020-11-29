@@ -4,6 +4,12 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="head">
+        <h:outputStylesheet library="css" name="page_content.css"/>
+        <h:outputStylesheet library="css" name="create_user.css"/>
+        <h:outputStylesheet library="css" name="page_content_inputs.css"/>
+        <h:outputStylesheet library="css" name="message.css"/>
+    </ui:define>
     <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="userId" value="#{userController.user}"/>
@@ -19,14 +25,14 @@
         <h:outputLabel>#{msgs.create_user}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
-        <div class="create-form">
-            <h:form>
+        <div class="pageContent-container">
+            <h:form styleClass="pageContent-content">
                 <h:outputLabel value="#{msgs.full_name}"/>
                 <h:inputText id="fullname" value="#{userController.user.fullname}" autocomplete="off"/>
-                <h:message for="fullname" id="fullname_msg"/>
+                <h:message for="fullname" id="fullname_msg" styleClass="message"/>
                 <h:outputLabel value="#{msgs.login}"/>
                 <h:inputText id="login" value="#{userController.username}" autocomplete="off"/>
-                <h:message for="login"/>
+                <h:message for="login" styleClass="message"/>
                 <h:panelGroup layout="block" styleClass="enable-account">
                     <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{userController.user.enabled}">
                         <h:outputLabel value="#{msgs.enable_account}"/>
