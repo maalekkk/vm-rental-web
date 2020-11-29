@@ -19,11 +19,12 @@
 }
 
 .pageContent-content input[type=submit] {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
     font-size: 0.8vw;
     min-width: fit-content;
     cursor: pointer;
     padding: 1.5vh;
-    margin: 0 0 1.5vh;
     width: 57%;
     color: rgba(0, 0, 0, .9);
     border-radius: 4px;

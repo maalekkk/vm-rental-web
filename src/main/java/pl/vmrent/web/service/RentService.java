@@ -10,6 +10,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @RequestScoped
 public class RentService
@@ -56,5 +58,9 @@ public class RentService
     public boolean isRentFinished(Rent rent)
     {
         return rent.getPeriod().getEndDate().isBefore(dateTimeProvider.now());
+    }
+
+    public Optional<Rent> findRentById(UUID fromString) {
+        return rentRepository.findById(fromString);
     }
 }

@@ -33,6 +33,7 @@
     transition: all 0.35s;
     font-family: 'Lora', serif;
     margin: 0.15vh;
+    font-size: 0.8vw;
 }
 
 .table-purple-button:hover {

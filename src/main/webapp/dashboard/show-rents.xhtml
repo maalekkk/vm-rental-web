@@ -50,6 +50,11 @@
                                      action="#{rentListController.deleteRent(rent)}"
                                      value="#{msgs.remove}"
                                      styleClass="table-purple-button"/>
+                    <h:button outcome="rental-details"
+                              value="#{msgs.details}"
+                              styleClass="table-purple-button">
+                        <f:param name="rentId" value="#{rent.id}"/>
+                    </h:button>
                 </h:column>
             </h:dataTable>
         </h:form>
