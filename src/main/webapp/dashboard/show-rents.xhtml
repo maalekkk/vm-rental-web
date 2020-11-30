@@ -9,7 +9,7 @@
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
-            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
             <p:menuitem value="#{msgs.show_rents}" url="/VMRental/dashboard/show-rents.xhtml"/>
         </p:breadCrumb>
     </ui:define>
@@ -48,7 +48,7 @@
                     <f:facet name="header">#{msgs.actions}</f:facet>
                     <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
                                      action="#{rentListController.deleteRent(rent)}"
-                                     value="#{msgs.remove}"
+                                     value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>
                     <h:button outcome="rental-details"
                               value="#{msgs.details}"

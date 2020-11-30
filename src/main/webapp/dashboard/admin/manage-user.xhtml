@@ -17,12 +17,12 @@
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
-            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.create_user}" url="/VMRental/dashboard/admin/manage-user.xhtml"/>
+            <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.create_new_user}" url="/VMRental/dashboard/admin/manage-user.xhtml"/>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">
-        <h:outputLabel>#{msgs.create_user}</h:outputLabel>
+        <h:outputLabel>#{msgs.create_new_user}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
         <div class="pageContent-container">
@@ -35,10 +35,10 @@
                 <h:message for="login" styleClass="message"/>
                 <h:panelGroup layout="block" styleClass="enable-account">
                     <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{userController.user.enabled}">
-                        <h:outputLabel value="#{msgs.enable_account}"/>
+                        <h:outputLabel value="#{msgs.account_state}"/>
                     </h:selectBooleanCheckbox>
                 </h:panelGroup>
-                <h:commandButton value="#{msgs.create_new_user}" action="#{userController.submit}"/>
+                <h:commandButton value="#{msgs.create}" action="#{userController.submit}"/>
             </h:form>
         </div>
     </ui:define>

@@ -9,7 +9,7 @@
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
-            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
             <p:menuitem value="#{msgs.show_users}" url="/VMRental/dashboard/admin/show-users.xhtml"/>
         </p:breadCrumb>
     </ui:define>
@@ -29,7 +29,7 @@
                     #{user.fullname}
                 </h:column>
                 <h:column>
-                    <f:facet name="header">#{msgs.enable_account}</f:facet>
+                    <f:facet name="header">#{msgs.account_state}</f:facet>
                     <h:outputText value="#{user.enabled ? msgs.yes : msgs.no}"/>
                 </h:column>
                 <h:column>
@@ -38,7 +38,7 @@
                                      value="#{user.enabled ? msgs.disable : msgs.enable}"
                                      styleClass="table-purple-button"/>
                     <h:commandButton action="#{userListController.deleteUser(user)}"
-                                     value="#{msgs.remove}"
+                                     value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>
                 </h:column>
             </h:dataTable>

@@ -9,7 +9,7 @@
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
-            <p:menuitem value="#{msgs.main}" url="/VMRental/dashboard/index.xhtml"/>
+            <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
             <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show-vms.xhtml"/>
         </p:breadCrumb>
     </ui:define>
@@ -80,7 +80,7 @@
                     </h:button>
                     <h:commandButton rendered="#{not machineListController.isRented(machine)}"
                                      action="#{machineListController.deleteMachine(machine)}"
-                                     value="#{msgs.remove}"
+                                     value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>
                 </h:column>
             </h:dataTable>
