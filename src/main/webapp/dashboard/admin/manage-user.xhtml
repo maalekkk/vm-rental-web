@@ -22,23 +22,27 @@
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">
-        <h:outputLabel>#{msgs.create_new_user}</h:outputLabel>
+        <h:outputLabel>#{userController.update ? msgs.update_user : msgs.create_new_user}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
         <div class="pageContent-container">
             <h:form styleClass="pageContent-content">
+                <h:outputLabel value="#{msgs.login}"/>
+                <h:inputText id="login"
+                             disabled="#{userController.update}"
+                             value="#{userController.update ? userController.user.username : userController.username}"
+                             autocomplete="off"/>
+                <h:message for="login" styleClass="message"/>
                 <h:outputLabel value="#{msgs.full_name}"/>
                 <h:inputText id="fullname" value="#{userController.user.fullname}" autocomplete="off"/>
                 <h:message for="fullname" id="fullname_msg" styleClass="message"/>
-                <h:outputLabel value="#{msgs.login}"/>
-                <h:inputText id="login" value="#{userController.username}" autocomplete="off"/>
-                <h:message for="login" styleClass="message"/>
                 <h:panelGroup layout="block" styleClass="enable-account">
                     <h:selectBooleanCheckbox styleClass="boolean-checkbox" value="#{userController.user.enabled}">
                         <h:outputLabel value="#{msgs.account_state}"/>
                     </h:selectBooleanCheckbox>
                 </h:panelGroup>
-                <h:commandButton value="#{msgs.create}" action="#{userController.submit}"/>
+                <h:commandButton value="#{userController.update ? msgs.update : msgs.create}"
+                                 action="#{userController.submit}"/>
             </h:form>
         </div>
     </ui:define>

@@ -14,6 +14,7 @@
     <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="machineId" value="#{machineController.machine}"/>
+            <f:viewAction action="#{machineController.verify}"/>
         </f:metadata>
     </ui:define>
     <ui:define name="breadcrumbs">
@@ -86,10 +87,10 @@
                             </h:selectBooleanCheckbox>
                         </h:panelGroup>
                     </div>
-                    <h:commandButton value="#{machineController.update ? msgs.update_vm : msgs.create_vm}"
+                    <h:commandButton value="#{machineController.update ? msgs.update : msgs.create}"
                                      action="#{machineController.submit}"/>
                 </h:form>
-                </div>
             </div>
+        </div>
     </ui:define>
 </ui:composition>

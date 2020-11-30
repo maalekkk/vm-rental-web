@@ -60,8 +60,9 @@
                                rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
                 <h:outputLabel value="#{msgs.net_cards}: #{rentController.rent.machine.netCards}"
                                rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
-                <h:outputLabel value="#{msgs.raid_support}: #{rentController.rent.machine.raidSupport ? msgs.yes : msgs.no}"
-                               rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
+                <h:outputLabel
+                        value="#{msgs.raid_support}: #{rentController.rent.machine.raidSupport ? msgs.yes : msgs.no}"
+                        rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
                 <h:outputLabel value="#{msgs.gpu_power}: #{rentController.rent.machine.gpuPower}"
                                rendered="#{rentController.rent.machine.type eq 'MachineGaming'}"/>
                 <h:outputLabel value="#{msgs.gpu_vram}: #{rentController.rent.machine.gpuVram}"

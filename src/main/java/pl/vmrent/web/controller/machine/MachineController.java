@@ -59,6 +59,15 @@ public class MachineController implements Serializable
         return machine != null && machine.getId() != null;
     }
 
+    public String verify()
+    {
+        if (isUpdate())
+        {
+            return "error.xhtml?faces-redirect=true";
+        }
+        return null;
+    }
+
     public Machine getMachine()
     {
         return machine;

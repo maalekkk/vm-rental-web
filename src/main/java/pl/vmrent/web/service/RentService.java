@@ -60,7 +60,8 @@ public class RentService
         return rent.getPeriod().getEndDate().isBefore(dateTimeProvider.now());
     }
 
-    public Optional<Rent> findRentById(UUID fromString) {
+    public Optional<Rent> findRentById(UUID fromString)
+    {
         return rentRepository.findById(fromString);
     }
 }

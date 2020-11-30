@@ -1,7 +1,6 @@
 package pl.vmrent.web.controller.rent;
 
 import pl.vmrent.web.model.rent.Rent;
-import pl.vmrent.web.service.MachineService;
 import pl.vmrent.web.service.RentService;
 import pl.vmrent.web.service.UserService;
 
@@ -21,9 +20,6 @@ public class RentController implements Serializable
     private RentService rentService;
 
     @Inject
-    private MachineService machineService;
-
-    @Inject
     private UserService userService;
 
     @PostConstruct
@@ -36,6 +32,15 @@ public class RentController implements Serializable
     {
         rentService.saveRent(rent);
         return "show-rents.xhtml?faces-redirect=true";
+    }
+
+    public String verify()
+    {
+        if (rentService.isMachineRented(rent.getMachine()))
+        {
+            return "error.xhtml?faces-redirect=true";
+        }
+        return null;
     }
 
     public Rent getRent()

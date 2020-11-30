@@ -37,6 +37,11 @@
                     <h:commandButton action="#{userListController.changeUserActivity(user)}"
                                      value="#{user.enabled ? msgs.disable : msgs.enable}"
                                      styleClass="table-purple-button"/>
+                    <h:button outcome="manage-user"
+                              value="#{msgs.edit}"
+                              styleClass="table-purple-button">
+                        <f:param name="userId" value="#{user.id}"/>
+                    </h:button>
                     <h:commandButton action="#{userListController.deleteUser(user)}"
                                      value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>

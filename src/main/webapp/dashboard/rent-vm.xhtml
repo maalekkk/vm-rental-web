@@ -8,6 +8,7 @@
     <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="machineId" value="#{rentController.rent.machine}" required="true"/>
+            <f:viewAction action="#{rentController.verify}"/>
         </f:metadata>
     </ui:define>
     <ui:define name="head">
@@ -58,11 +59,17 @@
                 <h:outputLabel value="#{msgs.no_of_cores}: #{rentController.rent.machine.cores}"/>
                 <h:outputLabel value="#{msgs.ram_size}: #{rentController.rent.machine.ramSize}"/>
                 <h:outputLabel value="#{msgs.hdd_size}: #{rentController.rent.machine.hddSize}"/>
-                <h:outputLabel value="#{msgs.ssd_size}: #{rentController.rent.machine.ssdSize}" rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
-                <h:outputLabel value="#{msgs.net_cards}: #{rentController.rent.machine.netCards}" rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
-                <h:outputLabel value="#{msgs.raid_support}: #{rentController.rent.machine.raidSupport ? msgs.yes : msgs.no}" rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
-                <h:outputLabel value="#{msgs.gpu_power}: #{rentController.rent.machine.gpuPower}" rendered="#{rentController.rent.machine.type eq 'MachineGaming'}"/>
-                <h:outputLabel value="#{msgs.gpu_vram}: #{rentController.rent.machine.gpuVram}" rendered="#{rentController.rent.machine.type eq 'MachineGaming'}"/>
+                <h:outputLabel value="#{msgs.ssd_size}: #{rentController.rent.machine.ssdSize}"
+                               rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
+                <h:outputLabel value="#{msgs.net_cards}: #{rentController.rent.machine.netCards}"
+                               rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
+                <h:outputLabel
+                        value="#{msgs.raid_support}: #{rentController.rent.machine.raidSupport ? msgs.yes : msgs.no}"
+                        rendered="#{rentController.rent.machine.type eq 'MachineWorkstation'}"/>
+                <h:outputLabel value="#{msgs.gpu_power}: #{rentController.rent.machine.gpuPower}"
+                               rendered="#{rentController.rent.machine.type eq 'MachineGaming'}"/>
+                <h:outputLabel value="#{msgs.gpu_vram}: #{rentController.rent.machine.gpuVram}"
+                               rendered="#{rentController.rent.machine.type eq 'MachineGaming'}"/>
             </div>
         </div>
     </ui:define>
