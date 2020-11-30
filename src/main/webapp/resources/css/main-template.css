@@ -1,7 +1,7 @@
 /*All styles for main template*/
 html, body {
     color: rgba(255, 255, 255, .85);
-    font-size: 1vw;
+    font-size: 0.9vw;
     height: 100%;
     font-family: 'Lora', serif;
     margin: auto;
@@ -82,13 +82,14 @@ html, body {
 }
 
 .pageContent {
-    background-color: white;
     color: #1C2022;
     height: 75%;
     justify-items: center;
     padding: 50px;
     display: block;
     overflow: scroll;
+    background: linear-gradient(to top left, rgba(0, 203, 169, .1), rgba(255, 255, 255, .2)) no-repeat center center fixed;
+    background-size: cover;
 }
 
 .pageContent label, .pageContent p {
