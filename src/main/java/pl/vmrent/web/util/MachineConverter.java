@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
+import javax.persistence.EntityNotFoundException;
 import java.util.UUID;
 
 @FacesConverter(forClass = Machine.class, managed = true)
@@ -19,7 +20,7 @@ public class MachineConverter implements Converter<Machine>
     @Override
     public Machine getAsObject(FacesContext facesContext, UIComponent uiComponent, String s)
     {
-        return machineService.findMachineById(UUID.fromString(s)).orElseThrow(IllegalArgumentException::new);
+        return machineService.findMachineById(UUID.fromString(s)).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

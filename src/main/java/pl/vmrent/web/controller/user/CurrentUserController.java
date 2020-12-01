@@ -21,9 +21,9 @@ public class CurrentUserController implements Serializable
         return userService.getCurrentUser();
     }
 
-    public boolean isUserRole()
+    public boolean isClientRole()
     {
-        return userService.getCurrentRole() == Role.User;
+        return userService.getCurrentRole() == Role.Client;
     }
 
     public boolean isAdminRole()

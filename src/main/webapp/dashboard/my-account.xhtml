@@ -27,7 +27,7 @@
                 <div>
                     <p>#{currentUserController.currentUser.username}</p>
                     <p>#{currentUserController.currentUser.fullname}</p>
-                    <h:panelGroup rendered="#{currentUserController.userRole}">
+                    <h:panelGroup rendered="#{currentUserController.clientRole}">
                         <p>#{msgs.client}</p>
                     </h:panelGroup>
                     <h:panelGroup rendered="#{currentUserController.adminRole}">

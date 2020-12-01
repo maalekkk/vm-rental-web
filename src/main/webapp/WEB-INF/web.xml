@@ -29,7 +29,7 @@
 
     <!-- SECURITY ROLES -->
     <security-role>
-        <role-name>User</role-name>
+        <role-name>Client</role-name>
     </security-role>
     <security-role>
         <role-name>Admin</role-name>
@@ -54,7 +54,7 @@
             <url-pattern>/dashboard/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <role-name>User</role-name>
+            <role-name>Client</role-name>
             <role-name>Admin</role-name>
             <role-name>Owner</role-name>
         </auth-constraint>
@@ -85,6 +85,16 @@
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
+
+    <!-- ERROR PAGE HANDLERS -->
+    <error-page>
+        <error-code>500</error-code>
+        <location>/dashboard/error.xhtml</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/dashboard/error.xhtml</location>
+    </error-page>
 
     <!-- PRIMEFACES THEME -->
     <context-param>

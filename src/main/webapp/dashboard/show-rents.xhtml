@@ -47,6 +47,10 @@
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
                     <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
+                                     action="#{rentListController.finishRent(rent)}"
+                                     value="#{msgs.finish}"
+                                     styleClass="table-purple-button"/>
+                    <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
                                      action="#{rentListController.deleteRent(rent)}"
                                      value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>

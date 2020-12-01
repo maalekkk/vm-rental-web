@@ -27,6 +27,11 @@ public class RentService
         return rentRepository.save(rent);
     }
 
+    public Optional<Rent> findRentById(UUID fromString)
+    {
+        return rentRepository.findById(fromString);
+    }
+
     public List<Rent> findRentsByMachine(Machine machine)
     {
         return rentRepository.findByPredicate(rent -> rent.getMachine().equals(machine));
@@ -50,6 +55,15 @@ public class RentService
         }
     }
 
+    public void finishRent(Rent rent)
+    {
+        if (!isRentFinished(rent))
+        {
+            rent.getPeriod().setEndDate(dateTimeProvider.now());
+            rentRepository.save(rent);
+        }
+    }
+
     public boolean isMachineRented(Machine machine)
     {
         return rentRepository.findByPredicate(rent -> !isRentFinished(rent)).stream().anyMatch(r -> r.getMachine().equals(machine));
@@ -58,10 +72,5 @@ public class RentService
     public boolean isRentFinished(Rent rent)
     {
         return rent.getPeriod().getEndDate().isBefore(dateTimeProvider.now());
-    }
-
-    public Optional<Rent> findRentById(UUID fromString)
-    {
-        return rentRepository.findById(fromString);
     }
 }

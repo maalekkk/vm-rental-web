@@ -38,6 +38,12 @@ public class RentListController implements Serializable
         }
     }
 
+    public String finishRent(Rent rent)
+    {
+        rentService.finishRent(rent);
+        return "show-rents.xhtml?faces-redirect=true";
+    }
+
     public String deleteRent(Rent rent)
     {
         rentService.deleteRent(rent);

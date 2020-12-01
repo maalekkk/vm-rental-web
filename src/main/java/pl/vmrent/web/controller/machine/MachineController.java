@@ -4,6 +4,7 @@ import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.machine.MachineGaming;
 import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
+import pl.vmrent.web.service.RentService;
 import pl.vmrent.web.validator.unique.machinename.UniqueMachineName;
 
 import javax.faces.event.ValueChangeEvent;
@@ -20,6 +21,9 @@ public class MachineController implements Serializable
     @Inject
     private MachineService machineService;
 
+    @Inject
+    private RentService rentService;
+
     @UniqueMachineName
     @Size(min = 3, max = 20)
     private String machineName;
@@ -28,12 +32,12 @@ public class MachineController implements Serializable
 
     public String submit()
     {
-        if (machineName != null)
+        if (machine.getName() == null)
         {
             machine.setName(machineName);
         }
         machineService.saveMachine(machine);
-        return "/dashboard/show_vms?faces-redirect=true";
+        return "/dashboard/show-vms?faces-redirect=true";
     }
 
     public void onTypeChange(ValueChangeEvent event)
@@ -56,14 +60,14 @@ public class MachineController implements Serializable
 
     public boolean isUpdate()
     {
-        return machine != null && machine.getId() != null;
+        return machine.getId() != null;
     }
 
     public String verify()
     {
-        if (isUpdate())
+        if (rentService.isMachineRented(machine))
         {
-            return "error.xhtml?faces-redirect=true";
+            return "error";
         }
         return null;
     }

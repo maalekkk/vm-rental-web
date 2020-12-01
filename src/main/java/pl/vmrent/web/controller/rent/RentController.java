@@ -38,7 +38,7 @@ public class RentController implements Serializable
     {
         if (rentService.isMachineRented(rent.getMachine()))
         {
-            return "error.xhtml?faces-redirect=true";
+            return "error";
         }
         return null;
     }

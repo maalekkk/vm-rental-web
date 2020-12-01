@@ -43,9 +43,9 @@ public class UserService
 
     public Role getCurrentRole()
     {
-        if (request.isUserInRole(Role.User.name()))
+        if (request.isUserInRole(Role.Client.name()))
         {
-            return Role.User;
+            return Role.Client;
         }
         if (request.isUserInRole(Role.Admin.name()))
         {

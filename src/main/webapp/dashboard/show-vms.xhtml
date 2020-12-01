@@ -69,6 +69,7 @@
                     <h:button rendered="#{not machineListController.isRented(machine)}"
                               outcome="rent-vm"
                               value="#{msgs.rent}"
+                              disabled="#{not currentUserController.currentUser.enabled}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>

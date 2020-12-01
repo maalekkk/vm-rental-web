@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
+import javax.persistence.EntityNotFoundException;
 import java.util.UUID;
 
 @FacesConverter(forClass = User.class, managed = true)
@@ -19,7 +20,7 @@ public class UserConverter implements Converter<User>
     @Override
     public User getAsObject(FacesContext facesContext, UIComponent uiComponent, String s)
     {
-        return userService.findUserById(UUID.fromString(s)).orElseThrow(IllegalArgumentException::new);
+        return userService.findUserById(UUID.fromString(s)).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

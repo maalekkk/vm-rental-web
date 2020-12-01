@@ -8,6 +8,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
+import javax.persistence.EntityNotFoundException;
 import java.util.UUID;
 
 @FacesConverter(forClass = Rent.class, managed = true)
@@ -19,7 +20,7 @@ public class RentConverter implements Converter<Rent>
     @Override
     public Rent getAsObject(FacesContext facesContext, UIComponent uiComponent, String s)
     {
-        return rentService.findRentById(UUID.fromString(s)).orElseThrow(IllegalArgumentException::new);
+        return rentService.findRentById(UUID.fromString(s)).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override

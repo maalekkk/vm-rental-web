@@ -25,7 +25,7 @@ public class UserController implements Serializable
 
     public String submit()
     {
-        if (username != null)
+        if (user.getUsername() == null)
         {
             user.setUsername(username);
         }
@@ -35,7 +35,7 @@ public class UserController implements Serializable
 
     public boolean isUpdate()
     {
-        return user != null && user.getId() != null;
+        return user.getId() != null;
     }
 
     public User getUser()
