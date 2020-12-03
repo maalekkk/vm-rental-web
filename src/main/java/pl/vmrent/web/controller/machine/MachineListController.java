@@ -22,9 +22,6 @@ public class MachineListController implements Serializable
     @Inject
     private RentService rentService;
 
-    @Inject
-    private UserService userService;
-
     private List<Machine> machines;
 
     private String machineFilter = "";
