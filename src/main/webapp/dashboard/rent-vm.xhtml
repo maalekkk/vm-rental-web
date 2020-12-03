@@ -8,7 +8,6 @@
     <ui:define name="metadata">
         <f:metadata>
             <f:viewParam name="machineId" value="#{rentController.rent.machine}" required="true"/>
-            <f:viewAction action="#{rentController.verify}"/>
         </f:metadata>
     </ui:define>
     <ui:define name="head">
@@ -31,7 +30,7 @@
     <ui:define name="content">
         <div class="pageContent-container">
             <div class="pageContent-content">
-                <h:form styleClass="date-form">
+                <h:form id="rent" styleClass="date-form">
                     <h:outputLabel value="#{msgs.start_time}:"/>
                     <h:inputText id="startDate" a:type="datetime-local" styleClass="date-picker"
                                  value="#{rentController.rent.period.startDate}" onmousedown="minDate(this)">

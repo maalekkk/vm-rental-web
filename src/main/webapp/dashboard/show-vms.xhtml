@@ -17,7 +17,12 @@
         <h:outputLabel>#{msgs.show_vms}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
-        <h:form>
+        <h:form id="filter">
+            <h:inputText value="#{machineListController.machineFilter}"/>
+            <h:commandButton value="#{msgs.filter}" action="#{machineListController.filter}"
+                             styleClass="table-purple-button"/>
+        </h:form>
+        <h:form id="table">
             <h:dataTable styleClass="table-purple click-row" value="#{machineListController.machines}" var="machine"
                          rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
@@ -66,20 +71,19 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
-                    <h:button rendered="#{not machineListController.isRented(machine)}"
-                              outcome="rent-vm"
+                    <h:button outcome="rent-vm"
                               value="#{msgs.rent}"
                               disabled="#{not currentUserController.currentUser.enabled}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>
-                    <h:button rendered="#{not machineListController.isRented(machine)}"
+                    <h:button rendered="#{not machineListController.isAllocated(machine)}"
                               outcome="owner/manage-vm"
                               value="#{msgs.edit}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>
-                    <h:commandButton rendered="#{not machineListController.isRented(machine)}"
+                    <h:commandButton rendered="#{not machineListController.isAllocated(machine)}"
                                      action="#{machineListController.deleteMachine(machine)}"
                                      value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>

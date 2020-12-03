@@ -36,7 +36,6 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
             elements.set(index, entity);
         }
         return entity;
-
     }
 
     @Override

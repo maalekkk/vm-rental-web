@@ -2,7 +2,7 @@
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="head">
         <h:outputStylesheet library="css" name="table.css"/>
@@ -17,14 +17,20 @@
         <h:outputLabel>#{msgs.show_rents}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
-        <h:form>
+        <h:form id="filter">
+            <h:inputText value="#{rentListController.machineFilter}"/>
+            <h:inputText rendered="#{currentUserController.ownerRole}" value="#{rentListController.userFilter}"/>
+            <h:commandButton value="#{msgs.filter}" action="#{rentListController.filter}"
+                             styleClass="table-purple-button"/>
+        </h:form>
+        <h:form id="table">
             <h:dataTable styleClass="table-purple" value="#{rentListController.rents}" var="rent"
                          rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
                     <f:facet name="header">#{msgs.vm_name}</f:facet>
                     #{rent.machine.name}
                 </h:column>
-                <h:column>
+                <h:column rendered="#{currentUserController.ownerRole}">
                     <f:facet name="header">#{msgs.login}</f:facet>
                     #{rent.user.username}
                 </h:column>
@@ -41,16 +47,18 @@
                     </h:outputText>
                 </h:column>
                 <h:column>
-                    <f:facet name="header">#{msgs.finished}</f:facet>
-                    <h:outputText value="#{rentListController.isFinished(rent) ? msgs.yes : msgs.no}"/>
+                    <f:facet name="header">#{msgs.status}</f:facet>
+                    <h:outputText rendered="#{rentListController.isReserved(rent)}" value="#{msgs.reserved}"/>
+                    <h:outputText rendered="#{rentListController.isInProgress(rent)}" value="#{msgs.in_progress}"/>
+                    <h:outputText rendered="#{rentListController.isFinished(rent)}" value="#{msgs.finished}"/>
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
-                    <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
+                    <h:commandButton rendered="#{rentListController.isInProgress(rent)}"
                                      action="#{rentListController.finishRent(rent)}"
                                      value="#{msgs.finish}"
                                      styleClass="table-purple-button"/>
-                    <h:commandButton rendered="#{not rentListController.isFinished(rent)}"
+                    <h:commandButton rendered="#{rentListController.isReserved(rent)}"
                                      action="#{rentListController.deleteRent(rent)}"
                                      value="#{msgs.delete}"
                                      styleClass="table-purple-button"/>

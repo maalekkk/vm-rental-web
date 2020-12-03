@@ -36,6 +36,11 @@ public class UserService
         return userRepository.findByUniquePredicate(user -> user.getUsername().equals(username));
     }
 
+    public List<User> filterUserByUsername(String username)
+    {
+        return userRepository.findByPredicate(user -> user.getUsername().equals(username));
+    }
+
     public User getCurrentUser()
     {
         return findUserByUsername(request.getRemoteUser()).orElse(null);

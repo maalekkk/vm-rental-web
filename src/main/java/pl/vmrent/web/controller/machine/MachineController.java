@@ -65,7 +65,7 @@ public class MachineController implements Serializable
 
     public String verify()
     {
-        if (rentService.isMachineRented(machine))
+        if (rentService.isMachineAllocated(machine))
         {
             return "error";
         }

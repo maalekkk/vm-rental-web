@@ -17,7 +17,12 @@
         <h:outputLabel>#{msgs.show_users}</h:outputLabel>
     </ui:define>
     <ui:define name="content">
-        <h:form>
+        <h:form id="filter">
+            <h:inputText value="#{userListController.userFilter}"/>
+            <h:commandButton value="#{msgs.filter}" action="#{userListController.filter}"
+                             styleClass="table-purple-button"/>
+        </h:form>
+        <h:form id="table">
             <h:dataTable styleClass="table-purple" value="#{userListController.users}" var="user"
                          rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
@@ -42,9 +47,6 @@
                               styleClass="table-purple-button">
                         <f:param name="userId" value="#{user.id}"/>
                     </h:button>
-                    <h:commandButton action="#{userListController.deleteUser(user)}"
-                                     value="#{msgs.delete}"
-                                     styleClass="table-purple-button"/>
                 </h:column>
             </h:dataTable>
         </h:form>

@@ -31,6 +31,11 @@ public class MachineService
         return machineRepository.findByUniquePredicate(machine -> machine.getName().equals(name));
     }
 
+    public List<Machine> filterMachineByName(String name)
+    {
+        return machineRepository.findByPredicate(machine -> machine.getName().equals(name));
+    }
+
     public List<Machine> getAll()
     {
         return machineRepository.findAll();

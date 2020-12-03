@@ -3,6 +3,7 @@ package pl.vmrent.web.controller.machine;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.service.MachineService;
 import pl.vmrent.web.service.RentService;
+import pl.vmrent.web.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -21,7 +22,12 @@ public class MachineListController implements Serializable
     @Inject
     private RentService rentService;
 
+    @Inject
+    private UserService userService;
+
     private List<Machine> machines;
+
+    private String machineFilter = "";
 
     @PostConstruct
     public void init()
@@ -31,7 +37,7 @@ public class MachineListController implements Serializable
 
     public String deleteMachine(Machine machine)
     {
-        if (!rentService.isMachineRented(machine))
+        if (!rentService.isMachineAllocated(machine))
         {
             machineService.deleteMachine(machine);
             return "show-vms.xhtml?faces-redirect=true";
@@ -39,13 +45,35 @@ public class MachineListController implements Serializable
         return null;
     }
 
-    public boolean isRented(Machine machine)
+    public void filter()
     {
-        return rentService.isMachineRented(machine);
+        if (!machineFilter.isEmpty())
+        {
+            machines = machineService.filterMachineByName(machineFilter);
+        }
+        else
+        {
+            machines = machineService.getAll();
+        }
+    }
+
+    public boolean isAllocated(Machine machine)
+    {
+        return rentService.isMachineAllocated(machine);
     }
 
     public List<Machine> getMachines()
     {
         return machines;
+    }
+
+    public String getMachineFilter()
+    {
+        return machineFilter;
+    }
+
+    public void setMachineFilter(String machineFilter)
+    {
+        this.machineFilter = machineFilter;
     }
 }

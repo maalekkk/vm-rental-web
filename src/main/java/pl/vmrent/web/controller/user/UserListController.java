@@ -19,6 +19,8 @@ public class UserListController implements Serializable
 
     private List<User> users;
 
+    private String userFilter = "";
+
     @PostConstruct
     private void init()
     {
@@ -31,14 +33,30 @@ public class UserListController implements Serializable
         return "show-users.xhtml?faces-redirect=true";
     }
 
-    public String deleteUser(User user)
+    public void filter()
     {
-        userService.deleteUser(user);
-        return "show-users.xhtml?faces-redirect=true";
+        if (!userFilter.isEmpty())
+        {
+            users = userService.filterUserByUsername(userFilter);
+        }
+        else
+        {
+            users = userService.getAll();
+        }
     }
 
     public List<User> getUsers()
     {
         return users;
+    }
+
+    public String getUserFilter()
+    {
+        return userFilter;
+    }
+
+    public void setUserFilter(String userFilter)
+    {
+        this.userFilter = userFilter;
     }
 }
