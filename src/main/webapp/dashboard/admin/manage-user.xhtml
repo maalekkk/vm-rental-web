@@ -32,7 +32,7 @@
     <ui:define name="content">
         <div class="pageContent-container">
             <h:form styleClass="pageContent-content">
-                <h:outputLabel value="#{msgs.login}"/>
+                <h:outputLabel value="#{msgs.username}"/>
                 <h:inputText id="login"
                              disabled="#{userController.update}"
                              value="#{userController.update ? userController.user.username : userController.username}"

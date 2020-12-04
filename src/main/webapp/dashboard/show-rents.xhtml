@@ -20,6 +20,7 @@
         <h:form id="filter">
             <h:outputText value="#{msgs.vm_name}:"/>
             <h:inputText value="#{rentListController.machineFilter}"/>
+            <h:outputText value="#{msgs.username}"/>
             <h:inputText rendered="#{currentUserController.ownerRole}" value="#{rentListController.userFilter}"/>
             <h:commandButton value="#{msgs.filter}" action="#{rentListController.filter}"
                              styleClass="table-purple-button"/>
@@ -32,7 +33,7 @@
                     #{rent.machine.name}
                 </h:column>
                 <h:column rendered="#{currentUserController.ownerRole}">
-                    <f:facet name="header">#{msgs.login}</f:facet>
+                    <f:facet name="header">#{msgs.username}</f:facet>
                     #{rent.user.username}
                 </h:column>
                 <h:column>

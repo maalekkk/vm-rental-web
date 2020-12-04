@@ -3,7 +3,6 @@ package pl.vmrent.web.controller.machine;
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.service.MachineService;
 import pl.vmrent.web.service.RentService;
-import pl.vmrent.web.service.UserService;
 
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;

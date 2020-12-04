@@ -18,7 +18,7 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="filter">
-            <h:outputText value="#{msgs.login}:"/>
+            <h:outputText value="#{msgs.username}:"/>
             <h:inputText value="#{userListController.userFilter}"/>
             <h:commandButton value="#{msgs.filter}" action="#{userListController.filter}"
                              styleClass="table-purple-button"/>
@@ -27,7 +27,7 @@
             <h:dataTable styleClass="table-purple" value="#{userListController.users}" var="user"
                          rowClasses="table-purple-row" headerClass="table-purple-header">
                 <h:column>
-                    <f:facet name="header">#{msgs.login}</f:facet>
+                    <f:facet name="header">#{msgs.username}</f:facet>
                     #{user.username}
                 </h:column>
                 <h:column>
