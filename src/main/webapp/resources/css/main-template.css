@@ -87,7 +87,7 @@ html, body {
     justify-items: center;
     padding: 50px;
     display: block;
-    overflow: scroll;
+    overflow: auto;
     background: linear-gradient(to top left, rgba(0, 203, 169, .1), rgba(255, 255, 255, .2)) no-repeat center center fixed;
     background-size: cover;
 }

@@ -9,13 +9,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Serializable> implements Repository<T, ID>
 {
     private final PrimaryKeyGenerator<ID> generator;
-    private final List<T> elements = Collections.synchronizedList(new ArrayList<>());
+    private final List<T> elements = new CopyOnWriteArrayList<>();
 
     public InMemoryRepository(PrimaryKeyGenerator<ID> generator)
     {

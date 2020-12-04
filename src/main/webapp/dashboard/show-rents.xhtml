@@ -20,7 +20,7 @@
         <h:form id="filter">
             <h:outputText value="#{msgs.vm_name}:"/>
             <h:inputText value="#{rentListController.machineFilter}"/>
-            <h:outputText value="#{msgs.username}"/>
+            <h:outputText value="#{msgs.username}:"/>
             <h:inputText rendered="#{currentUserController.ownerRole}" value="#{rentListController.userFilter}"/>
             <h:commandButton value="#{msgs.filter}" action="#{rentListController.filter}"
                              styleClass="table-purple-button"/>

@@ -24,7 +24,7 @@ public class MachineRepository extends InMemoryRepository<@Valid Machine, UUID>
         MachineGaming mg1 = new MachineGaming("Predator", 8, 16384, 4096, 15, 8192);
         MachineGaming mg2 = new MachineGaming("G4mer", 4, 8192, 2048, 8, 4096);
         MachineWorkstation mw1 = new MachineWorkstation("Developex", 16, 32768, 8192, 1024, 3, true);
-        MachineWorkstation mw2 = new MachineWorkstation("W0rker", 8, 16384, 4096, 512, 2, true);
+        MachineWorkstation mw2 = new MachineWorkstation("W0rker", 8, 16384, 4096, 512, 2, false);
         save(mg1);
         save(mg2);
         save(mw1);

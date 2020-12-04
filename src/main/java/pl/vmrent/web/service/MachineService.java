@@ -33,7 +33,7 @@ public class MachineService
 
     public List<Machine> filterMachineByName(String name)
     {
-        return machineRepository.findByPredicate(machine -> machine.getName().equals(name));
+        return machineRepository.findByPredicate(machine -> machine.getName().contains(name));
     }
 
     public List<Machine> getAll()

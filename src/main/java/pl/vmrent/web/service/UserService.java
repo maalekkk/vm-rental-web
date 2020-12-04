@@ -38,12 +38,12 @@ public class UserService
 
     public List<User> filterUserByUsername(String username)
     {
-        return userRepository.findByPredicate(user -> user.getUsername().equals(username));
+        return userRepository.findByPredicate(user -> user.getUsername().contains(username));
     }
 
     public User getCurrentUser()
     {
-        return findUserByUsername(request.getRemoteUser()).orElse(null);
+        return findUserByUsername(request.getRemoteUser()).orElseThrow(IllegalStateException::new);
     }
 
     public Role getCurrentRole()
@@ -66,11 +66,6 @@ public class UserService
     public List<User> getAll()
     {
         return userRepository.findAll();
-    }
-
-    public void deleteUser(User user)
-    {
-        userRepository.delete(user);
     }
 
     public void changeUserActivity(User user)

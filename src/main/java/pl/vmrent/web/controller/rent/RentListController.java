@@ -20,12 +20,14 @@ import java.util.function.Predicate;
 @ViewScoped
 public class RentListController implements Serializable
 {
-    private final List<Predicate<Rent>> predicates = new ArrayList<>();
     @Inject
     private UserService userService;
+
     @Inject
     private RentService rentService;
+
     private List<Rent> rents;
+
     private String machineFilter = "";
     private String userFilter = "";
 
@@ -56,16 +58,16 @@ public class RentListController implements Serializable
 
     public void filter()
     {
+        List<Predicate<Rent>> predicates = new ArrayList<>();
         if (!userFilter.isEmpty())
         {
-            predicates.add(rent -> rent.getUser().getUsername().equals(userFilter));
+            predicates.add(rent -> rent.getUser().getUsername().contains(userFilter));
         }
         if (!machineFilter.isEmpty())
         {
-            predicates.add(rent -> rent.getMachine().getName().equals(machineFilter));
+            predicates.add(rent -> rent.getMachine().getName().contains(machineFilter));
         }
         rents = rentService.filterRents(predicates);
-        predicates.clear();
     }
 
     public boolean isReserved(Rent rent)
