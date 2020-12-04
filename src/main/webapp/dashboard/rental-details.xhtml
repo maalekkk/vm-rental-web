@@ -12,14 +12,17 @@
     <ui:define name="head">
         <h:outputStylesheet library="css" name="rent-vm.css"/>
         <h:outputStylesheet library="css" name="page-content.css"/>
-        <h:outputStylesheet library="css" name="box.css"/>
+        <h:outputStylesheet library="css" name="information-box.css"/>
         <h:outputStylesheet library="css" name="message.css"/>
         <h:outputStylesheet library="css" name="page-content-inputs.css"/>
     </ui:define>
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.rental_details}" url="/VMRental/dashboard/rental-details.xhtml"/>
+            <p:menuitem value="#{msgs.show_rents}" url="/VMRental/dashboard/show-rents.xhtml"/>
+            <p:menuitem value="#{msgs.rental_details}" url="/VMRental/dashboard/rental-details.xhtml">
+                <f:param name="rentId" value="#{rentController.rent.id}"/>
+            </p:menuitem>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">

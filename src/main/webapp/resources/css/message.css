@@ -2,8 +2,8 @@
 .message {
     display: block;
     font-size: 0.8vw;
-    background-color: rgb(255 219 219);
-    border: 2px solid red;
+    background-color: rgb(255, 219, 219);
+    border: 2px solid #DC143C;
     border-radius: 4px;
     padding: 0.2vw;
     margin: auto;

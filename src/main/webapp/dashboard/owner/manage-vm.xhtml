@@ -20,7 +20,13 @@
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.create_vm}" url="/VMRental/dashboard/owner/manage-vm.xhtml"/>
+            <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show-vms.xhtml"
+                        rendered="#{machineController.update}"/>
+            <p:menuitem value="#{machineController.update ? msgs.update_vm : msgs.create_vm}"
+                        url="/VMRental/dashboard/owner/manage-vm.xhtml">
+                <f:param name="machineId" value="#{machineController.machine.id}"
+                         disable="#{not machineController.update}"/>
+            </p:menuitem>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">

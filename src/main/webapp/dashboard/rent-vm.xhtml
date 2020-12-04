@@ -13,7 +13,7 @@
     <ui:define name="head">
         <h:outputStylesheet library="css" name="rent-vm.css"/>
         <h:outputStylesheet library="css" name="page-content.css"/>
-        <h:outputStylesheet library="css" name="box.css"/>
+        <h:outputStylesheet library="css" name="information-box.css"/>
         <h:outputStylesheet library="css" name="message.css"/>
         <h:outputStylesheet library="css" name="page-content-inputs.css"/>
         <h:outputScript library="js" name="min-date.js"/>
@@ -21,7 +21,10 @@
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.rent_vm}" url="/VMRental/dashboard/rent-vm.xhtml"/>
+            <p:menuitem value="#{msgs.show_vms}" url="/VMRental/dashboard/show-vms.xhtml"/>
+            <p:menuitem value="#{msgs.rent_vm}" url="/VMRental/dashboard/rent-vm.xhtml">
+                <f:param name="machineId" value="#{rentController.rent.machine.id}"/>
+            </p:menuitem>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">

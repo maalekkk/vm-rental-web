@@ -18,7 +18,12 @@
     <ui:define name="breadcrumbs">
         <p:breadCrumb>
             <p:menuitem value="#{msgs.main_page}" url="/VMRental/dashboard/index.xhtml"/>
-            <p:menuitem value="#{msgs.create_new_user}" url="/VMRental/dashboard/admin/manage-user.xhtml"/>
+            <p:menuitem value="#{msgs.show_users}" url="/VMRental/dashboard/admin/show-users.xhtml"
+                        rendered="#{userController.update}"/>
+            <p:menuitem value="#{userController.update ? msgs.update_user : msgs.create_new_user}"
+                        url="/VMRental/dashboard/admin/manage-user.xhtml">
+                <f:param name="userId" value="#{userController.user.id}" disable="#{not userController.update}"/>
+            </p:menuitem>
         </p:breadCrumb>
     </ui:define>
     <ui:define name="titleText">

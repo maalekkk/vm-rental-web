@@ -92,7 +92,8 @@ html, body {
     background-size: cover;
 }
 
-.pageContent label, .pageContent p {
+.pageContent label,
+.pageContent p {
     float: left;
     width: 100%;
     align-self: center;

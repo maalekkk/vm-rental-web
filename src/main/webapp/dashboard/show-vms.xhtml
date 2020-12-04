@@ -18,6 +18,7 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="filter">
+            <h:outputText value="#{msgs.vm_name}:"/>
             <h:inputText value="#{machineListController.machineFilter}"/>
             <h:commandButton value="#{msgs.filter}" action="#{machineListController.filter}"
                              styleClass="table-purple-button"/>

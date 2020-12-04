@@ -19,7 +19,8 @@ label {
 }
 
 /*Input text and password*/
-.auth-form input[type=text], .auth-form input[type=password] {
+.auth-form input[type=text],
+.auth-form input[type=password] {
     margin-bottom: 2vh;
     margin-top: 2vh;
     border-right: none;
@@ -35,7 +36,10 @@ label {
     font-family: 'Lora', serif;
 }
 
-.auth-form input[type=text]:focus, .auth-form input[type=text]:hover, .auth-form input[type=password]:focus, .auth-form input[type=password]:hover {
+.auth-form input[type=text]:focus,
+.auth-form input[type=text]:hover,
+.auth-form input[type=password]:focus,
+.auth-form input[type=password]:hover {
     background-color: transparent;
     border-bottom: 2px solid rgba(0, 0, 0, .7);
 }
