@@ -18,7 +18,7 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="filter">
-            <h:outputText value="#{msgs.username}:"/>
+            <h:outputText value="#{msgs.username}:" styleClass="filter-title"/>
             <h:inputText value="#{userListController.userFilter}"/>
             <h:commandButton value="#{msgs.filter}" action="#{userListController.filter}"
                              styleClass="table-purple-button"/>

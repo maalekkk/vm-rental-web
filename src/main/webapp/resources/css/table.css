@@ -71,3 +71,7 @@
 #filter > input[type=submit] {
     min-width: 0 !important;
 }
+
+.filter-title {
+    padding-left: 1vw;
+}

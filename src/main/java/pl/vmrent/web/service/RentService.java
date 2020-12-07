@@ -102,7 +102,8 @@ public class RentService
 
     public boolean isMachineAvailable(Rent rent)
     {
-        return rentRepository.findByPredicate(r -> getRentStatus(r) == RESERVED || getRentStatus(r) == IN_PROGRESS)
+        return rentRepository.findByPredicate(r -> r.getMachine().equals(rent.getMachine()) &&
+                getRentStatus(r) == RESERVED || getRentStatus(r) == IN_PROGRESS)
                 .stream().noneMatch(r -> arePeriodOverlaping(r.getPeriod(), rent.getPeriod()));
     }
 
