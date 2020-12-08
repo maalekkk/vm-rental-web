@@ -33,12 +33,12 @@ public class MachineListController implements Serializable
 
     public String deleteMachine(Machine machine)
     {
-        if (!rentService.isMachineAllocated(machine))
+        if (rentService.isMachineAllocated(machine))
         {
-            machineService.deleteMachine(machine);
-            return "show-vms.xhtml?faces-redirect=true";
+            return null;
         }
-        return null;
+        machineService.deleteMachine(machine);
+        return "show-vms.xhtml?faces-redirect=true";
     }
 
     public void filter()

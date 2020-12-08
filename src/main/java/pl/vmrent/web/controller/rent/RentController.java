@@ -30,11 +30,7 @@ public class RentController implements Serializable
 
     public String submit()
     {
-        if (rentService.saveRent(rent) == null)
-        {
-            return null;
-        }
-        return "show-rents.xhtml?faces-redirect=true";
+        return rentService.saveRent(rent) == null ? null : "show-rents.xhtml?faces-redirect=true";
     }
 
     public Rent getRent()

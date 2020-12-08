@@ -1,4 +1,4 @@
-package pl.vmrent.web.util;
+package pl.vmrent.web.util.converter;
 
 import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.service.MachineService;

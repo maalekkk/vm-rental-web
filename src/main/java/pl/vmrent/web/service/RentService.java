@@ -7,16 +7,15 @@ import pl.vmrent.web.model.rent.Status;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.repository.RentRepository;
 import pl.vmrent.web.util.DateTimeProvider;
+import pl.vmrent.web.util.MessageProvider;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.UUID;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -33,20 +32,21 @@ public class RentService
     @Inject
     private DateTimeProvider dateTimeProvider;
 
+    @Inject
+    private MessageProvider messageProvider;
+
     public Rent saveRent(@Valid Rent rent)
     {
         if (rent.getPeriod().getEndDate().isBefore(rent.getPeriod().getStartDate()))
         {
-            String msg = ResourceBundle.getBundle("ValidationMessages", FacesContext.getCurrentInstance().getViewRoot().getLocale()).getString("period.message");
-            FacesMessage error = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, null);
-            FacesContext.getCurrentInstance().addMessage("rent:endDate", error);
+            String msg = messageProvider.getMessage("ValidationMessages", "period.message");
+            messageProvider.addMessage("rent:endDate", msg, FacesMessage.SEVERITY_ERROR);
             return null;
         }
         if (!isMachineAvailable(rent))
         {
-            String msg = ResourceBundle.getBundle("ValidationMessages", FacesContext.getCurrentInstance().getViewRoot().getLocale()).getString("rent.date.busy.message");
-            FacesMessage error = new FacesMessage(FacesMessage.SEVERITY_ERROR, msg, null);
-            FacesContext.getCurrentInstance().addMessage("rent:endDate", error);
+            String msg = messageProvider.getMessage("ValidationMessages", "rent.date.busy.message");
+            messageProvider.addMessage("rent:endDate", msg, FacesMessage.SEVERITY_ERROR);
             return null;
         }
         return rentRepository.save(rent);

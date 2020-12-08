@@ -6,7 +6,6 @@ import pl.vmrent.web.repository.generator.PrimaryKeyGenerator;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -30,13 +29,15 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
         {
             entity.setId(generator.getId());
             elements.add(entity);
+            return entity;
         }
-        else
+        if (elements.contains(entity))
         {
             int index = elements.indexOf(entity);
             elements.set(index, entity);
+            return entity;
         }
-        return entity;
+        throw new IllegalStateException();
     }
 
     @Override

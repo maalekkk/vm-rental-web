@@ -1,4 +1,4 @@
-package pl.vmrent.web.util;
+package pl.vmrent.web.util.converter;
 
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
@@ -28,4 +28,6 @@ public class UserConverter implements Converter<User>
     {
         return user.getId() != null ? user.getId().toString() : null;
     }
+
+
 }
