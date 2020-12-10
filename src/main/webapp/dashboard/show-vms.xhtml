@@ -72,22 +72,24 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">#{msgs.actions}</f:facet>
-                    <h:button outcome="rent-vm"
+                    <h:button rendered="#{currentUserController.clientRole}"
+                              outcome="rent-vm"
                               value="#{msgs.rent}"
-                              disabled="#{not currentUserController.currentUser.enabled}"
                               styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>
-                    <h:button rendered="#{not machineListController.isAllocated(machine)}"
-                              outcome="owner/manage-vm"
-                              value="#{msgs.edit}"
-                              styleClass="table-purple-button">
+                    <h:button
+                            rendered="#{not machineListController.isAllocated(machine) and currentUserController.ownerRole}"
+                            outcome="owner/manage-vm"
+                            value="#{msgs.edit}"
+                            styleClass="table-purple-button">
                         <f:param name="machineId" value="#{machine.id}"/>
                     </h:button>
-                    <h:commandButton rendered="#{not machineListController.isAllocated(machine)}"
-                                     action="#{machineListController.deleteMachine(machine)}"
-                                     value="#{msgs.delete}"
-                                     styleClass="table-purple-button"/>
+                    <h:commandButton
+                            rendered="#{not machineListController.isAllocated(machine) and currentUserController.ownerRole}"
+                            action="#{machineListController.deleteMachine(machine)}"
+                            value="#{msgs.delete}"
+                            styleClass="table-purple-button"/>
                 </h:column>
             </h:dataTable>
         </h:form>

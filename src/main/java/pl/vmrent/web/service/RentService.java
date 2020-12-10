@@ -72,6 +72,11 @@ public class RentService
         return stream.collect(Collectors.toList());
     }
 
+    public boolean existsRent(Rent rent)
+    {
+        return rentRepository.existsById(rent.getId());
+    }
+
     public List<Rent> getAll()
     {
         return rentRepository.findAll();
@@ -96,8 +101,7 @@ public class RentService
 
     public boolean isMachineAllocated(Machine machine)
     {
-        return rentRepository.findByPredicate(rent -> getRentStatus(rent) == RESERVED || getRentStatus(rent) == IN_PROGRESS)
-                .stream().anyMatch(r -> r.getMachine().equals(machine));
+        return !rentRepository.findByPredicate(rent -> rent.getMachine().equals(machine) && getRentStatus(rent) == RESERVED || getRentStatus(rent) == IN_PROGRESS).isEmpty();
     }
 
     public boolean isMachineAvailable(Rent rent)

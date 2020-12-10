@@ -36,6 +36,11 @@ public class MachineService
         return machineRepository.findByPredicate(machine -> machine.getName().contains(name));
     }
 
+    public boolean existsMachine(Machine machine)
+    {
+        return machineRepository.existsById(machine.getId());
+    }
+
     public List<Machine> getAll()
     {
         return machineRepository.findAll();

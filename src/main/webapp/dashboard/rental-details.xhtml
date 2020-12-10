@@ -6,7 +6,8 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="rentId" value="#{rentController.rent}"/>
+            <f:viewParam name="rentId" value="#{rentController.rent.id}"/>
+            <f:viewAction action="#{rentController.initRent}" onPostback="true"/>
         </f:metadata>
     </ui:define>
     <ui:define name="head">

@@ -63,6 +63,11 @@ public class UserService
         return null;
     }
 
+    public boolean existsUser(User user)
+    {
+        return userRepository.existsById(user.getId());
+    }
+
     public List<User> getAll()
     {
         return userRepository.findAll();

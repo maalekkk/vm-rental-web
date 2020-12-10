@@ -30,6 +30,12 @@ public class MachineController implements Serializable
 
     private Machine machine = new MachineGaming();
 
+    public String initMachine()
+    {
+        machineService.findMachineById(machine.getId()).ifPresent(m -> machine = m);
+        return !rentService.isMachineAllocated(machine) ? null : "error";
+    }
+
     public String submit()
     {
         if (machine.getName() == null)
@@ -60,12 +66,7 @@ public class MachineController implements Serializable
 
     public boolean isUpdate()
     {
-        return machine.getId() != null;
-    }
-
-    public String verify()
-    {
-        return rentService.isMachineAllocated(machine) ? "error" : null;
+        return machineService.existsMachine(machine);
     }
 
     public Machine getMachine()

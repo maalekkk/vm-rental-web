@@ -12,7 +12,8 @@
     </ui:define>
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="userId" value="#{userController.user}" required="false"/>
+            <f:viewParam name="userId" value="#{userController.user.id}"/>
+            <f:viewAction action="#{userController.initUser}" onPostback="true"/>
         </f:metadata>
     </ui:define>
     <ui:define name="breadcrumbs">

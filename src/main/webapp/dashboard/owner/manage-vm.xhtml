@@ -13,8 +13,8 @@
     </ui:define>
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="machineId" value="#{machineController.machine}" required="false"/>
-            <f:viewAction action="#{machineController.verify}"/>
+            <f:viewParam name="machineId" value="#{machineController.machine.id}"/>
+            <f:viewAction action="#{machineController.initMachine}" onPostback="true"/>
         </f:metadata>
     </ui:define>
     <ui:define name="breadcrumbs">

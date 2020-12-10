@@ -23,6 +23,11 @@ public class UserController implements Serializable
 
     private User user = new User();
 
+    public void initUser()
+    {
+        userService.findUserById(user.getId()).ifPresent(u -> user = u);
+    }
+
     public String submit()
     {
         if (user.getUsername() == null)
@@ -35,7 +40,7 @@ public class UserController implements Serializable
 
     public boolean isUpdate()
     {
-        return user.getId() != null;
+        return userService.existsUser(user);
     }
 
     public User getUser()

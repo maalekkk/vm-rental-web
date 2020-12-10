@@ -7,7 +7,8 @@
                 xmlns:p="http://primefaces.org/ui">
     <ui:define name="metadata">
         <f:metadata>
-            <f:viewParam name="machineId" value="#{rentController.rent.machine}" required="true"/>
+            <f:viewParam name="machineId" value="#{rentController.machineId}"/>
+            <f:viewAction action="#{rentController.initRentMachine}" onPostback="true"/>
         </f:metadata>
     </ui:define>
     <ui:define name="head">
