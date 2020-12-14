@@ -1,6 +1,7 @@
 package pl.vmrent.web.controller.rent;
 
 import pl.vmrent.web.model.rent.Rent;
+import pl.vmrent.web.model.user.Role;
 import pl.vmrent.web.service.MachineService;
 import pl.vmrent.web.service.RentService;
 import pl.vmrent.web.service.UserService;
@@ -38,7 +39,9 @@ public class RentController implements Serializable
     public String initRent()
     {
         rentService.findRentById(rent.getId()).ifPresent(r -> rent = r);
-        return rentService.existsRent(rent) ? null : "error";
+        return rentService.existsRent(rent) &&
+                (userService.getCurrentRole() == Role.Owner ||
+                        rent.getUser().equals(userService.getCurrentUser())) ? null : "error";
     }
 
     public String initRentMachine()
