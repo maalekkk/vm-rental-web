@@ -101,13 +101,14 @@ public class RentService
 
     public boolean isMachineAllocated(Machine machine)
     {
-        return !rentRepository.findByPredicate(rent -> rent.getMachine().equals(machine) && getRentStatus(rent) == RESERVED || getRentStatus(rent) == IN_PROGRESS).isEmpty();
+        return !rentRepository.findByPredicate(rent -> rent.getMachine().equals(machine) &&
+                (getRentStatus(rent) == RESERVED || getRentStatus(rent) == IN_PROGRESS)).isEmpty();
     }
 
     public boolean isMachineAvailable(Rent rent)
     {
         return rentRepository.findByPredicate(r -> r.getMachine().equals(rent.getMachine()) &&
-                getRentStatus(r) == RESERVED || getRentStatus(r) == IN_PROGRESS)
+                (getRentStatus(r) == RESERVED || getRentStatus(r) == IN_PROGRESS))
                 .stream().noneMatch(r -> arePeriodOverlaping(r.getPeriod(), rent.getPeriod()));
     }
 
