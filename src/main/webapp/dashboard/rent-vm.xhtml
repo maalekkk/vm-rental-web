@@ -47,8 +47,10 @@
                         <f:convertDateTime type="localDateTime" pattern="yyyy-MM-dd'T'HH:mm"/>
                     </h:inputText>
                     <h:message for="endDate" styleClass="message"/>
+                    <h:message for="period_constraint" styleClass="message"/>
                     <h:commandButton id="submit" action="#{rentController.submit}" value="#{msgs.rent}"
                                      styleClass="type-button"/>
+                    <f:validateWholeBean id="period_constraint" value="#{rentController.rent.period}"/>
                 </h:form>
             </div>
             <div class="pageContent-content box">
