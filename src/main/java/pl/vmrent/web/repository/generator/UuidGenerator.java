@@ -5,7 +5,7 @@ import java.util.UUID;
 public class UuidGenerator implements PrimaryKeyGenerator<UUID>
 {
     @Override
-    public UUID getId()
+    public UUID generateId()
     {
         return UUID.randomUUID();
     }

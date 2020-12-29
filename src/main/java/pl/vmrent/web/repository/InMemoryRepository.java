@@ -27,7 +27,7 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
     {
         if (entity.getId() == null)
         {
-            entity.setId(generator.getId());
+            entity.setId(generator.generateId());
             elements.add(entity);
             return entity;
         }
