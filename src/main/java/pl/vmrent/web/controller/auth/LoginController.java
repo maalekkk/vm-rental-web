@@ -1,6 +1,5 @@
 package pl.vmrent.web.controller.auth;
 
-import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 import pl.vmrent.web.util.MessageProvider;
 
@@ -9,7 +8,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,10 +31,9 @@ public class LoginController
 
     public String submit()
     {
-        Optional<User> optionalUser = userService.findUserByUsername(username);
-        if (optionalUser.isPresent())
+        return userService.findUserByUsername(username).map(user ->
         {
-            if (optionalUser.get().isEnabled())
+            if (user.isEnabled())
             {
                 try
                 {
@@ -47,12 +44,12 @@ public class LoginController
                 catch (ServletException ignored)
                 {
                     logger.log(Level.WARNING, username + " " + messageProvider.getMessage("messages", "login_failed"));
-                    return "root";
+                    return null;
                 }
             }
             logger.log(Level.INFO, username + " " + messageProvider.getMessage("messages", "login_restricted"));
-        }
-        return "root";
+            return null;
+        }).orElse("root");
     }
 
     public String getUsername()

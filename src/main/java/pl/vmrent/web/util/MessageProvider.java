@@ -1,14 +1,17 @@
 package pl.vmrent.web.util;
 
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.ResourceBundle;
 
-@RequestScoped
-public class MessageProvider
+@ApplicationScoped
+public class MessageProvider implements Serializable
 {
-    private final FacesContext context = FacesContext.getCurrentInstance();
+    @Inject
+    private FacesContext context;
 
     public String getMessage(String bundle, String key)
     {
