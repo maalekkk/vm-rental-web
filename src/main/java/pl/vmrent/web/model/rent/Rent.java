@@ -5,15 +5,19 @@ import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 public class Rent extends Entity
 {
+    @NotNull
     @Valid
     private Machine machine;
 
+    @NotNull
     @Valid
     private User user;
 
+    @NotNull
     @Valid
     private Period period;
 

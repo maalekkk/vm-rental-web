@@ -5,13 +5,11 @@ import pl.vmrent.web.model.machine.MachineGaming;
 import pl.vmrent.web.model.machine.MachineWorkstation;
 import pl.vmrent.web.service.MachineService;
 import pl.vmrent.web.service.RentService;
-import pl.vmrent.web.validator.unique.machinename.UniqueMachineName;
 
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Named
@@ -24,24 +22,16 @@ public class MachineController implements Serializable
     @Inject
     private RentService rentService;
 
-    @UniqueMachineName
-    @Size(min = 3, max = 20)
-    private String machineName;
-
     private Machine machine = new MachineGaming();
 
     public String initMachine()
     {
-        machineService.findMachineById(machine.getId()).ifPresent(m -> machine = m);
+        machineService.findMachineById(machine.getId()).ifPresent(this::setMachine);
         return !rentService.isMachineAllocated(machine) ? null : "error";
     }
 
     public String submit()
     {
-        if (machine.getName() == null)
-        {
-            machine.setName(machineName);
-        }
         machineService.saveMachine(machine);
         return "/dashboard/show-vms?faces-redirect=true";
     }
@@ -87,15 +77,5 @@ public class MachineController implements Serializable
     public MachineWorkstation getMachineWorkstation()
     {
         return machine instanceof MachineWorkstation ? (MachineWorkstation) machine : null;
-    }
-
-    public String getMachineName()
-    {
-        return machineName;
-    }
-
-    public void setMachineName(String machineName)
-    {
-        this.machineName = machineName;
     }
 }

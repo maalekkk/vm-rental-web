@@ -37,7 +37,7 @@ public class RentService
 
     public Rent saveRent(@Valid Rent rent)
     {
-        if (rent.getPeriod().getEndDate().isBefore(rent.getPeriod().getStartDate()))
+        if (!isPeriodValid(rent.getPeriod()))
         {
             String msg = messageProvider.getMessage("ValidationMessages", "period.message");
             messageProvider.addMessage("rent:endDate", msg, FacesMessage.SEVERITY_ERROR);
@@ -134,6 +134,11 @@ public class RentService
     private boolean isRentFinished(Rent rent, LocalDateTime time)
     {
         return rent.getPeriod().getEndDate().isBefore(time);
+    }
+
+    private boolean isPeriodValid(@Valid Period period)
+    {
+        return !period.getEndDate().isBefore(period.getStartDate());
     }
 
     private boolean arePeriodOverlaping(@Valid Period p1, @Valid Period p2)

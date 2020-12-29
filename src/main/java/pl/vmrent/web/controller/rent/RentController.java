@@ -38,7 +38,7 @@ public class RentController implements Serializable
 
     public String initRent()
     {
-        rentService.findRentById(rent.getId()).ifPresent(r -> rent = r);
+        rentService.findRentById(rent.getId()).ifPresent(this::setRent);
         return rentService.existsRent(rent) &&
                 (userService.getCurrentRole() == Role.Owner ||
                         rent.getUser().equals(userService.getCurrentUser())) ? null : "error";

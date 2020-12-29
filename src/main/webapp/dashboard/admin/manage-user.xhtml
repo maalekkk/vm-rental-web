@@ -35,10 +35,11 @@
             <h:form styleClass="pageContent-content">
                 <h:outputLabel value="#{msgs.username}"/>
                 <h:inputText id="login"
-                             disabled="#{userController.update}"
-                             value="#{userController.update ? userController.user.username : userController.username}"
+                             readonly="#{userController.update}"
+                             value="#{userController.user.username}"
                              autocomplete="off"/>
                 <h:message for="login" styleClass="message"/>
+                <h:message for="unique_name" styleClass="message"/>
                 <h:outputLabel value="#{msgs.full_name}"/>
                 <h:inputText id="fullname" value="#{userController.user.fullname}" autocomplete="off"/>
                 <h:message for="fullname" id="fullname_msg" styleClass="message"/>
@@ -49,6 +50,7 @@
                 </h:panelGroup>
                 <h:commandButton value="#{userController.update ? msgs.update : msgs.create}"
                                  action="#{userController.submit}"/>
+                <f:validateWholeBean id="unique_name" value="#{userController.user}"/>
             </h:form>
         </div>
     </ui:define>

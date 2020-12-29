@@ -46,10 +46,11 @@
                     <div class="sideInput">
                         <h:outputLabel value="#{msgs.vm_name}"/>
                         <h:inputText id="vm_name"
-                                     disabled="#{machineController.update}"
-                                     value="#{machineController.update ? machineController.machine.name : machineController.machineName}"
+                                     readonly="#{machineController.update}"
+                                     value="#{machineController.machine.name}"
                                      autocomplete="off"/>
-                        <h:message for="vm_name" id="vm_name_msg" styleClass="message"/>
+                        <h:message for="vm_name" styleClass="message"/>
+                        <h:message for="unique_name" styleClass="message"/>
                     </div>
                     <div class="columns-container">
                         <div class="sideInput">
@@ -95,6 +96,7 @@
                     </div>
                     <h:commandButton value="#{machineController.update ? msgs.update : msgs.create}"
                                      action="#{machineController.submit}"/>
+                    <f:validateWholeBean id="unique_name" value="#{machineController.machine}"/>
                 </h:form>
             </div>
         </div>

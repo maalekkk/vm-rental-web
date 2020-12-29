@@ -1,10 +1,12 @@
 package pl.vmrent.web.model.user;
 
 import pl.vmrent.web.model.Entity;
+import pl.vmrent.web.validator.unique.username.UniqueUsername;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+@UniqueUsername
 public class User extends Entity
 {
     @Size(min = 3, max = 20)

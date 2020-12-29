@@ -37,7 +37,7 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
             elements.set(index, entity);
             return entity;
         }
-        throw new IllegalStateException();
+        throw new IllegalStateException("Invalid data!");
     }
 
     @Override
