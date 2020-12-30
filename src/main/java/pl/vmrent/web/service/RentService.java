@@ -7,10 +7,8 @@ import pl.vmrent.web.model.rent.Status;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.repository.RentRepository;
 import pl.vmrent.web.util.DateTimeProvider;
-import pl.vmrent.web.util.MessageProvider;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
@@ -32,23 +30,14 @@ public class RentService
     @Inject
     private DateTimeProvider dateTimeProvider;
 
-    @Inject
-    private MessageProvider messageProvider;
-
     public Rent saveRent(@Valid Rent rent)
     {
-        if (!isMachineAvailable(rent))
-        {
-            String msg = messageProvider.getMessage("ValidationMessages", "rent.date.busy.message");
-            messageProvider.addMessage("rent:endDate", msg, FacesMessage.SEVERITY_ERROR);
-            return null;
-        }
-        return rentRepository.save(rent);
+        return isMachineAvailable(rent) ? rentRepository.save(rent) : null;
     }
 
-    public Optional<Rent> findRentById(UUID fromString)
+    public Optional<Rent> findRentById(UUID rentId)
     {
-        return rentRepository.findById(fromString);
+        return rentRepository.findById(rentId);
     }
 
     public List<Rent> findRentsByUser(User user)

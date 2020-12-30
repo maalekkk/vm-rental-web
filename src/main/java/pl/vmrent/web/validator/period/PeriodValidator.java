@@ -5,7 +5,7 @@ import pl.vmrent.web.model.rent.Period;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class PeriodConstraintValidator implements ConstraintValidator<PeriodConstraint, Period>
+public class PeriodValidator implements ConstraintValidator<PeriodCheck, Period>
 {
     @Override
     public boolean isValid(Period period, ConstraintValidatorContext constraintValidatorContext)

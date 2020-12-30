@@ -1,12 +1,12 @@
 package pl.vmrent.web.model.rent;
 
-import pl.vmrent.web.validator.period.PeriodConstraint;
+import pl.vmrent.web.validator.period.PeriodCheck;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@PeriodConstraint
+@PeriodCheck
 public class Period implements Serializable
 {
     @NotNull

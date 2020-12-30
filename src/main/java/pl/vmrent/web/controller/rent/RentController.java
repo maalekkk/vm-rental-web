@@ -11,16 +11,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.util.Optional;
 import java.util.UUID;
 
 @Named
 @ViewScoped
 public class RentController implements Serializable
 {
-    private Rent rent = new Rent();
-
-    private UUID machineId;
-
     @Inject
     private RentService rentService;
 
@@ -29,6 +26,10 @@ public class RentController implements Serializable
 
     @Inject
     private UserService userService;
+
+    private Rent rent = new Rent();
+
+    private UUID machineId;
 
     @PostConstruct
     private void init()
@@ -52,7 +53,8 @@ public class RentController implements Serializable
 
     public String submit()
     {
-        return rentService.saveRent(rent) == null ? null : "show-rents.xhtml?faces-redirect=true";
+        Optional<Rent> optionalRent = Optional.ofNullable(rentService.saveRent(rent));
+        return optionalRent.map(r -> "show-rents.xhtml?faces-redirect=true").orElse(null);
     }
 
     public Rent getRent()
