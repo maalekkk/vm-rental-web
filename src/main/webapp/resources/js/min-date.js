@@ -1,10 +1,10 @@
 function minDate(input) {
     const today = new Date();
-    var day = today.getDate();
-    var month = today.getMonth() + 1;
-    var year = today.getFullYear();
-    var hour = today.getHours();
-    var minutes = today.getMinutes();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    const year = today.getFullYear();
+    let hour = today.getHours();
+    let minutes = today.getMinutes();
     if (day < 10)
         day = '0' + day
     if (month < 10)
