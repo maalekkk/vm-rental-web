@@ -1,5 +1,6 @@
 /*Styles for inputs(text, submit) in forms */
-.pageContent-content input[type=text] {
+.pageContent-content input[type=text],
+.pageContent-content input[type=password] {
     font-size: 1.5vh;
     margin-bottom: 2vh;
     border-right: none;
