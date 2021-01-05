@@ -112,14 +112,14 @@
     </servlet-mapping>
 
     <!-- SESSION -->
-    <session-config>
-        <session-timeout>30</session-timeout>
-        <cookie-config>
-            <http-only>true</http-only>
-            <secure>true</secure>
-        </cookie-config>
-        <tracking-mode>COOKIE</tracking-mode>
-    </session-config>
+    <!--    <session-config>
+            <session-timeout>30</session-timeout>
+            <cookie-config>
+                <http-only>true</http-only>
+                <secure>true</secure>
+            </cookie-config>
+            <tracking-mode>COOKIE</tracking-mode>
+        </session-config>-->
 
     <!-- WELCOME FILE -->
     <welcome-file-list>
@@ -127,10 +127,10 @@
     </welcome-file-list>
 
     <!-- ERROR PAGE HANDLERS -->
-    <error-page>
-        <exception-type>java.lang.RuntimeException</exception-type>
-        <location>/dashboard/error.xhtml</location>
-    </error-page>
+    <!--    <error-page>
+            <exception-type>java.lang.RuntimeException</exception-type>
+            <location>/dashboard/error.xhtml</location>
+        </error-page>-->
 
     <!-- ENABLE CROSS-FIELD VALIDATION JSF -->
     <context-param>
