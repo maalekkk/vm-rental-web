@@ -19,7 +19,9 @@ public interface Repository<T extends Identity<ID>, ID extends Serializable> ext
 
     long count();
 
-    void delete(@NotNull T entity);
+    boolean delete(@NotNull T entity);
+
+    boolean deleteById(ID id);
 
     void deleteAll();
 }

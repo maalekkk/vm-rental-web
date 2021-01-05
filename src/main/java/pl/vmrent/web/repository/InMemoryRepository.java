@@ -75,9 +75,15 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
     }
 
     @Override
-    public void delete(@NotNull T entity)
+    public boolean delete(@NotNull T entity)
     {
-        elements.remove(entity);
+        return elements.remove(entity);
+    }
+
+    @Override
+    public boolean deleteById(ID id)
+    {
+        return findById(id).map(elements::remove).orElse(false);
     }
 
     @Override

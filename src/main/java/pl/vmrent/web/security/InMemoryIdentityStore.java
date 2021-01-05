@@ -4,23 +4,19 @@ import pl.vmrent.web.service.UserService;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.security.enterprise.authentication.mechanism.http.CustomFormAuthenticationMechanismDefinition;
-import javax.security.enterprise.authentication.mechanism.http.LoginToContinue;
 import javax.security.enterprise.credential.Credential;
 import javax.security.enterprise.credential.UsernamePasswordCredential;
 import javax.security.enterprise.identitystore.CredentialValidationResult;
 import javax.security.enterprise.identitystore.IdentityStore;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static javax.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
 import static javax.security.enterprise.identitystore.CredentialValidationResult.NOT_VALIDATED_RESULT;
+import static javax.security.enterprise.identitystore.IdentityStore.ValidationType.PROVIDE_GROUPS;
+import static javax.security.enterprise.identitystore.IdentityStore.ValidationType.VALIDATE;
 
-@CustomFormAuthenticationMechanismDefinition(
-        loginToContinue = @LoginToContinue(
-                loginPage = "/auth/login.xhtml",
-                errorPage = "/auth/login.xhtml",
-                useForwardToLogin = false
-        )
-)
 @ApplicationScoped
 public class InMemoryIdentityStore implements IdentityStore
 {
@@ -39,5 +35,11 @@ public class InMemoryIdentityStore implements IdentityStore
                     .orElse(INVALID_RESULT);
         }
         return NOT_VALIDATED_RESULT;
+    }
+
+    @Override
+    public Set<ValidationType> validationTypes()
+    {
+        return Stream.of(VALIDATE, PROVIDE_GROUPS).collect(Collectors.toSet());
     }
 }

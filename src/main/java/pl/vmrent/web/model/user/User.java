@@ -3,6 +3,7 @@ package pl.vmrent.web.model.user;
 import pl.vmrent.web.model.Entity;
 import pl.vmrent.web.validator.unique.username.UniqueUsername;
 
+import javax.json.bind.annotation.JsonbTransient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -14,9 +15,11 @@ import java.util.stream.Collectors;
 public class User extends Entity
 {
     @Size(min = 3, max = 20)
+    @NotBlank
     private String username;
 
     @Size(min = 8, max = 30)
+    @NotBlank
     private String password;
 
     @NotBlank
@@ -61,6 +64,7 @@ public class User extends Entity
         this.fullname = fullname;
     }
 
+    @JsonbTransient
     public String getPassword()
     {
         return password;
@@ -86,11 +90,12 @@ public class User extends Entity
         return roles;
     }
 
-    public void setRoles(Set<Role> roles)
+    public void setRoles(@NotEmpty Set<Role> roles)
     {
         this.roles = roles;
     }
 
+    @JsonbTransient
     public Set<String> getRolesAsString()
     {
         return roles.stream().map(Role::name).collect(Collectors.toSet());

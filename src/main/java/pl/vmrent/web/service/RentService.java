@@ -65,12 +65,9 @@ public class RentService
         return rentRepository.findAll();
     }
 
-    public void deleteRent(Rent rent)
+    public boolean deleteRent(Rent rent)
     {
-        if (getRentStatus(rent) == RESERVED)
-        {
-            rentRepository.delete(rent);
-        }
+        return getRentStatus(rent) == RESERVED && rentRepository.delete(rent);
     }
 
     public void finishRent(Rent rent)

@@ -46,8 +46,13 @@ public class MachineService
         return machineRepository.findAll();
     }
 
-    public void deleteMachine(Machine machine)
+    public boolean deleteMachine(Machine machine)
     {
-        machineRepository.delete(machine);
+        return machineRepository.delete(machine);
+    }
+
+    public boolean deleteMachineById(UUID machineId)
+    {
+        return machineRepository.deleteById(machineId);
     }
 }
