@@ -3,6 +3,7 @@ package pl.vmrent.web.resource;
 import pl.vmrent.web.model.user.User;
 import pl.vmrent.web.service.UserService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,8 @@ import java.util.UUID;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
 @Path("/users")
 public class UserResource
 {
@@ -22,8 +25,6 @@ public class UserResource
     private UserService userService;
 
     @POST
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response addUser(@NotNull @Valid User user)
     {
         return Optional.ofNullable(user.getId())
@@ -34,7 +35,6 @@ public class UserResource
 
     @GET
     @Path("/{id}")
-    @Produces(APPLICATION_JSON)
     public Response getUserById(@PathParam("id") UUID userId)
     {
         return userService.findUserById(userId)
@@ -45,7 +45,6 @@ public class UserResource
 
     @GET
     @Path("/user")
-    @Produces(APPLICATION_JSON)
     public Response getUserByUsername(@QueryParam("username") String username)
     {
         return userService.findUserByUsername(username)
@@ -55,7 +54,6 @@ public class UserResource
     }
 
     @GET
-    @Produces(APPLICATION_JSON)
     public List<User> getUsers()
     {
         return userService.getAll();
@@ -63,8 +61,6 @@ public class UserResource
 
     @PUT
     @Path("/{id}")
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response updateUser(@PathParam("id") UUID userId, @NotNull @Valid User user)
     {
         return userService.findUserById(userId)
@@ -76,5 +72,13 @@ public class UserResource
                 .map(Response::ok)
                 .orElseThrow(NotFoundException::new)
                 .build();
+    }
+
+    @GET
+    @Path("/me")
+    @RolesAllowed({"Client", "Admin", "Owner"})
+    public Response currentUser()
+    {
+        return Response.ok(userService.getCurrentUser()).build();
     }
 }
