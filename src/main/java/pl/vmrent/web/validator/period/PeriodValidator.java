@@ -10,7 +10,6 @@ public class PeriodValidator implements ConstraintValidator<PeriodCheck, Period>
     @Override
     public boolean isValid(Period period, ConstraintValidatorContext constraintValidatorContext)
     {
-        return period.getStartDate().isBefore(period.getEndDate()) &&
-                !period.getStartDate().equals(period.getEndDate());
+        return period.getStartDate().isBefore(period.getEndDate());
     }
 }
