@@ -18,6 +18,8 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Consumes(APPLICATION_JSON)
+@Produces(APPLICATION_JSON)
 @Path("/machines")
 public class MachineResource
 {
@@ -26,8 +28,6 @@ public class MachineResource
 
     @POST
     @Path("/gaming")
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response addMachineGaming(@NotNull @Valid MachineGaming machineGaming)
     {
         return addMachine(machineGaming);
@@ -35,8 +35,6 @@ public class MachineResource
 
     @POST
     @Path("/workstation")
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response addMachineWorkstation(@NotNull @Valid MachineWorkstation machineWorkstation)
     {
         return addMachine(machineWorkstation);
@@ -44,7 +42,6 @@ public class MachineResource
 
     @GET
     @Path("/{id}")
-    @Produces(APPLICATION_JSON)
     public Response getMachineById(@PathParam("id") UUID machineId)
     {
         return machineService.findMachineById(machineId)
@@ -55,7 +52,6 @@ public class MachineResource
 
     @GET
     @Path("/machine")
-    @Produces(APPLICATION_JSON)
     public Response getMachineByName(@QueryParam("machinename") String machineName)
     {
         return machineService.findMachineByName(machineName)
@@ -65,7 +61,6 @@ public class MachineResource
     }
 
     @GET
-    @Produces(APPLICATION_JSON)
     public List<Machine> getMachines()
     {
         return machineService.getAll();
@@ -73,8 +68,6 @@ public class MachineResource
 
     @PUT
     @Path("/gaming/{id}")
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response updateMachineGaming(@PathParam("id") UUID machineId,
                                         @NotNull @Valid MachineGaming machineGaming)
     {
@@ -83,8 +76,6 @@ public class MachineResource
 
     @PUT
     @Path("/workstation/{id}")
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
     public Response updateMachineWorkstation(@PathParam("id") UUID machineId,
                                              @NotNull @Valid MachineWorkstation machineWorkstation)
     {
