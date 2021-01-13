@@ -5,20 +5,21 @@ import pl.vmrent.web.model.machine.Machine;
 import pl.vmrent.web.model.user.User;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class Rent extends Entity
 {
-    @NotNull
     @Valid
+    @NotNull
     private Machine machine;
 
-    @NotNull
     @Valid
+    @NotNull
     private User user;
 
-    @NotNull
     @Valid
+    @NotNull
     private Period period;
 
     public Rent()
@@ -61,5 +62,45 @@ public class Rent extends Entity
     public void setPeriod(Period period)
     {
         this.period = period;
+    }
+
+    public static class SimpleRent extends Entity
+    {
+        @NotBlank
+        private String machineName;
+
+        @Valid
+        @NotNull
+        private Period period;
+
+        public SimpleRent()
+        {
+        }
+
+        public SimpleRent(String machineName, Period period)
+        {
+            this.machineName = machineName;
+            this.period = period;
+        }
+
+        public String getMachineName()
+        {
+            return machineName;
+        }
+
+        public void setMachineName(String machineName)
+        {
+            this.machineName = machineName;
+        }
+
+        public Period getPeriod()
+        {
+            return period;
+        }
+
+        public void setPeriod(Period period)
+        {
+            this.period = period;
+        }
     }
 }
