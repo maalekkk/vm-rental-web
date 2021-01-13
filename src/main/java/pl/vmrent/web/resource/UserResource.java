@@ -15,6 +15,7 @@ import java.util.UUID;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
+import static pl.vmrent.web.model.user.Role.*;
 
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
@@ -76,7 +77,7 @@ public class UserResource
 
     @GET
     @Path("/me")
-    @RolesAllowed({"Client", "Admin", "Owner"})
+    @RolesAllowed({CLIENT, ADMIN, OWNER})
     public Response currentUser()
     {
         return Response.ok(userService.getCurrentUser()).build();
