@@ -20,8 +20,8 @@ import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.Response.Status.UNAUTHORIZED;
 import static pl.vmrent.web.security.jwt.JwtAuthenticationMechanism.extractToken;
 
-@Produces(TEXT_PLAIN)
 @Path("/auth")
+@Produces(TEXT_PLAIN)
 public class AuthResource
 {
     public static final MediaType APPLICATION_JWT = new MediaType("application", "jwt");

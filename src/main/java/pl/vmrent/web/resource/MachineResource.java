@@ -18,9 +18,9 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
+@Path("/machines")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-@Path("/machines")
 public class MachineResource
 {
     @Inject
@@ -102,13 +102,10 @@ public class MachineResource
     private Response updateMachine(UUID machineId, Machine machine)
     {
         return machineService.findMachineById(machineId)
-                .map(m ->
-                {
-                    machine.setId(m.getId());
-                    return machineService.saveMachine(machine);
-                })
+                .filter(m -> m.getId().equals(machine.getId())
+                        && m.getName().equals(machine.getName()))
                 .map(Response::ok)
-                .orElseThrow(NotFoundException::new)
+                .orElseThrow(BadRequestException::new)
                 .build();
     }
 }

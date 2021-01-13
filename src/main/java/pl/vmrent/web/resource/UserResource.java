@@ -17,9 +17,9 @@ import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static pl.vmrent.web.model.user.Role.*;
 
+@Path("/users")
 @Consumes(APPLICATION_JSON)
 @Produces(APPLICATION_JSON)
-@Path("/users")
 public class UserResource
 {
     @Inject
@@ -62,16 +62,14 @@ public class UserResource
 
     @PUT
     @Path("/{id}")
-    public Response updateUser(@PathParam("id") UUID userId, @NotNull @Valid User user)
+    public Response updateUserById(@PathParam("id") UUID userId, @NotNull @Valid User user)
     {
         return userService.findUserById(userId)
-                .map(u ->
-                {
-                    user.setId(u.getId());
-                    return userService.saveUser(user);
-                })
+                .filter(u -> u.getId().equals(user.getId()) &&
+                        u.getUsername().equals(user.getUsername()))
+                .map(u -> userService.saveUser(user))
                 .map(Response::ok)
-                .orElseThrow(NotFoundException::new)
+                .orElseThrow(BadRequestException::new)
                 .build();
     }
 
