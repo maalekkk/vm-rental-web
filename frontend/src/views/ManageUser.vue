@@ -3,7 +3,7 @@
     <form class="pageContent-content" v-on:submit.prevent="sendRequest()">
         <p>
             <label>{{ $t('username') }}: </label>
-            <input v-model="username" type="text">
+            <input v-model="username" type="text" :disabled="this.modifyId ? true : false">
         </p>
         <p>
             <label>{{ $t('password') }}: </label>
@@ -29,16 +29,19 @@
         <p>
             <input type="submit" :value="$t('submit')" >
         </p>
+        <p>
+            <label class="error-msg" v-if="this.modifyId ? true : false" v-text="error"/>
+        </p>
     </form>
 </div>
 </template>
 
 <script>
 export default {
-    props: ['user'],
+    props: ['modifyId'],
     created() {     
-        if (this.user) {
-            this.replaceUser(this.user)
+        if (this.modifyId) {
+            this.replaceUser()
         }
     },
     beforeMount() {
@@ -47,23 +50,27 @@ export default {
     data () {
         return {
             axios : require('axios'),
+            create: true,
+            id: '',
             username: '',
             password: '',
             fullname: '',
             enabled: true,
             role: '',
             roles: [],
+            error: '',
         };
     },
     methods: {
         changeTitle() {
-            this.$emit('pageTitle', this.user ? this.$t('update_user') : this.$t('create_new_user'))
+            this.$emit('pageTitle', this.modifyId ? this.$t('update_user') : this.$t('create_new_user'))
         },
         sendRequest() {
             this.roles.splice(0)
             this.roles.push(this.role)
-            if (this.user) {
-                this.axios.put('https://localhost:8181/VMRental/api/users/' + this.user.id, {
+            if (this.modifyId) {
+                this.axios.put('https://localhost:8181/VMRental/api/users/' + this.modifyId, {
+                    "id": this.id,
                     "username": this.username,
                     "password": this.password,
                     "fullname": this.fullname,
@@ -73,7 +80,7 @@ export default {
                 .then(response => {
                 console.log(response);
                 this.$router.push({
-                    name: 'showUsers'})})
+                    name: 'showUsers'})}).catch(console.log(this.error=this.$t('error_message')))
             }
             else {
                 this.axios.post('https://localhost:8181/VMRental/api/users', {
@@ -90,11 +97,15 @@ export default {
             }
         },
         replaceUser() {
-            this.username = this.user.username
-            this.password = this.user.password
-            this.fullname = this.user.fullname
-            this.enabled = this.user.enabled
-            this.role = this.user.roles[0]
+            this.axios.get('https://localhost:8181/VMRental/api/users/' + this.modifyId)
+            .then(response => {
+                console.log(response);
+                this.username = response.data.username
+                this.fullname = response.data.fullname
+                this.enabled = response.data.enabled
+                this.role = response.data.roles[0]
+            })
+
         }
     },
 }
@@ -103,4 +114,7 @@ export default {
 <style scoped>
     @import './../assets/style/page-content.css';
     @import './../assets/style/page-content-inputs.css';
+    .error-msg {
+        color: purple;
+    }
 </style>

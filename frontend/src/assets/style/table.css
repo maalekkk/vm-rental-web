@@ -23,4 +23,5 @@
 .table-purple-row:hover {
     background: #BDC3C7;
     color: #FFFFFF;
+    cursor: pointer;
 }

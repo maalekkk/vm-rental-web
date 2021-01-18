@@ -4,13 +4,13 @@
       <thead >
         <tr class="table-purple-header">
           <th>{{ $t('username') }}</th>
-          <th>{{ $t('password') }}</th>
+          <th>{{ $t('full_name') }}</th>
           <th>{{ $t('account_state') }}</th>
           <th>{{ $t('role') }}</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="user in users" v-bind:key="user.id" class="table-purple-row" @click="manageUser(user)">
+        <tr v-for="user in users" :key="user.fullname" class="table-purple-row" @click="manageUser(user)">
           <td>{{ user.username }}</td>
           <td>{{ user.fullname }}</td>
           <td>{{ user.enabled }}</td>
@@ -38,7 +38,7 @@ export default {
                 roles: [''],
                 username: '',
             },
-             users: undefined,
+             users: undefined
         };
     },
     methods: {
@@ -52,11 +52,15 @@ export default {
             this.users = response.data;
       });},
       manageUser(user) {
+        var modifyId = user.id
         this.$router.push({
           name: 'manageUser',
-          params: { user }
+          params: { modifyId }
         })
-    },
+      },
+      forceRerender() {
+        this.componentKey += 1;
+      }
     }
 }
 </script>
