@@ -1,0 +1,26 @@
+/*Style for table (header, row and submit button)*/
+.table-purple {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 0.85vw;
+}
+
+.table-purple-header {
+    background-color: rgba(149, 94, 139, .8);
+    color: white;
+}
+
+.table-purple th,
+.table-purple td {
+    text-align: center;
+    padding: 1vh 0.1vw;
+}
+
+.table-purple-row:nth-child(even) {
+    background: #ECF0F1;
+}
+
+.table-purple-row:hover {
+    background: #BDC3C7;
+    color: #FFFFFF;
+}

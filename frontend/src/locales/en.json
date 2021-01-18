@@ -1,0 +1,20 @@
+{
+  "welcome": "Welcome!",
+  "welcome_text": "We are extremely glad, you are using our rental service. Please use the sidebar menu on your left side to go to specific operations.",
+  "main_page":"Home page",
+  "app_info_title":"Application's information",
+  "create_new_user":"Create a new user",
+  "update_user":"Update user",
+  "update_info":"To update user - click on the row!",
+  "manage_user":"Manage user",
+  "show_users":"Display all users",
+  "project_name":"Virtual machines rental",
+  "authors":"Authors: Maciej Błażewicz, Bartłomiej Małkowski, Sebastian Nawrocki",
+  "username":"Username",
+  "password":"Password",
+  "full_name":"Full name",
+  "role":"Role",
+  "account_state":"Active account",
+  "description":"VM Rental is web application created as part of subject Fundamentals of Network Applications 2020 on TUL. It represents system of virtual machines rental with user's account system.",
+  "submit":"Submit"
+}

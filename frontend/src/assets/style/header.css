@@ -1,0 +1,13 @@
+.header {
+    background-color: #1C2022;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    min-height: 7vh;
+    height: 7%;
+}
+
+.header-title:hover {
+    color: #955E8B;
+    cursor: default;
+}
