@@ -63,7 +63,6 @@ export default {
             this.roles.splice(0)
             this.roles.push(this.role)
             if (this.user) {
-                console.log('update jest robiony')
                 this.axios.put('https://localhost:8181/VMRental/api/users/' + this.user.id, {
                     "username": this.username,
                     "password": this.password,
@@ -77,7 +76,6 @@ export default {
                     name: 'showUsers'})})
             }
             else {
-                console.log('create jest robiony')
                 this.axios.post('https://localhost:8181/VMRental/api/users', {
                     "username": this.username,
                     "password": this.password,
