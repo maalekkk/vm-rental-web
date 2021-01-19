@@ -39,7 +39,6 @@ export default {
         username: '',
       },
       users: undefined,
-      dataToBeWatched: ''
     };
   },
   methods: {
@@ -58,11 +57,6 @@ export default {
         name: 'manageUser',
         params: {modifyId}
       })
-    }
-  },
-  watch: {
-    users: function () {
-      this.getUsers()
     }
   }
 }

@@ -70,7 +70,7 @@ export default {
       this.roles.push(this.role)
       if (this.modifyId) {
         this.axios.put('https://localhost:8181/VMRental/api/users/' + this.modifyId, {
-          "id": this.id,
+          "id": this.modifyId,
           "username": this.username,
           "password": this.password,
           "fullname": this.fullname,
@@ -81,7 +81,10 @@ export default {
           this.$router.push({
             name: 'showUsers'
           })
-        }).catch(this.error = this.$t('error_message'))
+        }).catch(error => {
+          console.log(error);
+          this.error = this.$t('error_message');
+        })
       } else {
         this.axios.post('https://localhost:8181/VMRental/api/users', {
           "username": this.username,
@@ -94,7 +97,10 @@ export default {
           this.$router.push({
             name: 'showUsers'
           })
-        }).catch(this.error = this.$t('error_message'))
+        }).catch(error => {
+          console.log(error);
+          this.error = this.$t('error_message');
+        })
       }
     },
     replaceUser() {
@@ -105,7 +111,6 @@ export default {
             this.enabled = response.data.enabled
             this.role = response.data.roles[0]
           })
-
     }
   },
 }
