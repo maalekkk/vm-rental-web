@@ -104,6 +104,7 @@ public class MachineResource
         return machineService.findMachineById(machineId)
                 .filter(m -> m.getId().equals(machine.getId())
                         && m.getName().equals(machine.getName()))
+                .map(m -> machineService.saveMachine(machine))
                 .map(Response::ok)
                 .orElseThrow(BadRequestException::new)
                 .build();
