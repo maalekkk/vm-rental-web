@@ -30,7 +30,7 @@
         <input type="submit" :value="$t('submit')">
       </p>
       <p>
-        <label class="error-msg" v-if="this.modifyId ? true : false" v-text="error"/>
+        <label class="error-msg" v-text="error"/>
       </p>
     </form>
   </div>
@@ -76,11 +76,12 @@ export default {
           "fullname": this.fullname,
           "enabled": this.enabled,
           "roles": this.roles,
-        }).then(
-            this.$router.push({
-              name: 'showUsers'
-            }))
-            .catch(this.error = this.$t('error_message'))
+        }).then(response => {
+          console.log(response)
+          this.$router.push({
+            name: 'showUsers'
+          })
+        }).catch(this.error = this.$t('error_message'))
       } else {
         this.axios.post('https://localhost:8181/VMRental/api/users', {
           "username": this.username,
@@ -88,11 +89,12 @@ export default {
           "fullname": this.fullname,
           "enabled": this.enabled,
           "roles": this.roles,
-        }).then(
-            this.$router.push({
-              name: 'showUsers'
-            }))
-            .catch(this.error = this.$t('error_message'))
+        }).then(response => {
+          console.log(response)
+          this.$router.push({
+            name: 'showUsers'
+          })
+        }).catch(this.error = this.$t('error_message'))
       }
     },
     replaceUser() {
@@ -112,6 +114,7 @@ export default {
 <style scoped>
 @import './../assets/style/page-content.css';
 @import './../assets/style/page-content-inputs.css';
+
 .error-msg {
   color: purple;
 }
