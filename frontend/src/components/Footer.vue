@@ -1,8 +1,8 @@
 <template>
-    <div class="footer">
-        <p>{{ $t('project_name') }}</p>
-        <p>{{ $t('authors') }}</p>
-    </div>
+  <div class="footer">
+    <p>{{ $t('project_name') }}</p>
+    <p>{{ $t('authors') }}</p>
+  </div>
 </template>
 
 <script>

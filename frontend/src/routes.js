@@ -8,29 +8,29 @@ import HomePage from "./views/HomePage.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
-  routes: [
-    {
-      path: '/',
-      name: 'homePage',
-      component: HomePage,
-    },
-    {
-      path: '/showUsers',
-      name: 'showUsers',
-      component: ShowUsers,
-    },
-    {
-      path: '/manageUser',
-      name: 'manageUser',
-      component: ManageUser,
-      props: true
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: About,
-    }
+    mode: 'history',
+    routes: [
+        {
+            path: '/',
+            name: 'homePage',
+            component: HomePage,
+        },
+        {
+            path: '/showUsers',
+            name: 'showUsers',
+            component: ShowUsers,
+        },
+        {
+            path: '/manageUser',
+            name: 'manageUser',
+            component: ManageUser,
+            props: true
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: About,
+        }
 
-  ]
+    ]
 });

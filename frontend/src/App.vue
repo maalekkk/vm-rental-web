@@ -6,6 +6,7 @@
 
 <script>
 import MainTemplate from './components/MainTemplate.vue';
+
 export default {
   name: "App",
   components: {
@@ -15,9 +16,9 @@ export default {
 </script>
 
 <style>
-  #app {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-  }
+#app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 </style>

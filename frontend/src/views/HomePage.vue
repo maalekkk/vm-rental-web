@@ -1,20 +1,20 @@
 <template>
-<div>
+  <div>
     <p>{{ $t('welcome') }}</p>
     <p>{{ $t('welcome_text') }}</p>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-    beforeMount() {
-        this.changeTitle();
-    },
-    methods: {
-        changeTitle() {
-            this.$emit('pageTitle', this.$t('main_page'))
-        }
+  beforeMount() {
+    this.changeTitle();
+  },
+  methods: {
+    changeTitle() {
+      this.$emit('pageTitle', this.$t('main_page'))
     }
+  }
 }
 </script>
 
