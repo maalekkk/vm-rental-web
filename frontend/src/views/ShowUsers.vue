@@ -1,5 +1,6 @@
 <template>
   <div>
+    <input type="button" @click="getUsers" value="Refresh list" class="btn">
     <table class="table-purple">
       <thead>
       <tr class="table-purple-header">
@@ -62,7 +63,9 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+@import './../assets/style/page-content-inputs.css';
+
 #update-instruction {
   font-size: 1vw;
   color: gray;

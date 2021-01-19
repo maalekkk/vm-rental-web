@@ -25,7 +25,8 @@
     border-bottom: 2px solid #955E8B;
 }
 
-.pageContent-content input[type=submit] {
+.pageContent-content input[type=submit],
+.btn {
     margin-top: 1vh;
     margin-bottom: 1vh;
     font-size: 0.8vw;
@@ -42,7 +43,13 @@
     font-weight: bold;
 }
 
-.pageContent-content input[type=submit]:hover {
+.pageContent-content input[type=submit]:hover,
+.btn:hover {
     border-color: rgba(149, 94, 139, .8);
     transition: all .35s;
+}
+
+.btn {
+    width: fit-content !important;
+    float: right;
 }
