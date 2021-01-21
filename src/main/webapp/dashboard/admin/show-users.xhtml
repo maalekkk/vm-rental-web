@@ -19,9 +19,10 @@
     <ui:define name="content">
         <h:form id="filter">
             <h:outputText value="#{msgs.username}:" styleClass="filter-title"/>
-            <h:inputText value="#{userListController.userFilter}"/>
-            <h:commandButton value="#{msgs.filter}" action="#{userListController.filter}"
-                             styleClass="table-purple-button"/>
+            <h:inputText value="#{userListController.userFilter}" id="filter-input"/>
+            <h:commandButton value="#{msgs.filter}" styleClass="table-purple-button" >
+                <f:ajax execute="filter-input" render=":table" listener="#{userListController.filter}"/>
+            </h:commandButton>
         </h:form>
         <h:form id="table">
             <h:dataTable styleClass="table-purple" value="#{userListController.users}" var="user"
