@@ -43,7 +43,8 @@
                     <f:facet name="header">#{msgs.actions}</f:facet>
                     <h:commandButton action="#{userListController.changeUserActivity(user)}"
                                      value="#{user.enabled ? msgs.disable : msgs.enable}"
-                                     styleClass="table-purple-button"/>
+                                     styleClass="table-purple-button"
+                                     onclick="confirm('#{user.enabled ? msgs.deactivate_dialog : msgs.activate_dialog}')"/>
                     <h:button outcome="manage-user"
                               value="#{msgs.edit}"
                               styleClass="table-purple-button">

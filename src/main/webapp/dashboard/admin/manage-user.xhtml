@@ -64,7 +64,7 @@
                     </h:selectBooleanCheckbox>
                 </h:panelGroup>
                 <h:commandButton value="#{userController.update ? msgs.update : msgs.create}"
-                                 action="#{userController.submit}"/>
+                                 action="#{userController.submit}" onclick="confirm('#{msgs.question_dialog}')"/>
                 <f:validateWholeBean id="unique_name" value="#{userController.user}"/>
             </h:form>
         </div>
