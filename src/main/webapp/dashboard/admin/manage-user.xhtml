@@ -34,17 +34,24 @@
         <div class="pageContent-container">
             <h:form styleClass="pageContent-content">
                 <h:outputLabel value="#{msgs.username}"/>
-                <h:inputText id="login"
-                             readonly="#{userController.update}"
-                             value="#{userController.user.username}"
-                             autocomplete="off"/>
-                <h:message for="login" styleClass="message"/>
-                <h:message for="unique_name" styleClass="message"/>
+                <h:inputText id="login" readonly="#{userController.update}" value="#{userController.user.username}"
+                             autocomplete="off">
+                    <f:ajax event="focus" execute="login" render="login_msg"/>
+                    <f:ajax event="change" execute="login" render="login_msg"/>
+                </h:inputText>
+                <h:message id="login_msg" for="login" styleClass="message"/>
+                <h:message id="unique_msg" for="unique_name" styleClass="message"/>
                 <h:outputLabel value="#{msgs.password}"/>
-                <h:inputSecret id="password" value="#{userController.user.password}"/>
-                <h:message for="password" styleClass="message"/>
+                <h:inputSecret id="password" value="#{userController.user.password}">
+                    <f:ajax event="focus" execute="password" render="password_msg"/>
+                    <f:ajax event="change" execute="password" render="password_msg"/>
+                </h:inputSecret>
+                <h:message id="password_msg" for="password" styleClass="message"/>
                 <h:outputLabel value="#{msgs.full_name}"/>
-                <h:inputText id="fullname" value="#{userController.user.fullname}" autocomplete="off"/>
+                <h:inputText id="fullname" value="#{userController.user.fullname}" autocomplete="off">
+                    <f:ajax event="focus" execute="fullname" render="fullname_msg"/>
+                    <f:ajax event="change" execute="fullname" render="fullname_msg"/>
+                </h:inputText>
                 <h:message for="fullname" id="fullname_msg" styleClass="message"/>
                 <h:panelGroup layout="block" styleClass="enable-account">
                     <h:selectOneMenu value="#{userController.userRole}" styleClass="select-form">
