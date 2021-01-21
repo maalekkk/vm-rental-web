@@ -1,6 +1,7 @@
 package pl.vmrent.web.security.jwt;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 import javax.security.enterprise.AuthenticationStatus;
 import javax.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Optional;
 
 @ApplicationScoped
+@Alternative
 public class JwtAuthenticationMechanism implements HttpAuthenticationMechanism
 {
     private static final String AUTHORIZATION_HEADER = "Authorization";
