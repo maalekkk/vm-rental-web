@@ -11,8 +11,9 @@ import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Serializable> implements Repository<T, ID>
+public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Serializable> implements PaginationRepository<T, ID>
 {
     private final PrimaryKeyGenerator<ID> generator;
     private final List<T> elements = new CopyOnWriteArrayList<>();
@@ -62,10 +63,21 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
         return elements.stream().filter(predicate).collect(Collectors.toList());
     }
 
+    public List<T> findByPredicate(Predicate<T> predicate, int page, int size)
+    {
+        return paginate(findByPredicate(predicate).stream(), page, size).collect(Collectors.toList());
+    }
+
     @Override
     public List<T> findAll()
     {
         return new ArrayList<>(elements);
+    }
+
+    @Override
+    public List<T> findAll(int page, int size)
+    {
+        return paginate(findAll().stream(), page, size).collect(Collectors.toList());
     }
 
     @Override
@@ -90,5 +102,10 @@ public abstract class InMemoryRepository<T extends Identity<ID>, ID extends Seri
     public void deleteAll()
     {
         elements.clear();
+    }
+
+    private Stream<T> paginate(Stream<T> stream, int page, int size)
+    {
+        return stream.skip((long) (page - 1) * size).limit(size);
     }
 }

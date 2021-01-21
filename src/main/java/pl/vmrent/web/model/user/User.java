@@ -6,6 +6,7 @@ import pl.vmrent.web.validator.unique.username.UniqueUsername;
 import javax.json.bind.annotation.JsonbTransient;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,11 +16,11 @@ import java.util.stream.Collectors;
 public class User extends Entity
 {
     @Size(min = 3, max = 20)
-    @NotBlank
+    @NotNull
     private String username;
 
     @Size(min = 8, max = 30)
-    @NotBlank
+    @NotNull
     private String password;
 
     @NotBlank

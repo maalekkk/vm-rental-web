@@ -18,10 +18,18 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="filter">
+            <h:outputText value="Limit:" styleClass="filter-title"/>
+            <h:selectOneMenu value="#{userListController.size}" valueChangeListener="#{userListController.setPage(1)}"
+                             styleClass="select-form">
+                <f:selectItems value="#{userListController.sizes}"/>
+                <f:ajax render=":table :navigation" listener="#{userListController.filter}"/>
+            </h:selectOneMenu>
             <h:outputText value="#{msgs.username}:" styleClass="filter-title"/>
             <h:inputText value="#{userListController.userFilter}" id="filter-input"/>
-            <h:commandButton value="#{msgs.filter}" styleClass="table-purple-button" >
-                <f:ajax execute="filter-input" render=":table" listener="#{userListController.filter}"/>
+            <h:commandButton action="#{userListController.filter}" value="#{msgs.filter}"
+                             styleClass="table-purple-button">
+                <f:setPropertyActionListener target="#{userListController.page}" value="1"/>
+                <f:ajax execute="filter-input" render=":table :navigation"/>
             </h:commandButton>
         </h:form>
         <h:form id="table">
@@ -44,7 +52,9 @@
                     <h:commandButton action="#{userListController.changeUserActivity(user)}"
                                      value="#{user.enabled ? msgs.disable : msgs.enable}"
                                      styleClass="table-purple-button"
-                                     onclick="confirm('#{user.enabled ? msgs.deactivate_dialog : msgs.activate_dialog}')"/>
+                                     onclick="confirm('#{user.enabled ? msgs.deactivate_dialog : msgs.activate_dialog}')">
+                        <f:ajax render="@form"/>
+                    </h:commandButton>
                     <h:button outcome="manage-user"
                               value="#{msgs.edit}"
                               styleClass="table-purple-button">
@@ -52,6 +62,16 @@
                     </h:button>
                 </h:column>
             </h:dataTable>
+        </h:form>
+        <h:form id="navigation">
+            <h:commandLink action="#{userListController.filter}" value="Previous"
+                           rendered="#{not userListController.start}">
+                <f:ajax render="@form :table" listener="#{userListController.previousPage}"/>
+            </h:commandLink>
+            <h:outputText value="#{userListController.page}"/>
+            <h:commandLink action="#{userListController.filter}" value="Next" rendered="#{not userListController.end}">
+                <f:ajax render="@form :table" listener="#{userListController.nextPage}"/>
+            </h:commandLink>
         </h:form>
     </ui:define>
 </ui:composition>

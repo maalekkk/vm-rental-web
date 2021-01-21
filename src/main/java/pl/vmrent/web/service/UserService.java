@@ -41,6 +41,11 @@ public class UserService
         return userRepository.findByPredicate(user -> user.getUsername().contains(username));
     }
 
+    public List<User> filterUserByUsername(String username, int page, int size)
+    {
+        return userRepository.findByPredicate(user -> user.getUsername().contains(username), page, size);
+    }
+
     public User getCurrentUser()
     {
         return findUserByUsername(request.getRemoteUser()).orElseThrow(IllegalStateException::new);
@@ -71,6 +76,11 @@ public class UserService
     public List<User> getAll()
     {
         return userRepository.findAll();
+    }
+
+    public List<User> getAll(int page, int size)
+    {
+        return userRepository.findAll(page, size);
     }
 
     public void changeUserActivity(User user)
