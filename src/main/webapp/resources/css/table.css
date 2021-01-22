@@ -89,6 +89,10 @@
     margin-top: 4vh;
     text-align-last: center;
     font-weight: bold;
+    position: fixed;
+    bottom: 11%;
+    left: 60%;
+    transform: translateX(-50%);
 }
 
 .page-number {
