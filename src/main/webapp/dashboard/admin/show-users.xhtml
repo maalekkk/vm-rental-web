@@ -18,13 +18,13 @@
     </ui:define>
     <ui:define name="content">
         <h:form id="filter">
-            <h:outputText value="Pokaż" styleClass="filter-title"/>
+            <h:outputText value="#{msgs.aj_show}" styleClass="filter-title"/>
             <h:selectOneMenu value="#{userListController.size}" valueChangeListener="#{userListController.setPage(1)}"
                              styleClass="select-menu">
                 <f:selectItems value="#{userListController.sizes}"/>
                 <f:ajax render=":table :navigation" listener="#{userListController.filter}"/>
             </h:selectOneMenu>
-            <h:outputText value="na stronę"/>
+            <h:outputText value="#{msgs.aj_per_page}"/>
             <h:outputText value="#{msgs.username}:" styleClass="filter-title"/>
             <h:inputText value="#{userListController.userFilter}" id="filter-input"/>
             <h:commandButton action="#{userListController.filter}" value="#{msgs.filter}"
@@ -65,12 +65,12 @@
             </h:dataTable>
         </h:form>
         <h:form id="navigation">
-            <h:commandLink action="#{userListController.filter}" value="Previous"
+            <h:commandLink action="#{userListController.filter}" value="#{msgs.aj_previous}"
                            disabled="#{userListController.start}">
                 <f:ajax render="@form :table" listener="#{userListController.previousPage}"/>
             </h:commandLink>
             <h:outputText styleClass="page-number" value="#{userListController.page}"/>
-            <h:commandLink action="#{userListController.filter}" value="Next" disabled="#{userListController.end}">
+            <h:commandLink action="#{userListController.filter}" value="#{msgs.aj_next}" disabled="#{userListController.end}">
                 <f:ajax render="@form :table" listener="#{userListController.nextPage}"/>
             </h:commandLink>
         </h:form>
