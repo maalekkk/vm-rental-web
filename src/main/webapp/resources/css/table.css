@@ -25,22 +25,31 @@
     color: #FFFFFF;
 }
 
-.table-purple-button {
-    padding: 0.5vh;
-    min-width: 100%;
+.table-purple-button,
+.select-menu {
     border: 0.1em solid rgba(149, 94, 139, .8);
     background-color: transparent;
     border-radius: 0.15em;
     transition: all 0.35s;
     font-family: 'Lora', serif;
-    margin: 0.15vh;
     font-size: 0.8vw;
 }
 
-.table-purple-button:hover {
+.table-purple-button:hover,
+.select-menu:hover {
     color: white;
     background-color: rgba(149, 94, 139, .8);
     cursor: pointer;
+}
+
+.table-purple-button {
+    padding: 0.5vh;
+    min-width: 100%;
+    margin: 0.15vh;
+}
+
+.select-menu {
+    margin: 0.15vh 0.3vw;
 }
 
 #filter {
@@ -73,5 +82,28 @@
 }
 
 .filter-title {
-    padding-left: 1vw;
+    padding-left: 1.3vw;
+}
+
+#navigation {
+    margin-top: 4vh;
+    text-align-last: center;
+    font-weight: bold;
+}
+
+.page-number {
+    padding: 0 3vw;
+    opacity: 1 !important;
+}
+
+#navigation > span {
+    opacity: 0.15;
+}
+
+#navigation > a {
+    color: #955E8B;
+}
+
+#navigation > a:hover {
+    color: #6d3e66;
 }
