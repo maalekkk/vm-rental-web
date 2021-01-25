@@ -106,11 +106,7 @@ export default {
           })
         }).catch(error => {
           console.log(error);
-          switch (error.response.status) {
-            case 400:
-              this.error = this.$t('bad_request_message');
-              break;
-          }
+          this.error = this.$t('bad_request_message');
         })
       }
     },
