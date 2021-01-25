@@ -15,7 +15,7 @@ import java.util.List;
 @ViewScoped
 public class UserListController implements Serializable
 {
-    private final List<Integer> sizes = Arrays.asList(2, 3, 5);
+    private static final List<Integer> sizes = Arrays.asList(2, 3, 5);
 
     @Inject
     private UserService userService;
@@ -25,7 +25,7 @@ public class UserListController implements Serializable
     private String userFilter = "";
 
     private int page = 1;
-    private int size = sizes.get(0);
+    private int size = sizes.get(sizes.size() - 1);
 
     @PostConstruct
     private void init()
