@@ -17,5 +17,6 @@
   "account_state": "Konto aktywne",
   "description": "VM Rental to aplikacja webowa stworzona w ramach przedmiotu Podstawy Aplikacji Sieciowych 2020 na Politechnice Łódzkiej. Reprezentuje ona system wypożyczalni maszyn wirtualnych wraz z systemem kont użytkowników.",
   "submit": "Zatwierdź",
-  "error_message": "Coś poszło nie tak, spróbuj ponownie!"
+  "bad_request_message": "Złe żądanie, wypełnij formularz ponownie!",
+  "not_found_message": "Użytkownik nie znaleziony!"
 }

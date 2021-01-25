@@ -83,7 +83,14 @@ export default {
           })
         }).catch(error => {
           console.log(error);
-          this.error = this.$t('error_message');
+          switch (error.response.status) {
+            case 400:
+              this.error = this.$t('bad_request_message');
+              break;
+            case 404:
+              this.error = this.$t('not_found_message');
+              break;
+          }
         })
       } else {
         this.axios.post('https://localhost:8181/VMRental/api/users', {
@@ -99,7 +106,11 @@ export default {
           })
         }).catch(error => {
           console.log(error);
-          this.error = this.$t('error_message');
+          switch (error.response.status) {
+            case 400:
+              this.error = this.$t('bad_request_message');
+              break;
+          }
         })
       }
     },

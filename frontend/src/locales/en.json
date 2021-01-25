@@ -17,5 +17,6 @@
   "account_state": "Active account",
   "description": "VM Rental is web application created as part of subject Fundamentals of Network Applications 2020 on TUL. It represents system of virtual machines rental with user's account system.",
   "submit": "Submit",
-  "error_message": "Something went wrong, please try again!"
+  "bad_request_message": "Bad request, please fill the form again!",
+  "not_found_message": "User not found!"
 }
