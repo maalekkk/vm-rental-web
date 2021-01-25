@@ -53,7 +53,7 @@
                     <h:commandButton action="#{userListController.changeUserActivity(user)}"
                                      value="#{user.enabled ? msgs.disable : msgs.enable}"
                                      styleClass="table-purple-button"
-                                     onclick="confirm('#{user.enabled ? msgs.deactivate_dialog : msgs.activate_dialog}')">
+                                     onclick="return confirm('#{user.enabled ? msgs.deactivate_dialog : msgs.activate_dialog}')">
                         <f:ajax render="@form"/>
                     </h:commandButton>
                     <h:button outcome="manage-user"
