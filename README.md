@@ -12,6 +12,9 @@
 ## Project
 Web application for virtual machine rental created using Java/Jakarta EE.
 
+### Programming language
+Java, JS (Vue.js)
+
 ## Authors
 - Sebastian Nawrocki
 - Maciej Błażewicz
